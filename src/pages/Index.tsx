@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown } from 'lucide-react';
@@ -74,10 +73,28 @@ const Index = () => {
               <span className="text-gray-900">Education</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Personalized tutoring that transforms students into confident learners. 
+            <p className="text-xl md:text-2xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
+              Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>5+ years of specialized teaching experience</strong>. 
               Join hundreds of successful students on their journey to academic excellence.
             </p>
+
+            {/* Team Credentials Banner */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-lg">
+              <div className="flex flex-wrap justify-center items-center gap-4 text-sm font-medium">
+                <div className="flex items-center space-x-2">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
+                  <span className="text-gray-700">IIT BHU Graduate • Google Engineer</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-3 h-3 bg-green-600 rounded-full"></span>
+                  <span className="text-gray-700">NIT Allahabad Graduate • Amazon Engineer</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
+                  <span className="text-gray-700">B.Ed Certified • 5+ Years Teaching Expert</span>
+                </div>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
