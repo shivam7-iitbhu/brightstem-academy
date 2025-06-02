@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, BookOpen } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,12 +32,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg group-hover:scale-110 transition-transform">
-              <BookOpen className="h-6 w-6 text-white" />
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="group-hover:scale-110 transition-transform">
+              <img 
+                src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" 
+                alt="BrightStem Academy Logo" 
+                className="h-10 w-auto"
+              />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              EduExcellence
+            <span className="text-xl font-bold text-blue-900">
+              BrightStem Academy
             </span>
           </Link>
 
@@ -55,13 +59,13 @@ const Navbar = () => {
               >
                 {item.name}
                 {isActive(item.path) && (
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-fade-in" />
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-500 rounded-full animate-fade-in" />
                 )}
               </Link>
             ))}
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+              className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
             >
               Enroll Now
             </Link>
@@ -99,7 +103,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-2 rounded-md font-medium mt-4"
+                className="block w-full text-center bg-gradient-to-r from-blue-600 to-green-500 text-white px-3 py-2 rounded-md font-medium mt-4"
               >
                 Enroll Now
               </Link>

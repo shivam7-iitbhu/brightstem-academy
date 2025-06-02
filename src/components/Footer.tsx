@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       {/* Quick Enrollment Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-12">
+      <div className="bg-gradient-to-r from-blue-600 to-green-500 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -72,11 +72,13 @@ const Footer = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <Link to="/" className="flex items-center space-x-2 mb-6">
-                <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-                  <BookOpen className="h-6 w-6 text-white" />
-                </div>
-                <span className="text-xl font-bold">EduExcellence</span>
+              <Link to="/" className="flex items-center space-x-3 mb-6">
+                <img 
+                  src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" 
+                  alt="BrightStem Academy Logo" 
+                  className="h-8 w-auto"
+                />
+                <span className="text-xl font-bold">BrightStem Academy</span>
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
                 Transforming lives through quality education. Personalized learning solutions 
@@ -136,7 +138,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-medium">teacher@eduexcellence.com</p>
+                    <p className="text-white font-medium">teacher@brightstem.academy</p>
                     <p className="text-gray-400 text-sm">Quick response within 24hrs</p>
                   </div>
                 </div>
@@ -155,7 +157,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 EduExcellence. All rights reserved. Transforming education, one student at a time.
+              © 2024 BrightStem Academy. All rights reserved. Transforming education, one student at a time.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>

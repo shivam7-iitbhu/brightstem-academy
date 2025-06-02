@@ -1,7 +1,6 @@
-
-import { Check, Users, Brain, MessageSquare, Target, Clock, Award } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, Users, Brain, Trophy, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import PricingCard from '@/components/PricingCard';
 
@@ -26,7 +25,7 @@ const Services = () => {
       benefits: ["Customized curriculum", "Flexible scheduling", "Individual pace", "Personal attention"]
     },
     {
-      icon: Target,
+      icon: Trophy,
       title: "Speaking & Communication Sessions",
       description: "Build confidence and communication skills through structured speaking practice and presentation training.",
       benefits: ["Public speaking confidence", "Language fluency", "Presentation skills", "Interview preparation"]
