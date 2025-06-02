@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,19 +16,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: "+91 98765 43210",
+      details: "+91 94546 84161",
       description: "Mon-Sat 9AM-7PM"
     },
     {
       icon: Mail,
       title: "Email",
-      details: "teacher@eduexcellence.com",
+      details: "contact@brightstem.in",
       description: "We'll respond within 24 hours"
     },
     {
       icon: MapPin,
       title: "Location",
-      details: "Mumbai, Maharashtra",
+      details: "Delhi, India",
       description: "Home tuition available"
     },
     {
@@ -162,7 +161,7 @@ const Contact = () => {
                       id="phone" 
                       name="phone"
                       type="tel" 
-                      placeholder="+91 98765 43210" 
+                      placeholder="+91 94546 84161" 
                       required 
                       className="h-12 text-lg border-2 focus:border-blue-500"
                     />

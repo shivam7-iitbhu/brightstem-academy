@@ -130,7 +130,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <Phone className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-medium">+91 98765 43210</p>
+                    <p className="text-white font-medium">+91 94546 84161</p>
                     <p className="text-gray-400 text-sm">Mon-Sat 9AM-7PM</p>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-medium">teacher@brightstem.academy</p>
+                    <p className="text-white font-medium">contact@brightstem.in</p>
                     <p className="text-gray-400 text-sm">Quick response within 24hrs</p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <MapPin className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-medium">Mumbai, Maharashtra</p>
+                    <p className="text-white font-medium">Delhi, India</p>
                     <p className="text-gray-400 text-sm">Home tuition available</p>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 BrightStem Academy. All rights reserved. Transforming education, one student at a time.
+              © 2025 BrightStem Academy. All rights reserved. Transforming education, one student at a time.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
