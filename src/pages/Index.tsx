@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import PricingCard from '@/components/PricingCard';
@@ -47,6 +47,26 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Summer Camp Banner */}
+      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
+            <div className="flex items-center gap-2">
+              <Star className="h-5 w-5 text-yellow-300 fill-current" />
+              <span>🚀 SUMMER CAMP 2024 - Starting June 9th!</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              <span>Limited Seats • Register by June 9th</span>
+            </div>
+            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
+              <Link to="/summer-camp">Learn More</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-16">
         {/* Animated background elements */}
@@ -64,6 +84,52 @@ const Index = () => {
                 alt="BrightStem Academy Logo" 
                 className="h-24 w-auto mx-auto mb-4"
               />
+            </div>
+            
+            {/* Summer Camp Highlight */}
+            <div className="mb-8 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl border-2 border-orange-300 max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Trophy className="h-6 w-6 text-orange-600" />
+                <span className="text-2xl font-bold text-orange-600">4-Week Summer Camp 2024</span>
+                <Trophy className="h-6 w-6 text-orange-600" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Interactive Learning Camp for Class 5-8
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4 text-left">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-orange-600" />
+                    <span className="font-semibold">Duration:</span> 4 Weeks (June 9 - July 6)
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-orange-600" />
+                    <span className="font-semibold">Age Group:</span> Class 5-8 Students
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-orange-600" />
+                    <span className="font-semibold">Format:</span> Online + Final Meetup
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="h-4 w-4 text-orange-600" />
+                    <span className="font-semibold">Price:</span> ₹8,500 <span className="line-through text-gray-500">₹12,000</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <Link to="/summer-camp">
+                    Register Now <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  <Link to="/summer-camp">
+                    View Details
+                  </Link>
+                </Button>
+              </div>
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">

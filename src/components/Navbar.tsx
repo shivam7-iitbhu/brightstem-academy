@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Flame } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +20,12 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
+    { 
+      name: 'Summer Camp', 
+      path: '/summer-camp', 
+      isSpecial: true,
+      badge: 'HOT'
+    },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -52,14 +58,30 @@ const Navbar = () => {
                 key={item.name}
                 to={item.path}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.path)
+                  item.isSpecial
+                    ? 'text-orange-600 hover:text-orange-700'
+                    : isActive(item.path)
                     ? 'text-blue-600'
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
               >
-                {item.name}
+                <div className="flex items-center gap-1">
+                  {item.name}
+                  {item.isSpecial && (
+                    <div className="flex items-center gap-1">
+                      <Flame className="h-4 w-4 text-orange-500" />
+                      <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
+                        {item.badge}
+                      </span>
+                    </div>
+                  )}
+                </div>
                 {isActive(item.path) && (
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-500 rounded-full animate-fade-in" />
+                  <span className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full animate-fade-in ${
+                    item.isSpecial 
+                      ? 'bg-gradient-to-r from-orange-500 to-red-500'
+                      : 'bg-gradient-to-r from-blue-600 to-green-500'
+                  }`} />
                 )}
               </Link>
             ))}
@@ -91,13 +113,23 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    isActive(item.path)
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    item.isSpecial
+                      ? 'text-orange-600 bg-orange-50 hover:bg-orange-100'
+                      : isActive(item.path)
                       ? 'text-blue-600 bg-blue-50'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   {item.name}
+                  {item.isSpecial && (
+                    <div className="flex items-center gap-1">
+                      <Flame className="h-4 w-4 text-orange-500" />
+                      <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                        {item.badge}
+                      </span>
+                    </div>
+                  )}
                 </Link>
               ))}
               <Link
