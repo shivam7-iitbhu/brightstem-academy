@@ -101,24 +101,98 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Subjects We <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Cover</span>
+              Holistic <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Development</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive coverage across all major academic subjects with specialized focus areas.
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
+              At BrightStem, we believe books aren't everything. We value co-curricular and creative abilities 
+              as equally important as academic excellence. Our approach focuses on fostering the overall development 
+              of every child through comprehensive learning experiences.
             </p>
+            <div className="bg-blue-50 rounded-lg p-6 max-w-3xl mx-auto">
+              <p className="text-lg text-blue-800 font-medium">
+                🏆 We prepare students for various Olympiads and competitions to showcase their talents beyond textbooks
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {subjects.map((subject, index) => (
-              <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                    <BookOpen className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-lg">{subject}</h3>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Academic Subjects */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Academic Subjects</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {subjects.map((subject, index) => (
+                <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md">
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <BookOpen className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-lg">{subject}</h3>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Beyond Academics */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-purple-50 to-pink-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Trophy className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Olympiad Preparation</h3>
+                <p className="text-gray-600 text-sm">Math, Science, English & Computer Olympiads</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-green-50 to-blue-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Brain className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Creative Thinking</h3>
+                <p className="text-gray-600 text-sm">Problem-solving, innovation & critical thinking skills</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-orange-50 to-red-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <MessageSquare className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Communication Skills</h3>
+                <p className="text-gray-600 text-sm">Public speaking, presentation & interpersonal skills</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-yellow-50 to-orange-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Leadership & Teamwork</h3>
+                <p className="text-gray-600 text-sm">Collaborative projects & leadership development</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-indigo-50 to-purple-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <BookOpen className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Life Skills</h3>
+                <p className="text-gray-600 text-sm">Time management, goal setting & emotional intelligence</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-teal-50 to-green-50">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-teal-600 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Trophy className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Arts & Creativity</h3>
+                <p className="text-gray-600 text-sm">Creative expression, arts integration & innovation</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
