@@ -48,7 +48,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Summer Camp Banner */}
-      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-40">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
@@ -68,7 +68,7 @@ const Index = () => {
       </section>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-28">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -80,7 +80,7 @@ const Index = () => {
           <div className="animate-fade-in">
             <div className="mb-8">
               <img 
-                src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" 
+                src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                 alt="BrightStem Academy Logo" 
                 className="h-24 w-auto mx-auto mb-4"
               />

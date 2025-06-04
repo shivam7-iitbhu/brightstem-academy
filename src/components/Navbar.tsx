@@ -32,7 +32,7 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-300 mt-12 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="group-hover:scale-110 transition-transform">
               <img 
-                src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" 
+                src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                 alt="BrightStem Academy Logo" 
                 className="h-10 w-auto"
               />
