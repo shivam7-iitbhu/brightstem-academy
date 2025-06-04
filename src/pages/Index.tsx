@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown } from 'lucide-react';
@@ -139,28 +140,32 @@ const Index = () => {
               Choose Your <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Path</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Flexible packages designed to meet every student's unique needs and learning goals.
+              Special launch pricing! Limited time offer with savings up to 33% on all packages.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <PricingCard
               title="Basic"
-              price="₹2,000-3,000"
+              originalPrice="₹4,000"
+              price="₹3,000"
               period="/month"
               description="Perfect for students who need group learning support"
               features={[
                 "Group tuition at your home",
                 "Weekly progress tracking",
                 "Study materials included",
-                "Homework assistance"
+                "Homework assistance",
+                "Monthly assessments",
+                "WhatsApp doubt support"
               ]}
               popular={false}
             />
             
             <PricingCard
               title="Standard"
-              price="₹3,500-4,500"
+              originalPrice="₹5,000"
+              price="₹4,000"
               period="/month"
               description="Enhanced learning with digital tools and parent updates"
               features={[
@@ -168,14 +173,17 @@ const Index = () => {
                 "QuizGrid assessment platform",
                 "ParentSync progress updates",
                 "Monthly performance reports",
-                "Doubt clearing sessions"
+                "Doubt clearing sessions",
+                "Online resource access",
+                "Speaking skill sessions"
               ]}
               popular={true}
             />
             
             <PricingCard
               title="Premium"
-              price="₹6,000-8,000"
+              originalPrice="₹7,500"
+              price="₹5,000"
               period="/month"
               description="Complete personalized learning experience"
               features={[
@@ -184,7 +192,8 @@ const Index = () => {
                 "Speaking & communication sessions",
                 "24/7 doubt support",
                 "Career guidance sessions",
-                "Exam preparation coaching"
+                "Exam preparation coaching",
+                "Coding bootcamp access"
               ]}
               popular={false}
             />

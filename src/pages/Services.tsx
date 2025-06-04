@@ -1,4 +1,3 @@
-
 import { Check, Users, Brain, Trophy, BookOpen, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -124,63 +123,174 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Student Success Gallery */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Successful <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Students</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Meet some of our amazing students who have achieved their academic goals with BrightStem.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                alt="Student Arjun" 
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h4 className="font-bold">Arjun Kumar</h4>
+                <p className="text-sm">Class 10 - 95% in Board Exams</p>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108755-2616c4e40244?w=400&h=400&fit=crop&crop=face" 
+                alt="Student Priya" 
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h4 className="font-bold">Priya Sharma</h4>
+                <p className="text-sm">Class 12 - JEE Main Qualified</p>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <img 
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" 
+                alt="Student Rohit" 
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h4 className="font-bold">Rohit Patel</h4>
+                <p className="text-sm">Class 11 - Math Olympiad Winner</p>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <img 
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" 
+                alt="Student Sneha" 
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h4 className="font-bold">Sneha Gupta</h4>
+                <p className="text-sm">Class 9 - Science Fair Champion</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Choose Your <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Learning Package</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Flexible pricing options designed to provide exceptional value while meeting diverse learning needs.
+              Special launch pricing - Limited time offer! Save up to 33% on all packages.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <PricingCard
               title="Basic"
-              price="₹2,000-3,000"
+              originalPrice="₹4,000"
+              price="₹3,000"
               period="/month"
               description="Perfect for students who need group learning support"
               features={[
-                "Group tuition at your home",
-                "Weekly progress tracking",
-                "Study materials included",
-                "Homework assistance",
-                "Monthly assessments"
+                "Group tuition at your home (4-6 students)",
+                "Weekly progress tracking with detailed reports",
+                "Comprehensive study materials included",
+                "Daily homework assistance and guidance",
+                "Monthly assessments with performance analysis",
+                "WhatsApp doubt support (9 AM - 6 PM)",
+                "Parent-teacher meetings (monthly)"
+              ]}
+              notIncluded={[
+                "One-on-one sessions",
+                "QuizGrid AI assessment platform",
+                "24/7 doubt support",
+                "Career guidance sessions"
+              ]}
+              additionalDetails={[
+                "Minimum 3-month commitment required",
+                "Classes held 5 days a week (Monday to Friday)",
+                "Each session is 1.5 hours long",
+                "Maximum 6 students per batch for quality education",
+                "All major subjects covered (Math, Science, English, Social Studies)"
               ]}
               popular={false}
             />
             
             <PricingCard
               title="Standard"
-              price="₹3,500-4,500"
+              originalPrice="₹5,000"
+              price="₹4,000"
               period="/month"
               description="Enhanced learning with digital tools and parent updates"
               features={[
-                "Everything in Basic",
-                "QuizGrid assessment platform",
-                "ParentSync progress updates",
-                "Monthly performance reports",
-                "Doubt clearing sessions",
-                "Online resource access"
+                "Everything in Basic Package",
+                "QuizGrid AI assessment platform access",
+                "ParentSync real-time progress updates",
+                "Bi-weekly performance reports with analytics",
+                "Extended doubt clearing sessions",
+                "Online resource library access",
+                "Speaking and presentation skill sessions",
+                "Exam preparation with mock tests"
+              ]}
+              notIncluded={[
+                "One-on-one personalized sessions",
+                "24/7 doubt support",
+                "Career counseling sessions"
+              ]}
+              additionalDetails={[
+                "Includes premium learning management system",
+                "Access to recorded video lessons",
+                "Monthly parent workshops on supporting child's education",
+                "Customized study plans based on AI analysis",
+                "Regular interaction with IITian and NITian mentors"
               ]}
               popular={true}
             />
             
             <PricingCard
               title="Premium"
-              price="₹6,000-8,000"
+              originalPrice="₹7,500"
+              price="₹5,000"
               period="/month"
               description="Complete personalized learning experience"
               features={[
-                "One-on-one personalized tuition",
-                "Full learning dashboard",
-                "Speaking & communication sessions",
-                "24/7 doubt support",
-                "Career guidance sessions",
-                "Exam preparation coaching",
-                "Priority scheduling"
+                "One-on-one personalized tuition sessions",
+                "Full learning dashboard with detailed analytics",
+                "Speaking & communication skill development",
+                "24/7 doubt support via chat and call",
+                "Weekly career guidance and counseling sessions",
+                "Comprehensive exam preparation coaching",
+                "Priority scheduling and flexible timings",
+                "Direct mentorship from IITian/NITian faculty",
+                "Coding bootcamp sessions included",
+                "Interview preparation and soft skills training"
+              ]}
+              additionalDetails={[
+                "Completely customized curriculum based on student needs",
+                "1:1 sessions with dedicated teacher assignment",
+                "Unlimited doubt resolution and study support",
+                "Regular mock interviews and personality development",
+                "Access to exclusive masterclasses and workshops",
+                "Career pathway planning and college admission guidance"
               ]}
               popular={false}
             />
