@@ -9,48 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      summer_camp_enrollments: {
-        Row: {
-          address: string
-          created_at: string
-          email: string
-          grade: string
-          id: string
-          message: string | null
-          package: string
-          parent_name: string
-          phone: string
-          student_name: string
-          subjects: string | null
-        }
-        Insert: {
-          address: string
-          created_at?: string
-          email: string
-          grade: string
-          id?: string
-          message?: string | null
-          package: string
-          parent_name: string
-          phone: string
-          student_name: string
-          subjects?: string | null
-        }
-        Update: {
-          address?: string
-          created_at?: string
-          email?: string
-          grade?: string
-          id?: string
-          message?: string | null
-          package?: string
-          parent_name?: string
-          phone?: string
-          student_name?: string
-          subjects?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never

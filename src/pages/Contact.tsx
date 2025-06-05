@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,7 +7,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,53 +43,22 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.target as HTMLFormElement);
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    toast({
+      title: "Enrollment Request Submitted!",
+      description: "Thank you for your interest. We'll contact you within 24 hours to discuss your requirements.",
+    });
+
+    setIsSubmitting(false);
     
-    try {
-      const { error } = await supabase
-        .from('summer_camp_enrollments')
-        .insert({
-          student_name: formData.get('studentName') as string,
-          grade: formData.get('grade') as string,
-          parent_name: formData.get('parentName') as string,
-          phone: formData.get('phone') as string,
-          email: formData.get('email') as string,
-          package: formData.get('package') as string,
-          subjects: formData.get('subjects') as string || null,
-          address: formData.get('address') as string,
-          message: formData.get('message') as string || null,
-        });
-
-      if (error) {
-        console.error('Error submitting enrollment:', error);
-        toast({
-          title: "Submission Failed",
-          description: "There was an error submitting your enrollment. Please try again.",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Enrollment Request Submitted!",
-          description: "Thank you for your interest. We'll contact you within 24 hours to discuss your requirements.",
-        });
-
-        // Reset form
-        (e.target as HTMLFormElement).reset();
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your enrollment. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Reset form
+    (e.target as HTMLFormElement).reset();
   };
 
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
