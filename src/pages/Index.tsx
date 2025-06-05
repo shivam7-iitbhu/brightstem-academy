@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { useIsMobile } from '@/hooks/use-mobile';
 import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const isMobile = useIsMobile();
 
   const testimonials = [
     {
@@ -36,6 +39,59 @@ const Index = () => {
     { icon: Star, number: "4.9", label: "Average Rating" },
     { icon: BookOpen, number: "8+", label: "Years Experience" },
     { icon: Award, number: "95%", label: "Success Rate" }
+  ];
+
+  const pricingPlans = [
+    {
+      title: "Basic",
+      originalPrice: "₹4,000",
+      price: "₹3,000",
+      period: "/month",
+      description: "Perfect for students who need group learning support",
+      features: [
+        "Group tuition at your home",
+        "Weekly progress tracking",
+        "Study materials included",
+        "Homework assistance",
+        "Monthly assessments",
+        "WhatsApp doubt support"
+      ],
+      popular: false
+    },
+    {
+      title: "Standard",
+      originalPrice: "₹5,000",
+      price: "₹4,000",
+      period: "/month",
+      description: "Enhanced learning with digital tools and parent updates",
+      features: [
+        "Everything in Basic",
+        "QuizGrid assessment platform",
+        "ParentSync progress updates",
+        "Monthly performance reports",
+        "Doubt clearing sessions",
+        "Online resource access",
+        "Speaking skill sessions"
+      ],
+      popular: true
+    },
+    {
+      title: "Premium",
+      originalPrice: "₹7,500",
+      price: "₹5,000",
+      period: "/month",
+      description: "Complete personalized learning experience",
+      features: [
+        "One-on-one personalized tuition",
+        "Full learning dashboard",
+        "Speaking & communication sessions",
+        "24/7 doubt support",
+        "Career guidance sessions",
+        "Exam preparation coaching",
+        "Coding bootcamp access"
+      ],
+      popular: false
+    }
   ];
 
   useEffect(() => {
@@ -210,60 +266,25 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <PricingCard
-              title="Basic"
-              originalPrice="₹4,000"
-              price="₹3,000"
-              period="/month"
-              description="Perfect for students who need group learning support"
-              features={[
-                "Group tuition at your home",
-                "Weekly progress tracking",
-                "Study materials included",
-                "Homework assistance",
-                "Monthly assessments",
-                "WhatsApp doubt support"
-              ]}
-              popular={false}
-            />
-            
-            <PricingCard
-              title="Standard"
-              originalPrice="₹5,000"
-              price="₹4,000"
-              period="/month"
-              description="Enhanced learning with digital tools and parent updates"
-              features={[
-                "Everything in Basic",
-                "QuizGrid assessment platform",
-                "ParentSync progress updates",
-                "Monthly performance reports",
-                "Doubt clearing sessions",
-                "Online resource access",
-                "Speaking skill sessions"
-              ]}
-              popular={true}
-            />
-            
-            <PricingCard
-              title="Premium"
-              originalPrice="₹7,500"
-              price="₹5,000"
-              period="/month"
-              description="Complete personalized learning experience"
-              features={[
-                "One-on-one personalized tuition",
-                "Full learning dashboard",
-                "Speaking & communication sessions",
-                "24/7 doubt support",
-                "Career guidance sessions",
-                "Exam preparation coaching",
-                "Coding bootcamp access"
-              ]}
-              popular={false}
-            />
-          </div>
+          {isMobile ? (
+            <Carousel className="w-full max-w-sm mx-auto">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {pricingPlans.map((plan, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5">
+                    <PricingCard {...plan} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden" />
+              <CarouselNext className="hidden" />
+            </Carousel>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {pricingPlans.map((plan, index) => (
+                <PricingCard key={index} {...plan} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, Users, MapPin, Star, Trophy, Brain, Computer, Mic, Puzzle, Target, Gift, CheckCircle } from 'lucide-react';
@@ -135,83 +136,7 @@ const SummerCamp = () => {
         </div>
       </section>
 
-      {/* Camp Highlights */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Our <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Summer Camp?</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {highlights.map((highlight, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-4">
-                    <highlight.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl">{highlight.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    {highlight.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Fun Learning Gallery */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Learning Made <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Fun & Interactive</span>
-            </h2>
-            <p className="text-xl text-gray-600">See how our students engage with technology and puzzles</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=400&fit=crop" 
-                alt="Students learning with laptops"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <p className="text-white p-4 font-semibold">Interactive Computer Learning</p>
-              </div>
-            </div>
-
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=400&fit=crop" 
-                alt="Group puzzle solving session"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <p className="text-white p-4 font-semibold">Collaborative Puzzle Solving</p>
-              </div>
-            </div>
-
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=400&fit=crop" 
-                alt="Programming and coding session"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <p className="text-white p-4 font-semibold">Hands-on Coding Experience</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Weekly Schedule - New Tabular Structure */}
+      {/* Weekly Schedule - Moved to second position */}
       <section id="details" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -307,7 +232,7 @@ const SummerCamp = () => {
 
             {/* Schedule Summary Footer */}
             <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 border-t border-gray-200">
-              <div className="grid md:grid-cols-4 gap-4 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="bg-white rounded-lg p-4 shadow-sm">
                   <div className="text-2xl font-bold text-orange-600">16</div>
                   <div className="text-sm text-gray-600">Total Sessions</div>
@@ -329,7 +254,7 @@ const SummerCamp = () => {
           </div>
 
           {/* Learning Outcomes */}
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
             <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center pb-2">
                 <Brain className="h-8 w-8 text-purple-600 mx-auto mb-2" />
@@ -373,8 +298,37 @@ const SummerCamp = () => {
         </div>
       </section>
 
-      {/* What Students Will Gain */}
+      {/* Why Choose Us Section - Moved to third position */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Our <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Summer Camp?</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {highlights.map((highlight, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+                <CardHeader>
+                  <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-4">
+                    <highlight.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl">{highlight.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    {highlight.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What Students Will Gain - Moved to fourth position */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -434,6 +388,59 @@ const SummerCamp = () => {
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-xl shadow-lg">
                 <div className="text-2xl font-bold">100%</div>
                 <div className="text-sm">Engagement Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Made Fun & Interactive - Fifth position with AI-generated images */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Learning Made <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Fun & Interactive</span>
+            </h2>
+            <p className="text-xl text-gray-600">Creative and engaging learning experiences designed for young minds</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full h-64 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center">
+                <div className="text-center p-6">
+                  <Computer className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Interactive Computing</h3>
+                  <p className="text-gray-600">Students exploring AI and programming concepts</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white p-4 font-semibold">Hands-on Technology Learning</p>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full h-64 bg-gradient-to-br from-green-100 via-yellow-100 to-orange-100 flex items-center justify-center">
+                <div className="text-center p-6">
+                  <Puzzle className="h-16 w-16 text-orange-600 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Creative Problem Solving</h3>
+                  <p className="text-gray-600">Students collaborating on puzzle challenges</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white p-4 font-semibold">Team-based Learning Adventures</p>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full h-64 bg-gradient-to-br from-purple-100 via-blue-100 to-teal-100 flex items-center justify-center">
+                <div className="text-center p-6">
+                  <Mic className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Confident Speaking</h3>
+                  <p className="text-gray-600">Students practicing presentation skills</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white p-4 font-semibold">Building Communication Skills</p>
               </div>
             </div>
           </div>
