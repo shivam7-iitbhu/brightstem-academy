@@ -1,9 +1,6 @@
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Trophy, Play, CheckCircle, Clock, Award, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
 
@@ -12,256 +9,187 @@ const Index = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      role: "Parent",
-      content: "My daughter's grades improved dramatically after joining BrightStem. The personalized attention is outstanding!",
-      rating: 5
+      name: 'Priya Sharma',
+      role: 'Parent',
+      comment: "BrightStem Academy has transformed my child's learning experience. The tutors are engaging, and the progress is remarkable!",
+      image: '/lovable-uploads/istockphoto-1300845620-612x612.jpg',
     },
     {
-      name: "Raj Patel",
-      role: "Student",
-      content: "The QuizGrid feature helped me understand my weak areas and improve systematically.",
-      rating: 5
+      name: 'Aryan Patel',
+      role: 'Student',
+      comment: 'I used to struggle with math, but BrightStem Academy made it fun and easy. Now I look forward to my tutoring sessions!',
+      image: '/lovable-uploads/istockphoto-1467273574-612x612.jpg',
     },
     {
-      name: "Meera Singh",
-      role: "Parent",
-      content: "ParentSync keeps me updated on my child's progress. Highly recommended!",
-      rating: 5
-    }
-  ];
-
-  const stats = [
-    { icon: Users, number: "500+", label: "Students Taught" },
-    { icon: Star, number: "4.9", label: "Average Rating" },
-    { icon: BookOpen, number: "8+", label: "Years Experience" },
-    { icon: Award, number: "95%", label: "Success Rate" }
+      name: 'Meera Kapoor',
+      role: 'Teacher',
+      comment: 'As a teacher, I appreciate the personalized approach BrightStem Academy takes. It complements classroom learning perfectly.',
+      image: '/lovable-uploads/istockphoto-1387271274-612x612.jpg',
+    },
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(intervalId); // Clean up on component unmount
+  }, [testimonials.length]);
 
   return (
     <div className="min-h-screen">
-      {/* Summer Camp Banner */}
-      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-40">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-300 fill-current" />
-              <span>🚀 SUMMER CAMP 2024 - Starting June 9th!</span>
+      {/* Sales Bar - Fixed at the very top */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 text-center text-sm font-medium animate-pulse">
+        🔥 Summer Camp 2024: Early Bird Discount - Save 30%! Limited Time Offer 🔥
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-20 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:flex items-center">
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <h1 className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-6 animate-fade-in">
+                Unlock Your Child's Potential with <span className="text-orange-600">Personalized Tutoring</span>
+              </h1>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed animate-fade-in delay-100">
+                Empowering students with tailored learning experiences, expert tutors, and proven results.
+                Join BrightStem Academy and watch your child thrive!
+              </p>
+              <div className="space-x-4 animate-fade-in delay-200">
+                <Button size="lg">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Get Started
+                </Button>
+                <Button variant="outline" size="lg">
+                  Learn More
+                </Button>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>Limited Seats • Register by June 9th</span>
+            <div className="lg:w-1/2 mt-12 lg:mt-0 animate-slide-in-right">
+              <img
+                src="/lovable-uploads/young-students-studying-together.jpg"
+                alt="Students Learning"
+                className="rounded-lg shadow-xl"
+              />
             </div>
-            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
-              <Link to="/summer-camp">Learn More</Link>
-            </Button>
           </div>
+        </div>
+        {/* Animated Circles */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-blue-100 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 flex justify-around">
+          <div className="w-24 h-24 rounded-full bg-blue-200 opacity-30 animate-pulse"></div>
+          <div className="w-32 h-32 rounded-full bg-purple-200 opacity-30 animate-pulse delay-1000"></div>
+          <div className="w-20 h-20 rounded-full bg-green-200 opacity-30 animate-pulse delay-2000"></div>
         </div>
       </section>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-28">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-1000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-2000"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in">
-            <div className="mb-8">
-              <img 
-                src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
-                alt="BrightStem Academy Logo" 
-                className="h-24 w-auto mx-auto mb-4"
-              />
-            </div>
-            
-            {/* Summer Camp Highlight */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl border-2 border-orange-300 max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Trophy className="h-6 w-6 text-orange-600" />
-                <span className="text-2xl font-bold text-orange-600">4-Week Summer Camp 2024</span>
-                <Trophy className="h-6 w-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Interactive Learning Camp for Class 5-8
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4 text-left">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Duration:</span> 4 Weeks (June 9 - July 6)
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Age Group:</span> Class 5-8 Students
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Format:</span> Online + Final Meetup
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Price:</span> ₹8,500 <span className="line-through text-gray-500">₹12,000</span>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <Link to="/summer-camp">
-                    Register Now <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                  <Link to="/summer-camp">
-                    View Details
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 via-green-600 to-yellow-600 bg-clip-text text-transparent">
-                Excellence in
-              </span>
-              <br />
-              <span className="text-gray-900">Education</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
-              Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>5+ years of specialized teaching experience</strong>. 
-              Join hundreds of successful students on their journey to academic excellence.
+      {/* Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-blue-900 mb-4">
+              Why Choose BrightStem Academy?
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              We offer a unique approach to tutoring that focuses on personalized learning,
+              expert instruction, and measurable results.
             </p>
-
-            {/* Team Credentials Banner */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-lg">
-              <div className="flex flex-wrap justify-center items-center gap-4 text-sm font-medium">
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
-                  <span className="text-gray-700">IIT BHU Graduate • Google Engineer</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-green-600 rounded-full"></span>
-                  <span className="text-gray-700">NIT Allahabad Graduate • Amazon Engineer</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
-                  <span className="text-gray-700">B.Ed Certified • 5+ Years Teaching Expert</span>
-                </div>
-              </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature Cards */}
+            <div className="flex flex-col items-center p-6 bg-blue-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Star className="h-8 w-8 text-orange-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Personalized Learning</h3>
+              <p className="text-gray-700 text-center">
+                Tailored tutoring plans to meet your child's specific needs and learning style.
+              </p>
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Link to="/contact">
-                  Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                <Link to="/services">
-                  View Packages
-                </Link>
-              </Button>
+            <div className="flex flex-col items-center p-6 bg-green-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Users className="h-8 w-8 text-green-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Expert Tutors</h3>
+              <p className="text-gray-700 text-center">
+                Experienced and passionate tutors dedicated to helping your child succeed.
+              </p>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-green-500 rounded-full mb-4 group-hover:shadow-lg transition-shadow">
-                    <stat.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </div>
-              ))}
+            <div className="flex flex-col items-center p-6 bg-purple-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <BookOpen className="h-8 w-8 text-purple-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Comprehensive Curriculum</h3>
+              <p className="text-gray-700 text-center">
+                Covering a wide range of subjects and grade levels, from elementary to high school.
+              </p>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-orange-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Trophy className="h-8 w-8 text-orange-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Proven Results</h3>
+              <p className="text-gray-700 text-center">
+                Track record of helping students improve their grades and achieve their academic goals.
+              </p>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-red-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Play className="h-8 w-8 text-red-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Engaging Learning</h3>
+              <p className="text-gray-700 text-center">
+                Interactive and fun learning environment that keeps students motivated and engaged.
+              </p>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-teal-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CheckCircle className="h-8 w-8 text-teal-500 mb-4" />
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">Progress Tracking</h3>
+              <p className="text-gray-700 text-center">
+                Monitor your child's progress and see the impact of our tutoring services firsthand.
+              </p>
             </div>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-8 w-8 text-gray-400" />
         </div>
       </section>
 
       {/* Pricing Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Choose Your <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Path</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-blue-900 mb-4">
+              Flexible Pricing Plans
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Special launch pricing! Limited time offer with savings up to 33% on all packages.
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Choose the plan that best fits your needs and budget.
+              All plans include personalized tutoring and progress tracking.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Pricing Cards */}
             <PricingCard
               title="Basic"
-              originalPrice="₹4,000"
-              price="₹3,000"
-              period="/month"
-              description="Perfect for students who need group learning support"
+              price="₹2,000 - ₹3,000 / month"
               features={[
-                "Group tuition at your home",
-                "Weekly progress tracking",
-                "Study materials included",
-                "Homework assistance",
-                "Monthly assessments",
-                "WhatsApp doubt support"
+                '1 hour per week',
+                'Personalized learning plan',
+                'Progress reports',
               ]}
-              popular={false}
+              cta="Get Started"
             />
-            
             <PricingCard
               title="Standard"
-              originalPrice="₹5,000"
-              price="₹4,000"
-              period="/month"
-              description="Enhanced learning with digital tools and parent updates"
+              price="₹3,500 - ₹4,500 / month"
               features={[
-                "Everything in Basic",
-                "QuizGrid assessment platform",
-                "ParentSync progress updates",
-                "Monthly performance reports",
-                "Doubt clearing sessions",
-                "Online resource access",
-                "Speaking skill sessions"
+                '2 hours per week',
+                'Personalized learning plan',
+                'Progress reports',
+                'Parent-teacher conferences',
               ]}
-              popular={true}
+              cta="Get Started"
+              isPopular
             />
-            
             <PricingCard
               title="Premium"
-              originalPrice="₹7,500"
-              price="₹5,000"
-              period="/month"
-              description="Complete personalized learning experience"
+              price="₹6,000 - ₹8,000 / month"
               features={[
-                "One-on-one personalized tuition",
-                "Full learning dashboard",
-                "Speaking & communication sessions",
-                "24/7 doubt support",
-                "Career guidance sessions",
-                "Exam preparation coaching",
-                "Coding bootcamp access"
+                '3 hours per week',
+                'Personalized learning plan',
+                'Progress reports',
+                'Parent-teacher conferences',
+                '24/7 support',
               ]}
-              popular={false}
+              cta="Get Started"
             />
           </div>
         </div>
@@ -270,26 +198,22 @@ const Index = () => {
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Students Say</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-blue-900 mb-4">
+              What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600">Real stories from real students and parents</p>
           </div>
-
-          <div className="max-w-4xl mx-auto">
-            <TestimonialCard testimonial={testimonials[currentTestimonial]} />
-            
-            <div className="flex justify-center mt-8 space-x-2">
+          <div className="relative">
+            <TestimonialCard
+              testimonial={testimonials[currentTestimonial]}
+            />
+            {/* Navigation Dots (optional) */}
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
+                  className={`h-3 w-3 rounded-full ${index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-500'}`}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial
-                      ? 'bg-blue-600 scale-125'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
                 />
               ))}
             </div>
@@ -298,18 +222,17 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-500">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Start Your Learning Journey?
+          <h2 className="text-3xl font-extrabold mb-8">
+            Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Join hundreds of successful students who have transformed their academic performance with our proven teaching methods.
+          <p className="text-lg mb-8 leading-relaxed">
+            Join BrightStem Academy today and unlock your child's full potential.
+            Contact us to schedule a free consultation and learn more about our programs.
           </p>
-          <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            <Link to="/contact">
-              Enroll Today <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button size="lg" variant="secondary">
+            Contact Us
           </Button>
         </div>
       </section>
