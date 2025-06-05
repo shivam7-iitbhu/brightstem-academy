@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowRight, Star, Users, BookOpen, Trophy, Play, CheckCircle, Clock, Award, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,29 +12,29 @@ const Index = () => {
     {
       name: 'Priya Sharma',
       role: 'Parent',
-      comment: "BrightStem Academy has transformed my child's learning experience. The tutors are engaging, and the progress is remarkable!",
-      image: '/lovable-uploads/istockphoto-1300845620-612x612.jpg',
+      content: "BrightStem Academy has transformed my child's learning experience. The tutors are engaging, and the progress is remarkable!",
+      rating: 5,
     },
     {
       name: 'Aryan Patel',
       role: 'Student',
-      comment: 'I used to struggle with math, but BrightStem Academy made it fun and easy. Now I look forward to my tutoring sessions!',
-      image: '/lovable-uploads/istockphoto-1467273574-612x612.jpg',
+      content: 'I used to struggle with math, but BrightStem Academy made it fun and easy. Now I look forward to my tutoring sessions!',
+      rating: 5,
     },
     {
       name: 'Meera Kapoor',
       role: 'Teacher',
-      comment: 'As a teacher, I appreciate the personalized approach BrightStem Academy takes. It complements classroom learning perfectly.',
-      image: '/lovable-uploads/istockphoto-1387271274-612x612.jpg',
+      content: 'As a teacher, I appreciate the personalized approach BrightStem Academy takes. It complements classroom learning perfectly.',
+      rating: 5,
     },
   ];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Change testimonial every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(intervalId); // Clean up on component unmount
+    return () => clearInterval(intervalId);
   }, [testimonials.length]);
 
   return (
@@ -156,40 +157,48 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Pricing Cards */}
             <PricingCard
               title="Basic"
-              price="₹2,000 - ₹3,000 / month"
+              originalPrice="₹4,000"
+              price="₹2,800"
+              period="/ month"
+              description="Perfect for students starting their learning journey"
               features={[
                 '1 hour per week',
                 'Personalized learning plan',
                 'Progress reports',
+                'Email support'
               ]}
-              cta="Get Started"
             />
             <PricingCard
               title="Standard"
-              price="₹3,500 - ₹4,500 / month"
+              originalPrice="₹6,500"
+              price="₹4,550"
+              period="/ month"
+              description="Ideal for students who need regular support"
               features={[
                 '2 hours per week',
                 'Personalized learning plan',
                 'Progress reports',
                 'Parent-teacher conferences',
+                'WhatsApp support'
               ]}
-              cta="Get Started"
-              isPopular
+              popular={true}
             />
             <PricingCard
               title="Premium"
-              price="₹6,000 - ₹8,000 / month"
+              originalPrice="₹11,500"
+              price="₹8,050"
+              period="/ month"
+              description="Comprehensive support for serious learners"
               features={[
                 '3 hours per week',
                 'Personalized learning plan',
                 'Progress reports',
                 'Parent-teacher conferences',
                 '24/7 support',
+                'Additional practice materials'
               ]}
-              cta="Get Started"
             />
           </div>
         </div>
@@ -207,7 +216,7 @@ const Index = () => {
             <TestimonialCard
               testimonial={testimonials[currentTestimonial]}
             />
-            {/* Navigation Dots (optional) */}
+            {/* Navigation Dots */}
             <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-3">
               {testimonials.map((_, index) => (
                 <button
