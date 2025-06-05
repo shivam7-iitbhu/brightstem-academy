@@ -75,7 +75,7 @@ const SummerCamp = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-28">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
@@ -128,7 +128,7 @@ const SummerCamp = () => {
               </Link>
             </Button>
             
-            <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300">
+            <Button asChild variant="outline" size="lg" className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-red-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 backdrop-blur-sm">
               <a href="#details">Learn More</a>
             </Button>
           </div>
