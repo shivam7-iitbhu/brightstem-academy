@@ -1,9 +1,9 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, Users, MapPin, Star, Trophy, Brain, Computer, Mic, Puzzle, Target, Gift, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const SummerCamp = () => {
   const [activeWeek, setActiveWeek] = useState(1);
@@ -211,7 +211,7 @@ const SummerCamp = () => {
         </div>
       </section>
 
-      {/* Weekly Schedule */}
+      {/* Weekly Schedule - New Tabular Structure */}
       <section id="details" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -221,47 +221,155 @@ const SummerCamp = () => {
             <p className="text-xl text-gray-600">Structured curriculum designed for progressive learning</p>
           </div>
 
-          {/* Week Selector */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {campSchedule.map((week, index) => (
-              <button
-                key={week.week}
-                onClick={() => setActiveWeek(week.week)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                  activeWeek === week.week
-                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                Week {week.week}: {week.title}
-              </button>
-            ))}
-          </div>
-
-          {/* Active Week Content */}
-          {campSchedule.map((week) => (
-            activeWeek === week.week && (
-              <div key={week.week} className="animate-fade-in">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {week.sessions.map((session, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                      <CardHeader className="text-center">
-                        <div className="mx-auto w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-3">
-                          <session.icon className="h-6 w-6 text-white" />
+          {/* Interactive Learning Schedule Table */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6">
+              <h3 className="text-2xl font-bold text-center">📚 Complete Learning Schedule</h3>
+              <p className="text-center text-orange-100 mt-2">Interactive sessions designed for maximum engagement</p>
+            </div>
+            
+            <div className="overflow-x-auto">
+              <Table className="w-full">
+                <TableHeader>
+                  <TableRow className="bg-gray-50 border-b-2 border-gray-200">
+                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">Week</TableHead>
+                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
+                      <div className="flex items-center justify-center gap-2">
+                        <Brain className="h-5 w-5 text-purple-600" />
+                        Aptitude
+                      </div>
+                    </TableHead>
+                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
+                      <div className="flex items-center justify-center gap-2">
+                        <Computer className="h-5 w-5 text-blue-600" />
+                        Computer Science
+                      </div>
+                    </TableHead>
+                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
+                      <div className="flex items-center justify-center gap-2">
+                        <Mic className="h-5 w-5 text-green-600" />
+                        Public Speaking
+                      </div>
+                    </TableHead>
+                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
+                      <div className="flex items-center justify-center gap-2">
+                        <Puzzle className="h-5 w-5 text-orange-600" />
+                        Puzzle Session
+                      </div>
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {campSchedule.map((week, index) => (
+                    <TableRow 
+                      key={week.week} 
+                      className={`transition-all duration-200 hover:bg-gray-50 ${
+                        index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
+                      }`}
+                    >
+                      <TableCell className="text-center py-6 border-r border-gray-200">
+                        <div className="space-y-2">
+                          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto font-bold text-lg">
+                            {week.week}
+                          </div>
+                          <div className="font-bold text-gray-900 text-lg">{week.title}</div>
+                          <div className="text-sm text-gray-600">Week {week.week}</div>
                         </div>
-                        <CardTitle className="text-lg">{session.type}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="text-center">
-                        <CardDescription className="text-gray-600">
-                          {session.topic}
-                        </CardDescription>
-                      </CardContent>
-                    </Card>
+                      </TableCell>
+                      
+                      {week.sessions.map((session, sessionIndex) => (
+                        <TableCell key={sessionIndex} className="text-center py-6 px-4">
+                          <div className="space-y-3">
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto ${
+                              session.type === 'Aptitude' ? 'bg-purple-100' :
+                              session.type === 'Computer Science' ? 'bg-blue-100' :
+                              session.type === 'Public Speaking' ? 'bg-green-100' :
+                              'bg-orange-100'
+                            }`}>
+                              <session.icon className={`h-5 w-5 ${
+                                session.type === 'Aptitude' ? 'text-purple-600' :
+                                session.type === 'Computer Science' ? 'text-blue-600' :
+                                session.type === 'Public Speaking' ? 'text-green-600' :
+                                'text-orange-600'
+                              }`} />
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 leading-tight px-2">
+                              {session.topic}
+                            </div>
+                          </div>
+                        </TableCell>
+                      ))}
+                    </TableRow>
                   ))}
+                </TableBody>
+              </Table>
+            </div>
+
+            {/* Schedule Summary Footer */}
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 border-t border-gray-200">
+              <div className="grid md:grid-cols-4 gap-4 text-center">
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <div className="text-2xl font-bold text-orange-600">16</div>
+                  <div className="text-sm text-gray-600">Total Sessions</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <div className="text-2xl font-bold text-red-600">4</div>
+                  <div className="text-sm text-gray-600">Subject Areas</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <div className="text-2xl font-bold text-orange-600">2hrs</div>
+                  <div className="text-sm text-gray-600">Per Session</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <div className="text-2xl font-bold text-red-600">100%</div>
+                  <div className="text-sm text-gray-600">Interactive</div>
                 </div>
               </div>
-            )
-          ))}
+            </div>
+          </div>
+
+          {/* Learning Outcomes */}
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-2">
+                <Brain className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <CardTitle className="text-lg text-purple-800">Aptitude Mastery</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-purple-700 text-center">Develop logical thinking and problem-solving skills</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-2">
+                <Computer className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                <CardTitle className="text-lg text-blue-800">Tech Skills</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-blue-700 text-center">Introduction to programming and AI concepts</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-2">
+                <Mic className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <CardTitle className="text-lg text-green-800">Communication</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-green-700 text-center">Build confidence in public speaking and presentations</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-2">
+                <Puzzle className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <CardTitle className="text-lg text-orange-800">Critical Thinking</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-orange-700 text-center">Enhance analytical skills through fun puzzles</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
