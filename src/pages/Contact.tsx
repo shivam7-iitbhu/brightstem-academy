@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,18 +44,46 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const enrollmentData = {
+        student_name: formData.get('studentName') as string,
+        grade: formData.get('grade') as string,
+        parent_name: formData.get('parentName') as string,
+        phone: formData.get('phone') as string,
+        email: formData.get('email') as string,
+        package: formData.get('package') as string,
+        subjects: formData.get('subjects') as string || null,
+        address: formData.get('address') as string,
+        message: formData.get('message') as string || null,
+      };
 
-    toast({
-      title: "Enrollment Request Submitted!",
-      description: "Thank you for your interest. We'll contact you within 24 hours to discuss your requirements.",
-    });
+      const { data, error } = await supabase.functions.invoke('submit-enrollment', {
+        body: enrollmentData
+      });
 
-    setIsSubmitting(false);
-    
-    // Reset form
-    (e.target as HTMLFormElement).reset();
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Enrollment Request Submitted!",
+        description: "Thank you for your interest. We'll contact you within 24 hours to discuss your requirements.",
+      });
+
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+
+    } catch (error) {
+      console.error('Error submitting enrollment:', error);
+      toast({
+        title: "Error",
+        description: "There was an issue submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -190,6 +219,7 @@ const Contact = () => {
                       <SelectItem value="basic">Basic (₹2,000-3,000/month)</SelectItem>
                       <SelectItem value="standard">Standard (₹3,500-4,500/month)</SelectItem>
                       <SelectItem value="premium">Premium (₹6,000-8,000/month)</SelectItem>
+                      <SelectItem value="summer-camp">Summer Camp (₹5,000 for 4 weeks)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
