@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Flame, Star, Calendar } from 'lucide-react';
@@ -46,37 +45,42 @@ const Navbar = () => {
     }
   };
 
+  // Only show summer camp banner on pages other than summer-camp
+  const showSummerCampBanner = location.pathname !== '/summer-camp';
+
   return (
     <>
-      {/* Summer Camp Banner - Show on all pages */}
-      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-300 fill-current" />
-              <span>🚀 SUMMER CAMP 2025 - Starting June 16th!</span>
+      {/* Summer Camp Banner - Show on all pages except summer-camp */}
+      {showSummerCampBanner && (
+        <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
+              <div className="flex items-center gap-2">
+                <Star className="h-5 w-5 text-yellow-300 fill-current" />
+                <span>🚀 SUMMER CAMP 2025 - Starting June 16th!</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>4 Weeks Program • Register by June 16th</span>
+              </div>
+              <Button 
+                asChild 
+                size="sm" 
+                variant="outline" 
+                className="bg-white text-red-600 hover:bg-gray-100 border-white"
+                onClick={handleEnrollClick}
+              >
+                <Link to="/contact#enrollment-form">Learn More</Link>
+              </Button>
             </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>4 Weeks Program • Register by June 16th</span>
-            </div>
-            <Button 
-              asChild 
-              size="sm" 
-              variant="outline" 
-              className="bg-white text-red-600 hover:bg-gray-100 border-white"
-              onClick={handleEnrollClick}
-            >
-              <Link to="/contact#enrollment-form">Learn More</Link>
-            </Button>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <nav className={`fixed w-full z-40 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg top-12' : 'bg-transparent top-24'
-      }`}>
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      } ${showSummerCampBanner ? 'top-12' : 'top-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}

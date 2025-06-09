@@ -11,29 +11,9 @@ const SummerCamp = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Summer Camp Banner */}
-      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-300 fill-current" />
-              <span>🚀 SUMMER CAMP 2025 - Starting June 16th!</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>Limited Seats • Register by June 16th</span>
-            </div>
-            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
-              <Link to="/contact">Learn More</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
+    <div className="min-h-screen pt-28">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 to-pink-50 mt-12">
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -43,7 +23,7 @@ const SummerCamp = () => {
             
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
-                3-Week Interactive
+                4-Week Interactive
               </span>
               <br />
               <span className="text-gray-900">Learning Camp</span>
@@ -57,7 +37,7 @@ const SummerCamp = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <Calendar className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
-                <p className="font-semibold text-gray-900">June 16 - July 5</p>
+                <p className="font-semibold text-gray-900">June 16 - July 12</p>
                 <p className="text-sm text-gray-600">4 Weeks Duration</p>
               </div>
               <div className="bg-white rounded-lg p-4 shadow-md">
