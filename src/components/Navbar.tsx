@@ -32,6 +32,20 @@ const Navbar = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleEnrollClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === '/contact') {
+      // If already on contact page, scroll to form
+      const formSection = document.getElementById('enrollment-form');
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to contact page with hash
+      window.location.href = '/contact#enrollment-form';
+    }
+  };
+
   return (
     <>
       {/* Summer Camp Banner - Show on all pages */}
@@ -45,10 +59,16 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <span>Limited Seats • Register by June 16th</span>
+              <span>4 Weeks Program • Register by June 16th</span>
             </div>
-            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
-              <Link to="/contact">Learn More</Link>
+            <Button 
+              asChild 
+              size="sm" 
+              variant="outline" 
+              className="bg-white text-red-600 hover:bg-gray-100 border-white"
+              onClick={handleEnrollClick}
+            >
+              <Link to="/contact#enrollment-form">Learn More</Link>
             </Button>
           </div>
         </div>
@@ -107,12 +127,12 @@ const Navbar = () => {
                   )}
                 </Link>
               ))}
-              <Link
-                to="/contact"
+              <button
+                onClick={handleEnrollClick}
                 className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
               >
                 Enroll Now
-              </Link>
+              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -154,13 +174,15 @@ const Navbar = () => {
                     )}
                   </Link>
                 ))}
-                <Link
-                  to="/contact"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleEnrollClick(e);
+                  }}
                   className="block w-full text-center bg-gradient-to-r from-blue-600 to-green-500 text-white px-3 py-2 rounded-md font-medium mt-4"
                 >
                   Enroll Now
-                </Link>
+                </button>
               </div>
             </div>
           )}

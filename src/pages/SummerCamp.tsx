@@ -5,6 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const SummerCamp = () => {
+  const handleEnrollClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = '/contact#enrollment-form';
+  };
+
   return (
     <div className="min-h-screen pt-16">
       {/* Summer Camp Banner */}
@@ -45,7 +50,7 @@ const SummerCamp = () => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Join our exciting 3-week summer camp for Class 5-8 students! Learn through interactive sessions, 
+              Join our exciting 4-week summer camp for Class 5-8 students! Learn through interactive sessions, 
               hands-on projects, and fun activities with IIT/NIT mentors.
             </p>
 
@@ -53,7 +58,7 @@ const SummerCamp = () => {
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <Calendar className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
                 <p className="font-semibold text-gray-900">June 16 - July 5</p>
-                <p className="text-sm text-gray-600">3 Weeks Duration</p>
+                <p className="text-sm text-gray-600">4 Weeks Duration</p>
               </div>
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <Users className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
@@ -73,10 +78,12 @@ const SummerCamp = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Link to="/contact">
-                  Register Now <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+              <Button 
+                onClick={handleEnrollClick}
+                size="lg" 
+                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                Register Now <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
               <div className="text-center">
@@ -445,10 +452,12 @@ const SummerCamp = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <Link to="/contact">
-                Secure Your Spot Now <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+            <Button 
+              onClick={handleEnrollClick}
+              size="lg" 
+              className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              Secure Your Spot Now <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
 
@@ -462,7 +471,7 @@ const SummerCamp = () => {
               <div className="text-sm">Limited Seats</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">3+1</div>
+              <div className="text-3xl font-bold mb-2">4</div>
               <div className="text-sm">Weeks Program</div>
             </div>
           </div>
