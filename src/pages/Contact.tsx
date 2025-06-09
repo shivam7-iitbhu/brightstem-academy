@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -46,19 +47,24 @@ const Contact = () => {
 
     try {
       const formData = new FormData(e.target as HTMLFormElement);
+      const selectedPackage = formData.get('package') as string;
+      
       const enrollmentData = {
         student_name: formData.get('studentName') as string,
         grade: formData.get('grade') as string,
         parent_name: formData.get('parentName') as string,
         phone: formData.get('phone') as string,
         email: formData.get('email') as string,
-        package: formData.get('package') as string,
+        package: selectedPackage,
         subjects: formData.get('subjects') as string || null,
         address: formData.get('address') as string,
         message: formData.get('message') as string || null,
       };
 
-      const { data, error } = await supabase.functions.invoke('submit-enrollment', {
+      // Choose the appropriate endpoint based on package
+      const functionName = selectedPackage === 'summer-camp' ? 'submit-enrollment' : 'submit-general-enrollment';
+      
+      const { data, error } = await supabase.functions.invoke(functionName, {
         body: enrollmentData
       });
 
@@ -87,7 +93,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-28">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -219,7 +225,7 @@ const Contact = () => {
                       <SelectItem value="basic">Basic (₹2,000-3,000/month)</SelectItem>
                       <SelectItem value="standard">Standard (₹3,500-4,500/month)</SelectItem>
                       <SelectItem value="premium">Premium (₹6,000-8,000/month)</SelectItem>
-                      <SelectItem value="summer-camp">Summer Camp (₹5,000 for 4 weeks)</SelectItem>
+                      <SelectItem value="summer-camp">Summer Camp 2025 (₹8,500 for 3 weeks)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

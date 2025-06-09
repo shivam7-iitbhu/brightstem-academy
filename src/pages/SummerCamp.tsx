@@ -1,481 +1,471 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Clock, Users, MapPin, Star, Trophy, Brain, Computer, Mic, Puzzle, Target, Gift, CheckCircle } from 'lucide-react';
+import { Calendar, Clock, Users, MapPin, Star, Trophy, BookOpen, Lightbulb, Target, Award, CheckCircle, ArrowRight, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const SummerCamp = () => {
-  const [activeWeek, setActiveWeek] = useState(1);
-
-  const campSchedule = [
-    {
-      week: 1,
-      title: "Foundation & Fun",
-      sessions: [
-        { type: "Aptitude", topic: "Pattern Recognition & Logical Thinking", icon: Brain },
-        { type: "Computer Science", topic: "Introduction to Programming & AI Basics", icon: Computer },
-        { type: "Public Speaking", topic: "Confidence Building & Self Introduction", icon: Mic },
-        { type: "Puzzle Session", topic: "Interactive Brain Teasers & Math Puzzles", icon: Puzzle }
-      ]
-    },
-    {
-      week: 2,
-      title: "Building Skills",
-      sessions: [
-        { type: "Aptitude", topic: "Number Series & Data Interpretation", icon: Brain },
-        { type: "Computer Science", topic: "Coding Games & Algorithm Thinking", icon: Computer },
-        { type: "Public Speaking", topic: "Storytelling & Voice Modulation", icon: Mic },
-        { type: "Puzzle Session", topic: "Strategy Games & Problem Solving", icon: Puzzle }
-      ]
-    },
-    {
-      week: 3,
-      title: "Advanced Concepts",
-      sessions: [
-        { type: "Aptitude", topic: "Critical Thinking & Analytical Reasoning", icon: Brain },
-        { type: "Computer Science", topic: "AI Projects & Creative Coding", icon: Computer },
-        { type: "Public Speaking", topic: "Debate Skills & Presentation Techniques", icon: Mic },
-        { type: "Puzzle Session", topic: "Complex Puzzles & Team Challenges", icon: Puzzle }
-      ]
-    },
-    {
-      week: 4,
-      title: "Mastery & Showcase",
-      sessions: [
-        { type: "Aptitude", topic: "Mock Tests & Speed Building", icon: Brain },
-        { type: "Computer Science", topic: "Final Project Presentation", icon: Computer },
-        { type: "Public Speaking", topic: "Final Presentations & Awards", icon: Mic },
-        { type: "Puzzle Session", topic: "Grand Puzzle Championship", icon: Puzzle }
-      ]
-    }
-  ];
-
-  const highlights = [
-    {
-      icon: Trophy,
-      title: "Interactive Learning",
-      description: "Hands-on activities, quizzes, and real-time problem solving"
-    },
-    {
-      icon: Users,
-      title: "Small Batch Size",
-      description: "Maximum 15 students per batch for personalized attention"
-    },
-    {
-      icon: Star,
-      title: "Expert Instructors",
-      description: "IIT & NIT graduates with specialized teaching experience"
-    },
-    {
-      icon: Gift,
-      title: "Final Meetup",
-      description: "In-person celebration with certificates and prizes"
-    }
-  ];
-
   return (
-    <div className="min-h-screen pt-28">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
-        </div>
-
+    <div className="min-h-screen pt-16">
+      {/* Summer Camp Banner */}
+      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
+        <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-6">
-            <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
+            <div className="flex items-center gap-2">
+              <Star className="h-5 w-5 text-yellow-300 fill-current" />
+              <span>🚀 SUMMER CAMP 2025 - Starting June 16th!</span>
+            </div>
+            <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              Starting June 9, 2024
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            🚀 Summer Learning Camp 2024
-          </h1>
-          
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto opacity-95">
-            4 Weeks of Interactive Learning for Class 5-8 Students
-            <br />
-            <span className="text-yellow-200 font-semibold">Aptitude • Computer Science • Public Speaking • Fun Puzzles</span>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <div className="text-3xl font-bold">₹8,500</div>
-              <div className="text-lg line-through opacity-75">₹12,000</div>
-              <div className="text-sm">Limited Time Offer</div>
+              <span>Limited Seats • Register by June 16th</span>
             </div>
-            
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <div className="text-3xl font-bold">15</div>
-              <div className="text-lg">Students Max</div>
-              <div className="text-sm">Per Batch</div>
-            </div>
-            
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center">
-              <div className="text-3xl font-bold">June 9</div>
-              <div className="text-lg">Registration</div>
-              <div className="text-sm">Deadline</div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <Link to="/contact">
-                Register Now <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            
-            <Button asChild variant="outline" size="lg" className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-red-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 backdrop-blur-sm">
-              <a href="#details">Learn More</a>
+            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
+              <Link to="/contact">Learn More</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Weekly Schedule - Moved to second position */}
-      <section id="details" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              4-Week <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Learning Journey</span>
-            </h2>
-            <p className="text-xl text-gray-600">Structured curriculum designed for progressive learning</p>
-          </div>
-
-          {/* Interactive Learning Schedule Table */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6">
-              <h3 className="text-2xl font-bold text-center">📚 Complete Learning Schedule</h3>
-              <p className="text-center text-orange-100 mt-2">Interactive sessions designed for maximum engagement</p>
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-pink-50 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Trophy className="h-4 w-4" />
+              Summer Learning Adventure 2025
             </div>
             
-            <div className="overflow-x-auto">
-              <Table className="w-full">
-                <TableHeader>
-                  <TableRow className="bg-gray-50 border-b-2 border-gray-200">
-                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">Week</TableHead>
-                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
-                      <div className="flex items-center justify-center gap-2">
-                        <Brain className="h-5 w-5 text-purple-600" />
-                        Aptitude
-                      </div>
-                    </TableHead>
-                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
-                      <div className="flex items-center justify-center gap-2">
-                        <Computer className="h-5 w-5 text-blue-600" />
-                        Computer Science
-                      </div>
-                    </TableHead>
-                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
-                      <div className="flex items-center justify-center gap-2">
-                        <Mic className="h-5 w-5 text-green-600" />
-                        Public Speaking
-                      </div>
-                    </TableHead>
-                    <TableHead className="text-center font-bold text-gray-900 py-4 text-lg">
-                      <div className="flex items-center justify-center gap-2">
-                        <Puzzle className="h-5 w-5 text-orange-600" />
-                        Puzzle Session
-                      </div>
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {campSchedule.map((week, index) => (
-                    <TableRow 
-                      key={week.week} 
-                      className={`transition-all duration-200 hover:bg-gray-50 ${
-                        index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
-                      }`}
-                    >
-                      <TableCell className="text-center py-6 border-r border-gray-200">
-                        <div className="space-y-2">
-                          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto font-bold text-lg">
-                            {week.week}
-                          </div>
-                          <div className="font-bold text-gray-900 text-lg">{week.title}</div>
-                          <div className="text-sm text-gray-600">Week {week.week}</div>
-                        </div>
-                      </TableCell>
-                      
-                      {week.sessions.map((session, sessionIndex) => (
-                        <TableCell key={sessionIndex} className="text-center py-6 px-4">
-                          <div className="space-y-3">
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto ${
-                              session.type === 'Aptitude' ? 'bg-purple-100' :
-                              session.type === 'Computer Science' ? 'bg-blue-100' :
-                              session.type === 'Public Speaking' ? 'bg-green-100' :
-                              'bg-orange-100'
-                            }`}>
-                              <session.icon className={`h-5 w-5 ${
-                                session.type === 'Aptitude' ? 'text-purple-600' :
-                                session.type === 'Computer Science' ? 'text-blue-600' :
-                                session.type === 'Public Speaking' ? 'text-green-600' :
-                                'text-orange-600'
-                              }`} />
-                            </div>
-                            <div className="text-sm font-medium text-gray-900 leading-tight px-2">
-                              {session.topic}
-                            </div>
-                          </div>
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+                3-Week Interactive
+              </span>
+              <br />
+              <span className="text-gray-900">Learning Camp</span>
+            </h1>
+            
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join our exciting 3-week summer camp for Class 5-8 students! Learn through interactive sessions, 
+              hands-on projects, and fun activities with IIT/NIT mentors.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
+              <div className="bg-white rounded-lg p-4 shadow-md">
+                <Calendar className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
+                <p className="font-semibold text-gray-900">June 16 - July 5</p>
+                <p className="text-sm text-gray-600">3 Weeks Duration</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-md">
+                <Users className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
+                <p className="font-semibold text-gray-900">Class 5-8</p>
+                <p className="text-sm text-gray-600">Age Appropriate</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-md">
+                <Clock className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
+                <p className="font-semibold text-gray-900">2 Hours/Day</p>
+                <p className="text-sm text-gray-600">Interactive Sessions</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-md">
+                <MapPin className="h-6 w-6 text-orange-600 mb-2 mx-auto" />
+                <p className="font-semibold text-gray-900">Online + Meetup</p>
+                <p className="text-sm text-gray-600">Final Week at India Gate</p>
+              </div>
             </div>
 
-            {/* Schedule Summary Footer */}
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 border-t border-gray-200">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="text-2xl font-bold text-orange-600">16</div>
-                  <div className="text-sm text-gray-600">Total Sessions</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="text-2xl font-bold text-red-600">4</div>
-                  <div className="text-sm text-gray-600">Subject Areas</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="text-2xl font-bold text-orange-600">2hrs</div>
-                  <div className="text-sm text-gray-600">Per Session</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="text-2xl font-bold text-red-600">100%</div>
-                  <div className="text-sm text-gray-600">Interactive</div>
-                </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Link to="/contact">
+                  Register Now <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              
+              <div className="text-center">
+                <p className="text-2xl font-bold text-orange-600">₹8,500</p>
+                <p className="text-sm text-gray-500 line-through">₹12,000</p>
+                <p className="text-sm text-green-600 font-medium">Save ₹3,500!</p>
               </div>
             </div>
           </div>
-
-          {/* Learning Outcomes */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-shadow">
-              <CardHeader className="text-center pb-2">
-                <Brain className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <CardTitle className="text-lg text-purple-800">Aptitude Mastery</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-purple-700 text-center">Develop logical thinking and problem-solving skills</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader className="text-center pb-2">
-                <Computer className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                <CardTitle className="text-lg text-blue-800">Tech Skills</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-blue-700 text-center">Introduction to programming and AI concepts</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-lg transition-shadow">
-              <CardHeader className="text-center pb-2">
-                <Mic className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <CardTitle className="text-lg text-green-800">Communication</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-green-700 text-center">Build confidence in public speaking and presentations</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-shadow">
-              <CardHeader className="text-center pb-2">
-                <Puzzle className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <CardTitle className="text-lg text-orange-800">Critical Thinking</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-orange-700 text-center">Enhance analytical skills through fun puzzles</p>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section - Moved to third position */}
+      {/* 4-Week Schedule Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Our <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Summer Camp?</span>
+              Complete <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">Learning Journey</span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              3 weeks of intensive online learning followed by an exciting meetup week in Delhi
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {highlights.map((highlight, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-4">
-                    <highlight.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl">{highlight.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    {highlight.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-blue-600">1</span>
+                </div>
+                <CardTitle className="text-xl">Week 1</CardTitle>
+                <CardDescription>Foundation Building</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Math fundamentals & problem-solving
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Science exploration & experiments
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    English communication skills
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Introduction to coding
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 to-blue-500"></div>
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-green-600">2</span>
+                </div>
+                <CardTitle className="text-xl">Week 2</CardTitle>
+                <CardDescription>Skill Development</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Advanced problem-solving techniques
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Creative writing & storytelling
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Science projects & presentations
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Basic programming concepts
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-purple-600">3</span>
+                </div>
+                <CardTitle className="text-xl">Week 3</CardTitle>
+                <CardDescription>Mastery & Projects</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Final project preparation
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Presentation skills workshop
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Coding project showcase
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Mock test preparation
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-orange-50 to-pink-50">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 to-red-500"></div>
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="h-8 w-8 text-orange-600" />
+                </div>
+                <CardTitle className="text-xl text-orange-600">Meetup Week</CardTitle>
+                <CardDescription className="text-orange-500">In-Person at India Gate, Delhi</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Interactive quiz competitions
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Final project presentations
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Mock tests & assessments
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Student networking & fun activities
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* What Students Will Gain - Moved to fourth position */}
+      {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              What Your Child Will <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Gain</span>
+              Why Choose <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">Our Summer Camp?</span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the difference of learning from IIT/NIT mentors with proven teaching methodologies
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Enhanced Problem-Solving Skills</h3>
-                  <p className="text-gray-600">Develop critical thinking through aptitude training and interactive puzzles</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Trophy className="h-8 w-8 text-blue-600" />
                 </div>
-              </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">IIT/NIT Mentors</h3>
+                <p className="text-gray-600">Learn from graduates of India's top engineering institutes with real industry experience</p>
+              </CardContent>
+            </Card>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Introduction to AI & Programming</h3>
-                  <p className="text-gray-600">Age-appropriate introduction to coding concepts and artificial intelligence</p>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Lightbulb className="h-8 w-8 text-green-600" />
                 </div>
-              </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Interactive Learning</h3>
+                <p className="text-gray-600">Hands-on activities, experiments, and project-based learning that makes education fun</p>
+              </CardContent>
+            </Card>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Confidence in Public Speaking</h3>
-                  <p className="text-gray-600">Build communication skills and overcome stage fright through structured practice</p>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="h-8 w-8 text-purple-600" />
                 </div>
-              </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Small Batch Size</h3>
+                <p className="text-gray-600">Limited seats ensure personalized attention and better learning outcomes</p>
+              </CardContent>
+            </Card>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Logical & Analytical Thinking</h3>
-                  <p className="text-gray-600">Strengthen reasoning abilities through structured puzzle-solving sessions</p>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="h-8 w-8 text-orange-600" />
                 </div>
-              </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Comprehensive Curriculum</h3>
+                <p className="text-gray-600">Math, Science, English, and Coding - all in one comprehensive program</p>
+              </CardContent>
+            </Card>
 
-              <div className="flex items-start gap-4">
-                <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Certificate & Recognition</h3>
-                  <p className="text-gray-600">Completion certificate and prizes at the final in-person meetup</p>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <MapPin className="h-8 w-8 text-pink-600" />
                 </div>
-              </div>
-            </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Unique Meetup Experience</h3>
+                <p className="text-gray-600">Final week in-person meetup at India Gate for presentations and networking</p>
+              </CardContent>
+            </Card>
 
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop" 
-                alt="Student using laptop for learning"
-                className="rounded-xl shadow-lg"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-xl shadow-lg">
-                <div className="text-2xl font-bold">100%</div>
-                <div className="text-sm">Engagement Rate</div>
-              </div>
-            </div>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Award className="h-8 w-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Certification</h3>
+                <p className="text-gray-600">Receive completion certificates and skill badges for your learning journey</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Learning Made Fun & Interactive - Fifth position with AI-generated images */}
+      {/* What Your Child Will Gain Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Learning Made <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Fun & Interactive</span>
+              What Your Child <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">Will Gain</span>
             </h2>
-            <p className="text-xl text-gray-600">Creative and engaging learning experiences designed for young minds</p>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Beyond academics - building confidence, creativity, and critical thinking skills
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <div className="w-full h-64 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Computer className="h-16 w-16 text-blue-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Interactive Computing</h3>
-                  <p className="text-gray-600">Students exploring AI and programming concepts</p>
-                </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Target className="h-10 w-10 text-white" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-white p-4 font-semibold">Hands-on Technology Learning</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Problem-Solving Skills</h3>
+              <p className="text-gray-600">Develop analytical thinking and creative problem-solving abilities through hands-on challenges</p>
             </div>
 
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <div className="w-full h-64 bg-gradient-to-br from-green-100 via-yellow-100 to-orange-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Puzzle className="h-16 w-16 text-orange-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Creative Problem Solving</h3>
-                  <p className="text-gray-600">Students collaborating on puzzle challenges</p>
-                </div>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Users className="h-10 w-10 text-white" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-white p-4 font-semibold">Team-based Learning Adventures</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Communication Skills</h3>
+              <p className="text-gray-600">Build confidence in speaking, presenting, and expressing ideas clearly and effectively</p>
             </div>
 
-            <div className="relative group overflow-hidden rounded-xl shadow-lg">
-              <div className="w-full h-64 bg-gradient-to-br from-purple-100 via-blue-100 to-teal-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Mic className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Confident Speaking</h3>
-                  <p className="text-gray-600">Students practicing presentation skills</p>
-                </div>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Lightbulb className="h-10 w-10 text-white" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-white p-4 font-semibold">Building Communication Skills</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Creative Thinking</h3>
+              <p className="text-gray-600">Encourage out-of-the-box thinking and innovative approaches to learning</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <BookOpen className="h-10 w-10 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Academic Excellence</h3>
+              <p className="text-gray-600">Strengthen foundation in core subjects with personalized attention and guidance</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Trophy className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Leadership Qualities</h3>
+              <p className="text-gray-600">Develop leadership skills through group projects and presentation opportunities</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Star className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Confidence Building</h3>
+              <p className="text-gray-600">Build self-confidence through achievements, recognition, and positive learning experiences</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Registration CTA */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            🎯 Limited Seats Available!
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-95">
-            Don't miss this opportunity to give your child a head start in the future. 
-            Only 15 seats available per batch. Register before June 9th!
-          </p>
-
-          <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto mb-8">
-            <div className="text-3xl font-bold mb-2">Early Bird Offer</div>
-            <div className="text-6xl font-bold mb-2">₹8,500</div>
-            <div className="text-xl line-through opacity-75 mb-4">₹12,000</div>
-            <div className="text-sm bg-yellow-400 text-red-800 px-4 py-2 rounded-full font-bold">
-              Save ₹3,500 - Limited Time!
-            </div>
+      {/* Learning Made Fun & Interactive Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Learning Made <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">Fun & Interactive</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience education like never before with our innovative teaching methods and creative activities
+            </p>
           </div>
 
-          <Button asChild size="lg" className="bg-white text-red-600 hover:bg-gray-100 px-12 py-4 rounded-full text-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            <Link to="/contact">
-              Secure Your Spot Now <ArrowRight className="ml-2 h-6 w-6" />
-            </Link>
-          </Button>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <BookOpen className="h-16 w-16 mx-auto mb-4 opacity-80" />
+                    <p className="text-lg font-semibold">Interactive Digital Learning</p>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Digital Learning Platform</h3>
+                <p className="text-gray-600">Engaging online sessions with interactive whiteboards, quizzes, and multimedia content</p>
+              </CardContent>
+            </Card>
 
-          <p className="text-sm mt-4 opacity-75">
-            Registration closes on June 9th or when seats are filled
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-green-400 via-blue-500 to-purple-500 relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <Lightbulb className="h-16 w-16 mx-auto mb-4 opacity-80" />
+                    <p className="text-lg font-semibold">Creative Science Experiments</p>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Hands-on Experiments</h3>
+                <p className="text-gray-600">Virtual and DIY science experiments that bring concepts to life with everyday materials</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <Trophy className="h-16 w-16 mx-auto mb-4 opacity-80" />
+                    <p className="text-lg font-semibold">Gamified Learning</p>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Educational Games</h3>
+                <p className="text-gray-600">Learn through puzzles, coding challenges, and educational games that make learning addictive</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-orange-500 to-red-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Secure Your Spot Today!
+          </h2>
+          <p className="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
+            Limited seats available for our Summer Camp 2025. Don't miss this opportunity to give your child 
+            an unforgettable learning experience.
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <Link to="/contact">
+                Secure Your Spot Now <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-orange-100">
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">₹8,500</div>
+              <div className="text-sm">Early Bird Price</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">15</div>
+              <div className="text-sm">Limited Seats</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">3+1</div>
+              <div className="text-sm">Weeks Program</div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

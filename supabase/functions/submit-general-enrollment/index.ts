@@ -22,7 +22,7 @@ serve(async (req) => {
     // Parse request body
     const enrollmentData = await req.json()
     
-    console.log('Received enrollment data:', enrollmentData)
+    console.log('Received general enrollment data:', enrollmentData)
 
     // Validate required fields
     const requiredFields = ['student_name', 'grade', 'parent_name', 'phone', 'email', 'package', 'address']
@@ -38,9 +38,9 @@ serve(async (req) => {
       }
     }
 
-    // Insert enrollment data into the summer_camp_enrollments table
+    // Insert enrollment data into the enrollments table
     const { data, error } = await supabase
-      .from('summer_camp_enrollments')
+      .from('enrollments')
       .insert([enrollmentData])
       .select()
 

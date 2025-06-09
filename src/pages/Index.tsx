@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -103,26 +103,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Summer Camp Banner */}
-      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-300 fill-current" />
-              <span>🚀 SUMMER CAMP 2024 - Starting June 9th!</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>Limited Seats • Register by June 9th</span>
-            </div>
-            <Button asChild size="sm" variant="outline" className="bg-white text-red-600 hover:bg-gray-100 border-white">
-              <Link to="/summer-camp">Learn More</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-32">
         {/* Animated background elements */}
@@ -146,7 +126,7 @@ const Index = () => {
             <div className="mb-8 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl border-2 border-orange-300 max-w-4xl mx-auto">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Trophy className="h-6 w-6 text-orange-600" />
-                <span className="text-2xl font-bold text-orange-600">4-Week Summer Camp 2024</span>
+                <span className="text-2xl font-bold text-orange-600">3-Week Summer Camp 2025</span>
                 <Trophy className="h-6 w-6 text-orange-600" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -156,7 +136,7 @@ const Index = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Duration:</span> 4 Weeks (June 9 - July 6)
+                    <span className="font-semibold">Duration:</span> 3 Weeks (June 16 - July 5)
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-orange-600" />
@@ -176,7 +156,7 @@ const Index = () => {
               </div>
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <Link to="/summer-camp">
+                  <Link to="/contact">
                     Register Now <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -254,6 +234,82 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">BrightStem Academy?</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the transformative power of early guidance from IIT/NIT mentors with proven teaching methodologies
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Trophy className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">IIT/NIT Expert Mentors</h3>
+                <p className="text-gray-600">Learn from graduates of India's premier institutes - IIT BHU & NIT Allahabad with real industry experience at Google & Amazon</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Lightbulb className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Teaching Methods</h3>
+                <p className="text-gray-600">Our founder Akanksha Dubey's 5+ years of experience tackles exact student hurdles with methodologies that ensure concept clarity</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Target className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Early Guidance Advantage</h3>
+                <p className="text-gray-600">Starting early with quality mentorship builds strong foundations, confidence, and academic excellence for future success</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Personalized Learning</h3>
+                <p className="text-gray-600">Customized teaching approaches that adapt to each student's learning style, pace, and specific academic challenges</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="h-8 w-8 text-pink-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Holistic Development</h3>
+                <p className="text-gray-600">Beyond academics - building communication skills, confidence, critical thinking, and leadership qualities for overall growth</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Star className="h-8 w-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Track Record</h3>
+                <p className="text-gray-600">500+ successful students with 95% improvement rate and 4.9-star ratings from satisfied parents and students</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -261,9 +317,13 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Choose Your <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Path</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
               Special launch pricing! Limited time offer with savings up to 33% on all packages.
             </p>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium">
+              <Calendar className="h-4 w-4" />
+              Fresh batches starting July 15, 2025
+            </div>
           </div>
 
           {isMobile ? (
