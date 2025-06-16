@@ -54,20 +54,10 @@ const Navbar = () => {
       {showSummerCampBanner && (
         <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-3 relative overflow-hidden fixed top-0 w-full z-50">
           <div className="absolute inset-0 bg-black/10"></div>
-          
-          {/* Animated running text background */}
-          <div className="absolute inset-0 flex items-center opacity-20">
-            <div className="animate-marquee whitespace-nowrap text-sm font-bold">
-              🚀 SUMMER CAMP 2025 • 4 WEEKS PROGRAM • STARTING JUNE 16th • IIT/NIT MENTORS • LIMITED SEATS • 
-              🚀 SUMMER CAMP 2025 • 4 WEEKS PROGRAM • STARTING JUNE 16th • IIT/NIT MENTORS • LIMITED SEATS • 
-              🚀 SUMMER CAMP 2025 • 4 WEEKS PROGRAM • STARTING JUNE 16th • IIT/NIT MENTORS • LIMITED SEATS •
-            </div>
-          </div>
-          
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm md:text-base font-semibold">
               <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-300 fill-current animate-pulse" />
+                <Star className="h-5 w-5 text-yellow-300 fill-current" />
                 <span>🚀 SUMMER CAMP 2025 - Starting June 16th!</span>
               </div>
               <div className="flex items-center gap-2">
@@ -78,7 +68,7 @@ const Navbar = () => {
                 asChild 
                 size="sm" 
                 variant="outline" 
-                className="bg-white text-red-600 hover:bg-gray-100 border-white animate-bounce"
+                className="bg-white text-red-600 hover:bg-gray-100 border-white"
                 onClick={handleEnrollClick}
               >
                 <Link to="/contact#enrollment-form">Learn More</Link>

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, Users, MapPin, Star, Trophy, BookOpen, Lightbulb, Target, Award, CheckCircle, ArrowRight, Send } from 'lucide-react';
+import { Calendar, Clock, Users, MapPin, Star, Trophy, BookOpen, Lightbulb, Target, Award, CheckCircle, ArrowRight, Send, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const SummerCamp = () => {
   const handleEnrollClick = (e: React.MouseEvent) => {
@@ -216,6 +217,115 @@ const SummerCamp = () => {
         </div>
       </section>
 
+      {/* 4-Week Detailed Schedule Table */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Detailed <span className="bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">4-Week Schedule</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              A comprehensive breakdown of what your child will learn each week
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-gradient-to-r from-orange-500 to-red-500">
+                  <TableHead className="text-white font-bold text-lg py-6">Week</TableHead>
+                  <TableHead className="text-white font-bold text-lg">Focus Area</TableHead>
+                  <TableHead className="text-white font-bold text-lg">Topics Covered</TableHead>
+                  <TableHead className="text-white font-bold text-lg">Activities</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow className="hover:bg-blue-50 transition-colors">
+                  <TableCell className="font-bold text-blue-600 text-lg py-6">Week 1</TableCell>
+                  <TableCell className="font-semibold">Foundation Building</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Math fundamentals & problem-solving</li>
+                      <li>• Science exploration & experiments</li>
+                      <li>• English communication skills</li>
+                      <li>• Introduction to coding</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Interactive math games</li>
+                      <li>• Science experiments at home</li>
+                      <li>• Speaking & writing exercises</li>
+                      <li>• Basic programming concepts</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-green-50 transition-colors">
+                  <TableCell className="font-bold text-green-600 text-lg py-6">Week 2</TableCell>
+                  <TableCell className="font-semibold">Skill Development</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Advanced problem-solving techniques</li>
+                      <li>• Creative writing & storytelling</li>
+                      <li>• Science projects & presentations</li>
+                      <li>• Basic programming concepts</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Logic puzzles & brain teasers</li>
+                      <li>• Story creation workshops</li>
+                      <li>• Project-based learning</li>
+                      <li>• Coding challenges</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-purple-50 transition-colors">
+                  <TableCell className="font-bold text-purple-600 text-lg py-6">Week 3</TableCell>
+                  <TableCell className="font-semibold">Mastery & Projects</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Final project preparation</li>
+                      <li>• Presentation skills workshop</li>
+                      <li>• Coding project showcase</li>
+                      <li>• Mock test preparation</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Individual project work</li>
+                      <li>• Public speaking practice</li>
+                      <li>• Code review sessions</li>
+                      <li>• Assessment preparation</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-orange-50 transition-colors">
+                  <TableCell className="font-bold text-orange-600 text-lg py-6">Week 4</TableCell>
+                  <TableCell className="font-semibold">Meetup Week (Delhi)</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Interactive quiz competitions</li>
+                      <li>• Final project presentations</li>
+                      <li>• Mock tests & assessments</li>
+                      <li>• Student networking & fun activities</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Live competitions at India Gate</li>
+                      <li>• Project showcase event</li>
+                      <li>• Skills assessment tests</li>
+                      <li>• Group activities & games</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -370,29 +480,35 @@ const SummerCamp = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 relative">
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <BookOpen className="h-16 w-16 mx-auto mb-4 opacity-80" />
-                    <p className="text-lg font-semibold">Interactive Digital Learning</p>
-                  </div>
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
+                  alt="Computer Science and Coding"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <Code className="h-8 w-8 mb-2" />
+                  <p className="text-lg font-semibold">Computer Science & Coding</p>
                 </div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Digital Learning Platform</h3>
-                <p className="text-gray-600">Engaging online sessions with interactive whiteboards, quizzes, and multimedia content</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Programming Fundamentals</h3>
+                <p className="text-gray-600">Learn coding concepts through interactive exercises, visual programming, and hands-on projects</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-green-400 via-blue-500 to-purple-500 relative">
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <Lightbulb className="h-16 w-16 mx-auto mb-4 opacity-80" />
-                    <p className="text-lg font-semibold">Creative Science Experiments</p>
-                  </div>
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+                  alt="Creative Science Experiments"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <Lightbulb className="h-8 w-8 mb-2" />
+                  <p className="text-lg font-semibold">Creative Science Experiments</p>
                 </div>
               </div>
               <CardContent className="p-6">
@@ -402,13 +518,16 @@ const SummerCamp = () => {
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 relative">
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <Trophy className="h-16 w-16 mx-auto mb-4 opacity-80" />
-                    <p className="text-lg font-semibold">Gamified Learning</p>
-                  </div>
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+                  alt="Gamified Learning"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <Trophy className="h-8 w-8 mb-2" />
+                  <p className="text-lg font-semibold">Gamified Learning</p>
                 </div>
               </div>
               <CardContent className="p-6">
