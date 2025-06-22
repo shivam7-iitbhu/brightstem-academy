@@ -4,13 +4,13 @@ import { ArrowRight, BookOpen, Users, Award, Star, CheckCircle, Target, Trending
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { useMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
 
   const handleEnrollClick = (e: React.MouseEvent) => {
     e.preventDefault();
