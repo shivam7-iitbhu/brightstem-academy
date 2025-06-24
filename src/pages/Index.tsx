@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, ChevronDown, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -103,8 +103,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* New Batch Banner */}
+      <div className="bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100 py-3 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm md:text-base font-medium text-gray-700">
+            🎓 <span className="font-bold text-blue-600">New Batch Starting July 1st</span> • 
+            <span className="text-orange-600 font-semibold"> Limited Seats Available</span> • 
+            <Link to="/contact" className="text-blue-600 hover:text-blue-800 underline font-semibold ml-2">
+              Enroll Now →
+            </Link>
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-32">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-20">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -112,125 +125,133 @@ const Index = () => {
           <div className="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-2000"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in">
-            <div className="mb-8">
-              <img 
-                src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
-                alt="BrightStem Academy Logo" 
-                className="h-24 w-auto mx-auto mb-4"
-              />
-            </div>
-            
-            {/* Summer Camp Highlight */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl border-2 border-orange-300 max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Trophy className="h-6 w-6 text-orange-600" />
-                <span className="text-2xl font-bold text-orange-600">3-Week Summer Camp 2025</span>
-                <Trophy className="h-6 w-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Interactive Learning Camp for Class 5-8
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4 text-left">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Duration:</span> 3 Weeks (June 16 - July 5)
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Age Group:</span> Class 5-8 Students
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Format:</span> Online + Final Meetup
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-orange-600" />
-                    <span className="font-semibold">Price:</span> ₹8,500 <span className="line-through text-gray-500">₹12,000</span>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <Link to="/contact">
-                    Register Now <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                  <Link to="/summer-camp">
-                    View Details
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 via-green-600 to-yellow-600 bg-clip-text text-transparent">
-                Excellence in
-              </span>
-              <br />
-              <span className="text-gray-900">Education</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
-              Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>5+ years of specialized teaching experience</strong>. 
-              Join hundreds of successful students on their journey to academic excellence.
-            </p>
-
-            {/* Team Credentials Banner */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-lg">
-              <div className="flex flex-wrap justify-center items-center gap-4 text-sm font-medium">
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
-                  <span className="text-gray-700">IIT BHU Graduate • Google Engineer</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-green-600 rounded-full"></span>
-                  <span className="text-gray-700">NIT Allahabad Graduate • Amazon Engineer</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
-                  <span className="text-gray-700">B.Ed Certified • 5+ Years Teaching Expert</span>
-                </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Logo */}
+            <div className="text-center lg:text-left animate-fade-in">
+              <div className="mb-8">
+                <img 
+                  src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
+                  alt="BrightStem Academy Logo" 
+                  className="h-32 md:h-40 w-auto mx-auto lg:mx-0"
+                />
+                <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mt-4">
+                  BrightStem Academy
+                </h2>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Link to="/contact">
-                  Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+            {/* Right side - Content */}
+            <div className="text-center lg:text-left animate-fade-in">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-blue-600 via-green-600 to-yellow-600 bg-clip-text text-transparent">
+                  Excellence in
+                </span>
+                <br />
+                <span className="text-gray-900">Education</span>
+              </h1>
               
-              <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                <Link to="/services">
-                  View Packages
-                </Link>
-              </Button>
-            </div>
+              <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
+                Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>5+ years of specialized teaching experience</strong>. 
+                Join hundreds of successful students on their journey to academic excellence.
+              </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-green-500 rounded-full mb-4 group-hover:shadow-lg transition-shadow">
-                    <stat.icon className="h-8 w-8 text-white" />
+              {/* Team Credentials Banner */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg">
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-sm font-medium">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
+                    <span className="text-gray-700">IIT BHU Graduate • Google Engineer</span>
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-3 h-3 bg-green-600 rounded-full"></span>
+                    <span className="text-gray-700">NIT Allahabad Graduate • Amazon Engineer</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
+                    <span className="text-gray-700">B.Ed Certified • 5+ Years Teaching Expert</span>
+                  </div>
                 </div>
-              ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <Link to="/contact">
+                    Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                
+                <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
+                  <Link to="/services">
+                    View Packages
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-8 w-8 text-gray-400" />
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-green-500 rounded-full mb-4 group-hover:shadow-lg transition-shadow">
+                  <stat.icon className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Summer Camp Highlight */}
+      <section className="py-20 bg-gradient-to-r from-orange-50 to-pink-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Trophy className="h-6 w-6 text-orange-600" />
+              <span className="text-2xl font-bold text-orange-600">3-Week Summer Camp 2025</span>
+              <Trophy className="h-6 w-6 text-orange-600" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Interactive Learning Camp for Class 5-8
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Clock className="h-5 w-5 text-orange-600" />
+                  <span><strong>Duration:</strong> 3 Weeks (June 16 - July 5)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Users className="h-5 w-5 text-orange-600" />
+                  <span><strong>Age Group:</strong> Class 5-8 Students</span>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-5 w-5 text-orange-600" />
+                  <span><strong>Format:</strong> Online + Final Meetup</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Star className="h-5 w-5 text-orange-600" />
+                  <span><strong>Price:</strong> ₹8,500 <span className="line-through text-gray-500">₹12,000</span></span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Link to="/contact">
+                  Register Now <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                <Link to="/summer-camp">
+                  View Details
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
