@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle } from 'lucide-react';
@@ -10,7 +11,20 @@ import TestimonialCard from '@/components/TestimonialCard';
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate logo animation
+  const logoTransform = Math.min(scrollY / 100, 1); // 0 to 1 based on scroll
+  const contentExpand = Math.min(scrollY / 100, 1); // 0 to 1 based on scroll
 
   const testimonials = [
     {
@@ -102,8 +116,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* New Batch Banner - Fixed positioning */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100 py-3 text-center">
+      {/* New Batch Banner - Fixed positioning with no gap */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100 py-3 text-center h-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm md:text-base font-medium text-gray-700">
             🎓 <span className="font-bold text-blue-600">New Batch Starting July 1st</span> • 
@@ -116,7 +130,7 @@ const Index = () => {
       </div>
 
       {/* Hero Section - Adjusted top padding to account for fixed banner */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-32">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-28">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -126,19 +140,32 @@ const Index = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12 items-center">
-            {/* Left side - Logo (20% space) */}
-            <div className="lg:col-span-1 text-center lg:text-left animate-fade-in">
+            {/* Left side - Logo (20% space) with scroll animation */}
+            <div 
+              className="lg:col-span-1 text-center lg:text-left animate-fade-in transition-all duration-700"
+              style={{
+                transform: `scale(${1 - logoTransform * 0.7}) translateY(${-logoTransform * 200}px)`,
+                opacity: 1 - logoTransform * 0.8
+              }}
+            >
               <div className="mb-8">
                 <img 
                   src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                   alt="BrightStem Academy Logo" 
-                  className="h-32 md:h-40 lg:h-48 w-auto mx-auto lg:mx-0"
+                  className="w-auto mx-auto lg:mx-0"
+                  style={{ height: `${12 - logoTransform * 4}rem` }} // Maintains aspect ratio
                 />
               </div>
             </div>
 
-            {/* Right side - Content (80% space) */}
-            <div className="lg:col-span-4 text-center lg:text-left animate-fade-in">
+            {/* Right side - Content (80% space) with expansion animation */}
+            <div 
+              className="text-center lg:text-left animate-fade-in transition-all duration-700"
+              style={{
+                gridColumn: `span ${4 + Math.floor(contentExpand)}`,
+                transform: `scale(${1 + contentExpand * 0.2})`
+              }}
+            >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-blue-600 via-green-600 to-yellow-600 bg-clip-text text-transparent">
                   Excellence in
