@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Flame } from 'lucide-react';
+import { Menu, X, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -22,10 +22,10 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { 
-      name: 'Summer Camp', 
-      path: '/summer-camp', 
+      name: 'Bootcamps', 
+      path: '/bootcamps', 
       isSpecial: true,
-      badge: 'HOT'
+      badge: 'NEW'
     },
     { name: 'Contact', path: '/contact' },
   ];
@@ -73,7 +73,7 @@ const Navbar = () => {
                 to={item.path}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   item.isSpecial
-                    ? 'text-orange-600 hover:text-orange-700'
+                    ? 'text-purple-600 hover:text-purple-700'
                     : isActive(item.path)
                     ? 'text-blue-600'
                     : 'text-gray-700 hover:text-blue-600'
@@ -83,8 +83,8 @@ const Navbar = () => {
                   {item.name}
                   {item.isSpecial && (
                     <div className="flex items-center gap-1">
-                      <Flame className="h-4 w-4 text-orange-500" />
-                      <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
+                      <Code className="h-4 w-4 text-purple-500" />
+                      <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
                         {item.badge}
                       </span>
                     </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
                 {isActive(item.path) && (
                   <span className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full animate-fade-in ${
                     item.isSpecial 
-                      ? 'bg-gradient-to-r from-orange-500 to-red-500'
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500'
                       : 'bg-gradient-to-r from-blue-600 to-green-500'
                   }`} />
                 )}
@@ -129,7 +129,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     item.isSpecial
-                      ? 'text-orange-600 bg-orange-50 hover:bg-orange-100'
+                      ? 'text-purple-600 bg-purple-50 hover:bg-purple-100'
                       : isActive(item.path)
                       ? 'text-blue-600 bg-blue-50'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
@@ -138,8 +138,8 @@ const Navbar = () => {
                   {item.name}
                   {item.isSpecial && (
                     <div className="flex items-center gap-1">
-                      <Flame className="h-4 w-4 text-orange-500" />
-                      <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                      <Code className="h-4 w-4 text-purple-500" />
+                      <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs px-2 py-1 rounded-full font-bold">
                         {item.badge}
                       </span>
                     </div>

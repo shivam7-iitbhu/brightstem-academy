@@ -50,60 +50,30 @@ const Index = () => {
   const stats = [
     { icon: Users, number: "500+", label: "Students Taught" },
     { icon: Star, number: "4.9", label: "Average Rating" },
-    { icon: BookOpen, number: "8+", label: "Years Experience" },
+    { icon: BookOpen, number: "7+", label: "Years Experience" },
     { icon: Award, number: "95%", label: "Success Rate" }
   ];
 
   const pricingPlans = [
     {
-      title: "Basic",
-      originalPrice: "₹4,000",
-      price: "₹3,000",
-      period: "/month",
-      description: "Perfect for students who need group learning support",
-      features: [
-        "Group tuition at your home",
-        "Weekly progress tracking",
-        "Study materials included",
-        "Homework assistance",
-        "Monthly assessments",
-        "WhatsApp doubt support"
-      ],
-      popular: false
-    },
-    {
-      title: "Standard",
+      title: "Complete Learning Package",
       originalPrice: "₹5,000",
-      price: "₹4,000",
+      price: "₹3,500",
       period: "/month",
-      description: "Enhanced learning with digital tools and parent updates",
+      description: "Comprehensive personalized learning experience with small batch teaching",
       features: [
-        "Everything in Basic",
+        "Small batch classes (4-5 students)",
+        "Weekly 30-min parent meetings",
+        "Complementary curriculum to school",
         "QuizGrid assessment platform",
         "ParentSync progress updates",
+        "Homework assistance & doubt clearing",
+        "Study materials included",
         "Monthly performance reports",
-        "Doubt clearing sessions",
-        "Online resource access",
-        "Speaking skill sessions"
+        "Speaking skill sessions",
+        "Career guidance sessions"
       ],
       popular: true
-    },
-    {
-      title: "Premium",
-      originalPrice: "₹7,500",
-      price: "₹5,000",
-      period: "/month",
-      description: "Complete personalized learning experience",
-      features: [
-        "One-on-one personalized tuition",
-        "Full learning dashboard",
-        "Speaking & communication sessions",
-        "24/7 doubt support",
-        "Career guidance sessions",
-        "Exam preparation coaching",
-        "Coding bootcamp access"
-      ],
-      popular: false
     }
   ];
 
@@ -139,8 +109,8 @@ const Index = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12 items-center">
-            {/* Left side - Logo (20% space) with scroll animation */}
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            {/* Left side - Logo (1/3 space) with scroll animation */}
             <div 
               className="lg:col-span-1 text-center lg:text-left animate-fade-in transition-all duration-700"
               style={{
@@ -152,18 +122,16 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                   alt="BrightStem Academy Logo" 
-                  className="w-auto mx-auto lg:mx-0"
-                  style={{ height: `${12 - logoTransform * 4}rem` }} // Maintains aspect ratio
+                  className="w-full h-auto mx-auto lg:mx-0 max-w-sm"
                 />
               </div>
             </div>
 
-            {/* Right side - Content (80% space) with expansion animation */}
+            {/* Right side - Content (2/3 space) with expansion animation */}
             <div 
-              className="text-center lg:text-left animate-fade-in transition-all duration-700"
+              className="lg:col-span-2 text-center lg:text-left animate-fade-in transition-all duration-700"
               style={{
-                gridColumn: `span ${4 + Math.floor(contentExpand)}`,
-                transform: `scale(${1 + contentExpand * 0.2})`
+                transform: `scale(${1 + contentExpand * 0.1})`
               }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -175,7 +143,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
-                Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>5+ years of specialized teaching experience</strong>. 
+                Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>7+ years of specialized teaching experience</strong>. 
                 Join hundreds of successful students on their journey to academic excellence.
               </p>
 
@@ -192,7 +160,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-3 h-3 bg-purple-600 rounded-full"></span>
-                    <span className="text-gray-700">B.Ed Certified • 5+ Years Teaching Expert</span>
+                    <span className="text-gray-700">B.Ed Certified • 7+ Years Teaching Expert</span>
                   </div>
                 </div>
               </div>
@@ -205,8 +173,8 @@ const Index = () => {
                 </Button>
                 
                 <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                  <Link to="/services">
-                    View Packages
+                  <Link to="/bootcamps">
+                    View Bootcamps
                   </Link>
                 </Button>
               </div>
@@ -228,56 +196,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Summer Camp Highlight */}
-      <section className="py-20 bg-gradient-to-r from-orange-50 to-pink-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Trophy className="h-6 w-6 text-orange-600" />
-              <span className="text-2xl font-bold text-orange-600">3-Week Summer Camp 2025</span>
-              <Trophy className="h-6 w-6 text-orange-600" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Interactive Learning Camp for Class 5-8
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-orange-600" />
-                  <span><strong>Duration:</strong> 3 Weeks (June 16 - July 5)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Users className="h-5 w-5 text-orange-600" />
-                  <span><strong>Age Group:</strong> Class 5-8 Students</span>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-orange-600" />
-                  <span><strong>Format:</strong> Online + Final Meetup</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Star className="h-5 w-5 text-orange-600" />
-                  <span><strong>Price:</strong> ₹8,500 <span className="line-through text-gray-500">₹12,000</span></span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Link to="/contact">
-                  Register Now <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="px-8 py-3 rounded-full text-lg font-semibold border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                <Link to="/summer-camp">
-                  View Details
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -286,68 +204,48 @@ const Index = () => {
               Why Choose <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">BrightStem Academy?</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the transformative power of early guidance from IIT/NIT mentors with proven teaching methodologies
+              Experience proven teaching methodologies with personalized attention in an optimal learning environment
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                   <Trophy className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">IIT/NIT Expert Mentors</h3>
-                <p className="text-gray-600">Learn from graduates of India's premier institutes - IIT BHU & NIT Allahabad with real industry experience at Google & Amazon</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Expert Teaching Experience</h3>
+                <p className="text-gray-600">Founder Akanksha has 7+ years of experience teaching students of different age groups. She is an expert in modern teaching methodologies and curates her program specific to each student's needs, ensuring personalized learning paths for maximum growth.</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Lightbulb className="h-8 w-8 text-green-600" />
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                  <Users className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Teaching Methods</h3>
-                <p className="text-gray-600">Our founder Akanksha Dubey's 5+ years of experience tackles exact student hurdles with methodologies that ensure concept clarity</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Optimal Batch Size (4-5 Students)</h3>
+                <p className="text-gray-600">Based on educational psychology research, we maintain small batches of 4-5 students. Solo learning lacks peer interaction and accountability, while large classrooms inhibit question-asking. Our optimal size ensures active participation, peer learning, and comfortable doubt clarification.</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="h-8 w-8 text-purple-600" />
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Early Guidance Advantage</h3>
-                <p className="text-gray-600">Starting early with quality mentorship builds strong foundations, confidence, and academic excellence for future success</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Weekly Parent Connect Sessions</h3>
+                <p className="text-gray-600">Every week, we dedicate 30 minutes to connect with parents, discussing their child's progress, addressing concerns, and answering questions. This ensures parents stay informed and involved in their child's learning journey.</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                   <BookOpen className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Personalized Learning</h3>
-                <p className="text-gray-600">Customized teaching approaches that adapt to each student's learning style, pace, and specific academic challenges</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="h-8 w-8 text-pink-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Holistic Development</h3>
-                <p className="text-gray-600">Beyond academics - building communication skills, confidence, critical thinking, and leadership qualities for overall growth</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Star className="h-8 w-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Track Record</h3>
-                <p className="text-gray-600">500+ successful students with 95% improvement rate and 4.9-star ratings from satisfied parents and students</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Complementary Curriculum Design</h3>
+                <p className="text-gray-600">Our curriculum is designed to complement, not repeat, what's taught in school. We focus on strengthening concepts, filling knowledge gaps, and advancing learning, ensuring students stay ahead while building strong foundations.</p>
               </CardContent>
             </Card>
           </div>
@@ -359,10 +257,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Choose Your <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Path</span>
+              Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Package</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Special launch pricing! Limited time offer with savings up to 33% on all packages.
+              Comprehensive education solution with personalized attention and proven results.
             </p>
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium">
               <Calendar className="h-4 w-4" />
@@ -370,25 +268,9 @@ const Index = () => {
             </div>
           </div>
 
-          {isMobile ? (
-            <Carousel className="w-full max-w-sm mx-auto">
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {pricingPlans.map((plan, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5">
-                    <PricingCard {...plan} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden" />
-              <CarouselNext className="hidden" />
-            </Carousel>
-          ) : (
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {pricingPlans.map((plan, index) => (
-                <PricingCard key={index} {...plan} />
-              ))}
-            </div>
-          )}
+          <div className="max-w-md mx-auto">
+            <PricingCard {...pricingPlans[0]} />
+          </div>
         </div>
       </section>
 
