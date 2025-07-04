@@ -18,6 +18,13 @@ export const CONSTANTS = {
       originalPrice: "₹7,000",
       price: "₹4,500",
       period: "/month"
+    },
+    BOOTCAMP: {
+      title: "Bootcamp Sessions",
+      originalPrice: "₹1,000",
+      price: "₹599",
+      period: "/session",
+      enrolledStudentPrice: "₹199"
     }
   },
   HERO_MESSAGES: {

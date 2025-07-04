@@ -12,6 +12,7 @@ import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState('');
   const { toast } = useToast();
 
   const contactInfo = [
@@ -79,6 +80,7 @@ const Contact = () => {
 
       // Reset form
       (e.target as HTMLFormElement).reset();
+      setSelectedPackage('');
 
     } catch (error) {
       console.error('Error submitting enrollment:', error);
@@ -216,18 +218,28 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="package" className="text-lg font-semibold text-gray-700">Preferred Package *</Label>
-                  <Select name="package" required>
+                  <Label htmlFor="package" className="text-lg font-semibold text-gray-700">Preferred Package/Program *</Label>
+                  <Select name="package" required onValueChange={setSelectedPackage}>
                     <SelectTrigger className="h-12 text-lg border-2 focus:border-blue-500">
-                      <SelectValue placeholder="Select a package" />
+                      <SelectValue placeholder="Select a package or bootcamp" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="basic">Basic (₹2,000-3,000/month)</SelectItem>
-                      <SelectItem value="standard">Standard (₹3,500-4,500/month)</SelectItem>
-                      <SelectItem value="premium">Premium (₹6,000-8,000/month)</SelectItem>
+                      <SelectItem value="basic">Complete Learning Package (₹3,500/month)</SelectItem>
+                      <SelectItem value="premium">AI & Computer Science Package (₹4,500/month)</SelectItem>
                       <SelectItem value="summer-camp">Summer Camp 2025 (₹8,500 for 3 weeks)</SelectItem>
+                      <SelectItem value="bootcamp-python">Python Programming Bootcamp (₹599/session)</SelectItem>
+                      <SelectItem value="bootcamp-ai-ml">AI & Machine Learning Bootcamp (₹599/session)</SelectItem>
+                      <SelectItem value="bootcamp-robotics">Robotics with Arduino Bootcamp (₹599/session)</SelectItem>
+                      <SelectItem value="bootcamp-web-dev">Web Development Bootcamp (₹599/session)</SelectItem>
                     </SelectContent>
                   </Select>
+                  {selectedPackage?.startsWith('bootcamp') && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-2">
+                      <p className="text-green-700 font-semibold text-sm">
+                        Special offer: Already enrolled BrightStem students get this bootcamp for just ₹199/session!
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -235,7 +247,7 @@ const Contact = () => {
                   <Input 
                     id="subjects" 
                     name="subjects"
-                    placeholder="e.g., Mathematics, Science, English" 
+                    placeholder="e.g., Mathematics, Science, English (for regular packages)" 
                     className="h-12 text-lg border-2 focus:border-blue-500"
                   />
                 </div>
@@ -312,6 +324,16 @@ const Contact = () => {
                 <p className="text-gray-600 leading-relaxed">
                   Yes, all our tuition sessions are conducted at your home for convenience and comfort. 
                   We also offer online sessions when needed.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What's the difference between regular packages and bootcamps?</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Regular packages are ongoing monthly programs focusing on academics, while bootcamps are intensive, 
+                  short-term programs focusing on specific tech skills like programming, AI, and robotics.
                 </p>
               </CardContent>
             </Card>
