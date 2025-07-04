@@ -1,5 +1,5 @@
 
-import { Award, BookOpen, Users, Heart, Target, Star, Code, Briefcase, GraduationCap } from 'lucide-react';
+import { Award, BookOpen, Users, Heart, Target, Star, Code, Briefcase, GraduationCap, CheckCircle, Calendar, UserCheck, TrendingUp, Coffee, Presentation, Trophy } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -26,6 +26,45 @@ const About = () => {
       icon: BookOpen,
       title: "Comprehensive Approach",
       description: "Holistic education covering academics, personality development, and critical thinking skills."
+    }
+  ];
+
+  const teachingPhilosophy = [
+    {
+      icon: Users,
+      title: "Optimal Small Batches (4-5 Students)",
+      description: "Research shows 1:1 coaching lacks peer learning opportunities, while large classrooms (30+ students) inhibit questioning. Our scientifically-backed 4-5 student batches create the perfect balance of collaborative learning and personal attention.",
+      color: "from-blue-500 to-purple-600"
+    },
+    {
+      icon: UserCheck,
+      title: "Smart Student Placement",
+      description: "We don't place students based on grades like traditional coaching centers. Through comprehensive assessments, we evaluate learning ability and style to ensure optimal batch placement for maximum growth.",
+      color: "from-green-500 to-blue-600"
+    },
+    {
+      icon: TrendingUp,
+      title: "Weekly Testing & Progress Tracking",
+      description: "Regular assessments monitor progress with detailed reports shared with parents. Special one-on-one sessions for students who need extra support ensure everyone stays on track.",
+      color: "from-purple-500 to-pink-600"
+    },
+    {
+      icon: Coffee,
+      title: "Bi-weekly Parent Meetings",
+      description: "Deep 30-minute sessions every two weeks to understand your child completely - their nature, lifestyle, interests, and dreams. Education goes beyond textbooks; it's about shaping their way of living.",
+      color: "from-orange-500 to-red-600"
+    },
+    {
+      icon: Presentation,
+      title: "Monthly Student Seminars",
+      description: "All-student gatherings foster collaboration, networking, and peer learning. Students share experiences, learn from each other, and build lasting connections that extend beyond academics.",
+      color: "from-teal-500 to-green-600"
+    },
+    {
+      icon: Trophy,
+      title: "Weekly IIT-NIT Alumni Sessions",
+      description: "Direct access to successful IIT and NIT graduates every week. Get career guidance, learn from their journeys, and ensure your efforts align with your dream goals.",
+      color: "from-indigo-500 to-purple-600"
     }
   ];
 
@@ -118,7 +157,7 @@ const About = () => {
   );
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-28">
       {/* Hero Section */}
       <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,12 +245,51 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Enhanced Teaching Philosophy Section */}
       <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our Teaching <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Philosophy</span>
+              Our Research-Backed <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Teaching Philosophy</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto px-4 mb-8">
+              Every aspect of our teaching methodology is grounded in educational research and psychological studies 
+              to create the most effective learning environment for your child.
+            </p>
+            
+            {/* Illustrative Image */}
+            <div className="mb-12">
+              <img 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+                alt="Small group learning environment"
+                className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
+              />
+              <p className="text-sm text-gray-500 mt-4 italic">Small batch learning - the perfect balance of collaboration and personal attention</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {teachingPhilosophy.map((philosophy, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-6 sm:p-8">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${philosophy.color} rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform mx-auto`}>
+                    <philosophy.icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">{philosophy.title}</h3>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed text-center">{philosophy.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-12 sm:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Our Core <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Values</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Built on core values that prioritize student growth, understanding, and long-term success.
