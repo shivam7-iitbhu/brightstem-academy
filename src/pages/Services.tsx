@@ -1,34 +1,48 @@
-import { Check, Users, Brain, Trophy, BookOpen, MessageSquare } from 'lucide-react';
+
+import { Check, Users, Brain, Trophy, BookOpen, MessageSquare, Calendar, UserCheck, TrendingUp, Coffee, Presentation, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import PricingCard from '@/components/PricingCard';
+import { CONSTANTS } from '@/lib/constants';
 
 const Services = () => {
   const features = [
     {
       icon: Users,
-      title: "QuizGrid Assessment Platform",
-      description: "Advanced AI-powered assessment system that identifies knowledge gaps and provides personalized practice recommendations.",
-      benefits: ["Adaptive learning paths", "Real-time performance tracking", "Detailed analytics", "Weakness identification"]
+      title: "Smart Small Batches (4-5 Students)",
+      description: "Research-backed optimal batch sizes that foster collaborative learning while ensuring personal attention for every student.",
+      benefits: ["Peer learning opportunities", "Individual attention", "Interactive discussions", "Optimal learning environment"]
     },
     {
-      icon: MessageSquare,
-      title: "ParentSync Communication",
-      description: "Keep parents in the loop with regular updates, progress reports, and direct communication channels.",
-      benefits: ["Weekly progress reports", "Instant messaging", "Parent-teacher conferences", "Academic milestone alerts"]
+      icon: UserCheck,
+      title: "Ability-Based Student Placement",
+      description: "We place students based on learning ability and style, not just grades, ensuring optimal growth for each child.",
+      benefits: ["Learning ability assessment", "Optimal batch placement", "Personalized approach", "Maximum growth potential"]
     },
     {
-      icon: Brain,
-      title: "One-on-One Personalized Sessions",
-      description: "Exclusive individual attention tailored to each student's unique learning style and pace.",
-      benefits: ["Customized curriculum", "Flexible scheduling", "Individual pace", "Personal attention"]
+      icon: TrendingUp,
+      title: "Weekly Testing & Progress Tracking",
+      description: "Regular assessments with detailed reports shared with parents, plus special one-on-one support when needed.",
+      benefits: ["Weekly assessments", "Detailed progress reports", "Parent updates", "Individual support sessions"]
     },
     {
-      icon: Trophy,
-      title: "Speaking & Communication Sessions",
-      description: "Build confidence and communication skills through structured speaking practice and presentation training.",
-      benefits: ["Public speaking confidence", "Language fluency", "Presentation skills", "Interview preparation"]
+      icon: Coffee,
+      title: "Bi-weekly Parent Meetings",
+      description: "Deep 30-minute sessions every two weeks to understand your child completely - their nature, interests, and dreams.",
+      benefits: ["30-minute deep sessions", "Complete child understanding", "Lifestyle assessment", "Holistic education approach"]
+    },
+    {
+      icon: Presentation,
+      title: "Monthly Student Seminars",
+      description: "All-student gatherings that foster collaboration, networking, and peer learning beyond academics.",
+      benefits: ["Student networking", "Collaborative learning", "Peer interaction", "Community building"]
+    },
+    {
+      icon: GraduationCap,
+      title: "Weekly IIT-NIT Alumni Sessions",
+      description: "Direct access to successful IIT and NIT graduates every week for career guidance and mentorship.",
+      benefits: ["Career guidance", "Alumni mentorship", "Goal alignment", "Success insights"]
     }
   ];
 
@@ -37,8 +51,13 @@ const Services = () => {
     "Physics", "Chemistry", "Biology", "Computer Science"
   ];
 
+  const techSubjects = [
+    "Python Programming", "AI & Machine Learning", "Arduino Robotics", 
+    "Web Development", "Data Science Basics", "Tech Project Building"
+  ];
+
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-28">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -47,23 +66,40 @@ const Services = () => {
               Comprehensive <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Learning Solutions</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              From group sessions to premium one-on-one tutoring, discover the perfect learning package 
-              designed to unlock your child's full academic potential.
+              From traditional academics to cutting-edge AI & Computer Science, discover our research-backed 
+              teaching methodology designed to unlock your child's full potential.
             </p>
+            <div className="bg-blue-50 rounded-lg p-6 max-w-4xl mx-auto">
+              <p className="text-lg text-blue-800 font-medium">
+                🚀 <span className="font-bold">New Batch Starting {CONSTANTS.BATCH_START_DATE}</span> • 
+                <span className="text-orange-600 font-semibold"> Limited Seats Available</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Research-Backed Teaching Methodology */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Advanced Learning <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Features</span>
+              Our Research-Backed <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Teaching Philosophy</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Cutting-edge educational technology combined with proven teaching methodologies.
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
+              Every aspect of our methodology is grounded in educational research and psychological studies 
+              to create the most effective learning environment.
             </p>
+            
+            {/* Illustrative Image */}
+            <div className="mb-12">
+              <img 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+                alt="Small group learning environment"
+                className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
+              />
+              <p className="text-sm text-gray-500 mt-4 italic">Optimal batch sizes - the perfect balance of collaboration and personal attention</p>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -104,20 +140,14 @@ const Services = () => {
               Holistic <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Development</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              At BrightStem, we believe books aren't everything. We value co-curricular and creative abilities 
-              as equally important as academic excellence. Our approach focuses on fostering the overall development 
-              of every child through comprehensive learning experiences.
+              We complement school education with our specialized curriculum, ensuring continuous progress 
+              without repetition. From traditional academics to cutting-edge technology.
             </p>
-            <div className="bg-blue-50 rounded-lg p-6 max-w-3xl mx-auto">
-              <p className="text-lg text-blue-800 font-medium">
-                🏆 We prepare students for various Olympiads and competitions to showcase their talents beyond textbooks
-              </p>
-            </div>
           </div>
 
           {/* Academic Subjects */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Academic Subjects</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Traditional Academic Subjects</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {subjects.map((subject, index) => (
                 <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md">
@@ -132,25 +162,32 @@ const Services = () => {
             </div>
           </div>
 
+          {/* Tech Subjects */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">AI & Computer Science Subjects</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {techSubjects.map((subject, index) => (
+                <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-purple-50 to-pink-50">
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <Brain className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-lg">{subject}</h3>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
           {/* Beyond Academics */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-green-50 to-blue-50">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Trophy className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-2">Olympiad Preparation</h3>
                 <p className="text-gray-600 text-sm">Math, Science, English & Computer Olympiads</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-green-50 to-blue-50">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Brain className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Creative Thinking</h3>
-                <p className="text-gray-600 text-sm">Problem-solving, innovation & critical thinking skills</p>
               </CardContent>
             </Card>
 
@@ -164,33 +201,13 @@ const Services = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-yellow-50 to-orange-50">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Leadership & Teamwork</h3>
-                <p className="text-gray-600 text-sm">Collaborative projects & leadership development</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-indigo-50 to-purple-50">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <BookOpen className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Life Skills</h3>
-                <p className="text-gray-600 text-sm">Time management, goal setting & emotional intelligence</p>
-              </CardContent>
-            </Card>
-
             <Card className="text-center group hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 shadow-md bg-gradient-to-br from-teal-50 to-green-50">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-gradient-to-r from-teal-600 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Trophy className="h-8 w-8 text-white" />
+                  <Brain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Arts & Creativity</h3>
-                <p className="text-gray-600 text-sm">Creative expression, arts integration & innovation</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Critical Thinking</h3>
+                <p className="text-gray-600 text-sm">Problem-solving, innovation & analytical skills</p>
               </CardContent>
             </Card>
           </div>
@@ -273,98 +290,66 @@ const Services = () => {
               Choose Your <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Learning Package</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Special launch pricing - Limited time offer! Save up to 33% on all packages.
+              Special launch pricing - Limited time offer! Two comprehensive packages designed for different learning goals.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <PricingCard
-              title="Basic"
-              originalPrice="₹4,000"
-              price="₹3,000"
+              title="Traditional Academics"
+              originalPrice="₹5,000"
+              price="₹3,500"
               period="/month"
-              description="Perfect for students who need group learning support"
+              description="Comprehensive academic support with personalized attention and modern teaching methods"
               features={[
-                "Group tuition at your home (4-6 students)",
-                "Weekly progress tracking with detailed reports",
+                "Small batch tuition (4-5 students maximum)",
+                "Weekly progress testing and detailed reports",
+                "Bi-weekly 30-minute parent meetings",
                 "Comprehensive study materials included",
                 "Daily homework assistance and guidance",
-                "Monthly assessments with performance analysis",
+                "Monthly student collaboration seminars",
+                "Weekly IIT-NIT alumni career guidance sessions",
                 "WhatsApp doubt support (9 AM - 6 PM)",
-                "Parent-teacher meetings (monthly)"
-              ]}
-              notIncluded={[
-                "One-on-one sessions",
-                "QuizGrid AI assessment platform",
-                "24/7 doubt support",
-                "Career guidance sessions"
+                "Ability-based student placement (not grade-based)",
+                "Curriculum that complements school education"
               ]}
               additionalDetails={[
                 "Minimum 3-month commitment required",
                 "Classes held 5 days a week (Monday to Friday)",
                 "Each session is 1.5 hours long",
-                "Maximum 6 students per batch for quality education",
-                "All major subjects covered (Math, Science, English, Social Studies)"
-              ]}
-              popular={false}
-            />
-            
-            <PricingCard
-              title="Standard"
-              originalPrice="₹5,000"
-              price="₹4,000"
-              period="/month"
-              description="Enhanced learning with digital tools and parent updates"
-              features={[
-                "Everything in Basic Package",
-                "QuizGrid AI assessment platform access",
-                "ParentSync real-time progress updates",
-                "Bi-weekly performance reports with analytics",
-                "Extended doubt clearing sessions",
-                "Online resource library access",
-                "Speaking and presentation skill sessions",
-                "Exam preparation with mock tests"
-              ]}
-              notIncluded={[
-                "One-on-one personalized sessions",
-                "24/7 doubt support",
-                "Career counseling sessions"
-              ]}
-              additionalDetails={[
-                "Includes premium learning management system",
-                "Access to recorded video lessons",
-                "Monthly parent workshops on supporting child's education",
-                "Customized study plans based on AI analysis",
-                "Regular interaction with IITian and NITian mentors"
+                "All major subjects covered (Math, Science, English, Social Studies)",
+                "Special one-on-one sessions for students needing extra support",
+                "Olympiad preparation included"
               ]}
               popular={true}
             />
             
             <PricingCard
-              title="Premium"
-              originalPrice="₹7,500"
-              price="₹5,000"
+              title="AI & Computer Science"
+              originalPrice="₹7,000"
+              price="₹4,500"
               period="/month"
-              description="Complete personalized learning experience"
+              description="Cutting-edge technology education including AI, programming, and robotics for future-ready students"
               features={[
-                "One-on-one personalized tuition sessions",
-                "Full learning dashboard with detailed analytics",
-                "Speaking & communication skill development",
-                "24/7 doubt support via chat and call",
-                "Weekly career guidance and counseling sessions",
-                "Comprehensive exam preparation coaching",
-                "Priority scheduling and flexible timings",
-                "Direct mentorship from IITian/NITian faculty",
-                "Coding bootcamp sessions included",
-                "Interview preparation and soft skills training"
+                "Everything in Traditional Academics Package",
+                "Python programming from basics to advanced",
+                "AI & Machine Learning fundamentals",
+                "Arduino-based robotics projects",
+                "Web development and app creation",
+                "Data science and analytics basics",
+                "Hands-on tech project building",
+                "Industry-relevant coding practices",
+                "Future career guidance in tech fields",
+                "Access to premium coding platforms and tools"
               ]}
               additionalDetails={[
-                "Completely customized curriculum based on student needs",
-                "1:1 sessions with dedicated teacher assignment",
-                "Unlimited doubt resolution and study support",
-                "Regular mock interviews and personality development",
-                "Access to exclusive masterclasses and workshops",
-                "Career pathway planning and college admission guidance"
+                "Perfect for students interested in technology careers",
+                "Industry-experienced instructors (Google & Amazon engineers)",
+                "Real-world project portfolio development",
+                "Certification upon course completion",
+                "Advanced career counseling for tech fields",
+                "Access to latest AI tools and technologies",
+                "Preparation for competitive programming"
               ]}
               popular={false}
             />
@@ -379,7 +364,8 @@ const Services = () => {
             Ready to Transform Your Learning Journey?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Join our community of successful learners and experience the difference personalized education can make.
+            Join our community of successful learners and experience the difference research-backed, 
+            personalized education can make. New batch starts {CONSTANTS.BATCH_START_DATE}!
           </p>
           <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
             <Link to="/contact">
