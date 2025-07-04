@@ -1,13 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useIsMobile } from '@/hooks/use-mobile';
 import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
+import { CONSTANTS } from '@/lib/constants';
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -56,10 +57,10 @@ const Index = () => {
 
   const pricingPlans = [
     {
-      title: "Complete Learning Package",
-      originalPrice: "₹5,000",
-      price: "₹3,500",
-      period: "/month",
+      title: CONSTANTS.PACKAGES.COMPLETE_LEARNING.title,
+      originalPrice: CONSTANTS.PACKAGES.COMPLETE_LEARNING.originalPrice,
+      price: CONSTANTS.PACKAGES.COMPLETE_LEARNING.price,
+      period: CONSTANTS.PACKAGES.COMPLETE_LEARNING.period,
       description: "Comprehensive personalized learning experience with small batch teaching",
       features: [
         "Small batch classes (4-5 students)",
@@ -74,6 +75,49 @@ const Index = () => {
         "Career guidance sessions"
       ],
       popular: true
+    },
+    {
+      title: CONSTANTS.PACKAGES.AI_COMPUTER_SCIENCE.title,
+      originalPrice: CONSTANTS.PACKAGES.AI_COMPUTER_SCIENCE.originalPrice,
+      price: CONSTANTS.PACKAGES.AI_COMPUTER_SCIENCE.price,
+      period: CONSTANTS.PACKAGES.AI_COMPUTER_SCIENCE.period,
+      description: "Future-ready learning with AI, coding, and robotics fundamentals",
+      features: [
+        "Python programming from basics",
+        "AI tools and applications",
+        "Arduino-based robotics projects",
+        "Machine learning concepts",
+        "Coding best practices",
+        "Project-based learning",
+        "Tech industry insights",
+        "Problem-solving methodologies",
+        "Digital literacy skills",
+        "Innovation mindset development"
+      ],
+      popular: false
+    }
+  ];
+
+  const whyChooseUsCards = [
+    {
+      icon: Trophy,
+      color: "blue",
+      ...CONSTANTS.WHY_CHOOSE_US.EXPERT_TEACHING
+    },
+    {
+      icon: Users,
+      color: "green",
+      ...CONSTANTS.WHY_CHOOSE_US.OPTIMAL_BATCH
+    },
+    {
+      icon: CheckCircle,
+      color: "purple",
+      ...CONSTANTS.WHY_CHOOSE_US.PARENT_CONNECT
+    },
+    {
+      icon: BookOpen,
+      color: "orange",
+      ...CONSTANTS.WHY_CHOOSE_US.COMPLEMENTARY_CURRICULUM
     }
   ];
 
@@ -90,7 +134,7 @@ const Index = () => {
       <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-100 py-3 text-center h-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm md:text-base font-medium text-gray-700">
-            🎓 <span className="font-bold text-blue-600">New Batch Starting July 1st</span> • 
+            🎓 <span className="font-bold text-blue-600">New Batch Starting {CONSTANTS.BATCH_START_DATE}</span> • 
             <span className="text-orange-600 font-semibold"> Limited Seats Available</span> • 
             <Link to="/contact" className="text-blue-600 hover:text-blue-800 underline font-semibold ml-2">
               Enroll Now →
@@ -122,7 +166,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                   alt="BrightStem Academy Logo" 
-                  className="w-full h-auto mx-auto lg:mx-0 max-w-sm"
+                  className="w-full h-auto mx-auto lg:mx-0 max-w-xs"
                 />
               </div>
             </div>
@@ -142,9 +186,12 @@ const Index = () => {
                 <span className="text-gray-900">Education</span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
-                Personalized tutoring by <strong>IITian and NITian experts</strong> with <strong>7+ years of specialized teaching experience</strong>. 
-                Join hundreds of successful students on their journey to academic excellence.
+              <p className="text-xl md:text-2xl text-gray-600 mb-4 leading-relaxed">
+                <strong>Personalized tutoring by IITian and NITian experts</strong> with <strong>7+ years of specialized teaching experience</strong>.
+              </p>
+
+              <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
+                We leverage <strong className="text-blue-600">cutting-edge AI and modern technology</strong> to create customized learning experiences tailored specifically to each student's unique caliber and learning style. Unlike generic coaching programs, we curate personalized curricula using <strong className="text-green-600">AI-powered assessment tools</strong> and modern teaching methodologies.
               </p>
 
               {/* Team Credentials Banner */}
@@ -208,46 +255,47 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <Trophy className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Expert Teaching Experience</h3>
-                <p className="text-gray-600">Founder Akanksha has 7+ years of experience teaching students of different age groups. She is an expert in modern teaching methodologies and curates her program specific to each student's needs, ensuring personalized learning paths for maximum growth.</p>
-              </CardContent>
-            </Card>
+          {/* Desktop View - Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8">
+            {whyChooseUsCards.map((card, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <CardContent className="p-8">
+                  <div className={`w-16 h-16 bg-${card.color}-100 rounded-full flex items-center justify-center mb-6`}>
+                    <card.icon className={`h-8 w-8 text-${card.color}-600`} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{card.title}</h3>
+                  <p className="text-gray-600">{card.content}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                  <Users className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Optimal Batch Size (4-5 Students)</h3>
-                <p className="text-gray-600">Based on educational psychology research, we maintain small batches of 4-5 students. Solo learning lacks peer interaction and accountability, while large classrooms inhibit question-asking. Our optimal size ensures active participation, peer learning, and comfortable doubt clarification.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle className="h-8 w-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Weekly Parent Connect Sessions</h3>
-                <p className="text-gray-600">Every week, we dedicate 30 minutes to connect with parents, discussing their child's progress, addressing concerns, and answering questions. This ensures parents stay informed and involved in their child's learning journey.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                  <BookOpen className="h-8 w-8 text-orange-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Complementary Curriculum Design</h3>
-                <p className="text-gray-600">Our curriculum is designed to complement, not repeat, what's taught in school. We focus on strengthening concepts, filling knowledge gaps, and advancing learning, ensuring students stay ahead while building strong foundations.</p>
-              </CardContent>
-            </Card>
+          {/* Mobile View - Carousel Layout */}
+          <div className="md:hidden">
+            <Carousel className="w-full max-w-sm mx-auto">
+              <CarouselContent>
+                {whyChooseUsCards.map((card, index) => (
+                  <CarouselItem key={index}>
+                    <Card className="border-0 shadow-lg">
+                      <CardContent className="p-6 text-center">
+                        <div className={`w-16 h-16 bg-${card.color}-100 rounded-full flex items-center justify-center mb-4 mx-auto`}>
+                          <card.icon className={`h-8 w-8 text-${card.color}-600`} />
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-3">{card.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{card.content}</p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-6">
+                <CarouselPrevious className="relative translate-y-0 left-0" />
+                <CarouselNext className="relative translate-y-0 right-0" />
+              </div>
+            </Carousel>
+            <div className="text-center mt-4">
+              <p className="text-sm text-gray-500">← Swipe to explore more →</p>
+            </div>
           </div>
         </div>
       </section>
@@ -257,19 +305,21 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Package</span>
+              Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Packages</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Comprehensive education solution with personalized attention and proven results.
+              Comprehensive education solutions with personalized attention and proven results.
             </p>
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium">
               <Calendar className="h-4 w-4" />
-              Fresh batches starting July 15, 2025
+              Fresh batches starting {CONSTANTS.BATCH_START_DATE}, 2025
             </div>
           </div>
 
-          <div className="max-w-md mx-auto">
-            <PricingCard {...pricingPlans[0]} />
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {pricingPlans.map((plan, index) => (
+              <PricingCard key={index} {...plan} />
+            ))}
           </div>
         </div>
       </section>

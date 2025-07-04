@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { CONSTANTS } from '@/lib/constants';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = () => {
               <div className="animate-fade-in">
                 <img 
                   src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
-                  alt="BrightStem Academy Logo" 
+                  alt={`${CONSTANTS.COMPANY_NAME} Logo`} 
                   className="h-10 w-auto"
                 />
               </div>
