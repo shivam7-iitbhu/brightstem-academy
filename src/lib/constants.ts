@@ -20,6 +20,12 @@ export const CONSTANTS = {
       period: "/month"
     }
   },
+  BOOTCAMP_PRICING: {
+    REGULAR_PRICE: "₹1,000",
+    DISCOUNTED_PRICE: "₹599",
+    ENROLLED_STUDENT_PRICE: "₹199",
+    PERIOD: "/session"
+  },
   HERO_MESSAGES: {
     MAIN_TITLE: "Excellence in Education",
     SUBTITLE: "Personalized tutoring by IITian and NITian experts with 7+ years of specialized teaching experience. We leverage cutting-edge AI and modern technology to create customized learning experiences tailored specifically to each student's unique caliber and learning style.",

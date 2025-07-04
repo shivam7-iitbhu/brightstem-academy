@@ -1,8 +1,9 @@
 
-import { Calendar, Clock, Users, Code, Brain, Zap, Target, CheckCircle } from 'lucide-react';
+import { Calendar, Clock, Users, Code, Brain, Zap, Target, CheckCircle, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { CONSTANTS } from '@/lib/constants';
 
 const Bootcamps = () => {
   const bootcamps = [
@@ -63,6 +64,13 @@ const Bootcamps = () => {
 
   return (
     <div className="min-h-screen pt-28">
+      {/* Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-3">
+        <p className="text-sm font-medium">
+          🎉 New Batch Starting {CONSTANTS.BATCH_START_DATE} - Limited Seats Available!
+        </p>
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,6 +117,25 @@ const Bootcamps = () => {
                 
                 <CardContent className="p-8">
                   <p className="text-gray-600 mb-6">{bootcamp.description}</p>
+                  
+                  {/* Pricing Section */}
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg mb-6 border border-green-200">
+                    <div className="text-center mb-4">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <span className="text-2xl font-bold text-green-600">{CONSTANTS.BOOTCAMP_PRICING.DISCOUNTED_PRICE}</span>
+                        <span className="text-lg text-gray-600">{CONSTANTS.BOOTCAMP_PRICING.PERIOD}</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-lg text-gray-500 line-through">{CONSTANTS.BOOTCAMP_PRICING.REGULAR_PRICE}</span>
+                        <span className="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-medium">40% OFF</span>
+                      </div>
+                    </div>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                      <p className="text-sm text-blue-700 text-center font-medium">
+                        🎓 Special Price: <span className="font-bold">{CONSTANTS.BOOTCAMP_PRICING.ENROLLED_STUDENT_PRICE}{CONSTANTS.BOOTCAMP_PRICING.PERIOD}</span> for BrightStem students
+                      </p>
+                    </div>
+                  </div>
                   
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center gap-3">

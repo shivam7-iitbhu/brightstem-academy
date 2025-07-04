@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { CONSTANTS } from '@/lib/constants';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -94,6 +95,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-28">
+      {/* Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-3">
+        <p className="text-sm font-medium">
+          🎉 New Batch Starting {CONSTANTS.BATCH_START_DATE} - Limited Seats Available!
+        </p>
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -222,12 +230,17 @@ const Contact = () => {
                       <SelectValue placeholder="Select a package" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="basic">Basic (₹2,000-3,000/month)</SelectItem>
-                      <SelectItem value="standard">Standard (₹3,500-4,500/month)</SelectItem>
-                      <SelectItem value="premium">Premium (₹6,000-8,000/month)</SelectItem>
+                      <SelectItem value="complete-learning">Complete Learning Package (₹3,500/month)</SelectItem>
+                      <SelectItem value="ai-computer-science">AI & Computer Science Package (₹4,500/month)</SelectItem>
+                      <SelectItem value="coding-fundamentals-bootcamp">Coding Fundamentals Bootcamp (₹599/session)</SelectItem>
+                      <SelectItem value="ai-ml-bootcamp">AI & Machine Learning Bootcamp (₹599/session)</SelectItem>
+                      <SelectItem value="python-mastery-bootcamp">Python Mastery Bootcamp (₹599/session)</SelectItem>
                       <SelectItem value="summer-camp">Summer Camp 2025 (₹8,500 for 3 weeks)</SelectItem>
                     </SelectContent>
                   </Select>
+                  <p className="text-sm text-blue-600 mt-2">
+                    💡 <strong>Note:</strong> Bootcamps are only ₹199/session for students already enrolled in BrightStem regular classes!
+                  </p>
                 </div>
 
                 <div className="space-y-2">
@@ -312,6 +325,17 @@ const Contact = () => {
                 <p className="text-gray-600 leading-relaxed">
                   Yes, all our tuition sessions are conducted at your home for convenience and comfort. 
                   We also offer online sessions when needed.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What's the difference between regular packages and bootcamps?</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Regular packages are ongoing monthly programs covering academic subjects, while bootcamps are intensive 
+                  skill-focused programs (4-8 weeks) in coding, AI, and Python. Bootcamps are perfect for students who want 
+                  to learn specific tech skills alongside their regular studies.
                 </p>
               </CardContent>
             </Card>
