@@ -117,32 +117,12 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 group-hover:scale-110 transition-transform">
-                    <info.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{info.title}</h3>
-                  <p className="text-lg font-semibold text-blue-600 mb-2">{info.details}</p>
-                  <p className="text-gray-600">{info.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enrollment Form Section */}
+      {/* Book a Free Demo Form Section */}
       <section id="enrollment-form" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="shadow-2xl border-0 overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-12">
-              <CardTitle className="text-3xl font-bold mb-4">Enrollment Form</CardTitle>
+              <CardTitle className="text-3xl font-bold mb-4">Book a Free Demo</CardTitle>
               <CardDescription className="text-blue-100 text-lg">
                 Fill out the form below and we'll get back to you within 24 hours to discuss your learning needs.
               </CardDescription>
@@ -212,20 +192,19 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-lg font-semibold text-gray-700">Email Address *</Label>
+                  <Label htmlFor="email" className="text-lg font-semibold text-gray-700">Email Address</Label>
                   <Input 
                     id="email" 
                     name="email"
                     type="email" 
                     placeholder="parent@example.com" 
-                    required 
                     className="h-12 text-lg border-2 focus:border-blue-500"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="package" className="text-lg font-semibold text-gray-700">Preferred Package *</Label>
-                  <Select name="package" required>
+                  <Label htmlFor="package" className="text-lg font-semibold text-gray-700">Preferred Package</Label>
+                  <Select name="package">
                     <SelectTrigger className="h-12 text-lg border-2 focus:border-blue-500">
                       <SelectValue placeholder="Select a package" />
                     </SelectTrigger>
@@ -243,15 +222,6 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="subjects" className="text-lg font-semibold text-gray-700">Subjects Needed</Label>
-                  <Input 
-                    id="subjects" 
-                    name="subjects"
-                    placeholder="e.g., Mathematics, Science, English" 
-                    className="h-12 text-lg border-2 focus:border-blue-500"
-                  />
-                </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="address" className="text-lg font-semibold text-gray-700">Address *</Label>
@@ -266,7 +236,7 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-lg font-semibold text-gray-700">Additional Message</Label>
+                  <Label htmlFor="message" className="text-lg font-semibold text-gray-700">Anything specific you wanna' talk about 😊</Label>
                   <Textarea 
                     id="message" 
                     name="message"
@@ -296,6 +266,26 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Contact Info Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {contactInfo.map((info, index) => (
+              <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
+                <CardContent className="p-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 group-hover:scale-110 transition-transform">
+                    <info.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{info.title}</h3>
+                  <p className="text-lg font-semibold text-blue-600 mb-2">{info.details}</p>
+                  <p className="text-gray-600">{info.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

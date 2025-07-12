@@ -2,6 +2,9 @@
 import { Calendar, Clock, Users, Code, Brain, Zap, Target, CheckCircle, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Link } from 'react-router-dom';
 import { CONSTANTS } from '@/lib/constants';
 
@@ -9,8 +12,8 @@ const Bootcamps = () => {
   const bootcamps = [
     {
       title: "Coding Fundamentals",
-      duration: "4 Weeks",
-      sessions: "2 sessions/week",
+      duration: "6 Weeks",
+      sessions: "1 session/week",
       ageGroup: "Class 6-10",
       description: "Learn programming basics with Python and build your first applications",
       topics: ["Python Basics", "Logic Building", "Problem Solving", "Mini Projects"],
@@ -20,7 +23,7 @@ const Bootcamps = () => {
     {
       title: "AI & Machine Learning",
       duration: "6 Weeks", 
-      sessions: "2 sessions/week",
+      sessions: "1 session/week",
       ageGroup: "Class 8-12",
       description: "Discover the world of AI and build your own machine learning models",
       topics: ["AI Concepts", "Data Analysis", "ML Models", "Real-world Applications"],
@@ -30,7 +33,7 @@ const Bootcamps = () => {
     {
       title: "Python Mastery",
       duration: "8 Weeks",
-      sessions: "2 sessions/week", 
+      sessions: "1 session/week", 
       ageGroup: "Class 7-12",
       description: "Master Python programming from basics to advanced concepts",
       topics: ["Advanced Python", "Data Structures", "Web Development", "API Integration"],
@@ -86,10 +89,6 @@ const Bootcamps = () => {
                 <Calendar className="h-4 w-4" />
                 New batches every month
               </div>
-              <div className="flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full">
-                <Users className="h-4 w-4" />
-                Small batches (Max 5 students)
-              </div>
             </div>
           </div>
         </div>
@@ -142,10 +141,6 @@ const Bootcamps = () => {
                       <Clock className="h-5 w-5 text-gray-400" />
                       <span className="text-gray-700">{bootcamp.sessions}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Users className="h-5 w-5 text-gray-400" />
-                      <span className="text-gray-700">Max 5 students per batch</span>
-                    </div>
                   </div>
 
                   <div className="mb-6">
@@ -160,22 +155,153 @@ const Bootcamps = () => {
                     </ul>
                   </div>
 
-                  <Button 
-                    asChild 
-                    className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
-                      bootcamp.color === 'blue' ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800' :
-                      bootcamp.color === 'purple' ? 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800' :
-                      'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800'
-                    } text-white shadow-lg hover:shadow-xl`}
+                  <div className={`w-full py-3 px-6 rounded-full font-semibold text-center transition-all duration-300 ${
+                      bootcamp.color === 'blue' ? 'bg-gradient-to-r from-blue-600 to-blue-700' :
+                      bootcamp.color === 'purple' ? 'bg-gradient-to-r from-purple-600 to-purple-700' :
+                      'bg-gradient-to-r from-green-600 to-green-700'
+                    } text-white shadow-lg`}
                   >
-                    <Link to="/contact">
-                      Enroll Now
-                    </Link>
-                  </Button>
+                    I'm in! Let's get started 🚀
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Bootcamp Enrollment Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-2xl border-0 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center py-12">
+              <CardTitle className="text-3xl font-bold mb-4">Ready to Join a Bootcamp?</CardTitle>
+              <CardDescription className="text-purple-100 text-lg">
+                Fill out the form below and we'll get you started on your coding journey!
+              </CardDescription>
+            </CardHeader>
+            
+            <CardContent className="p-12">
+              <form className="space-y-8">
+                <div className="space-y-2">
+                  <Label htmlFor="bootcampName" className="text-lg font-semibold text-gray-700">Name *</Label>
+                  <Input 
+                    id="bootcampName" 
+                    name="bootcampName"
+                    placeholder="Enter your full name" 
+                    required 
+                    className="h-12 text-lg border-2 focus:border-purple-500"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="bootcampStatus" className="text-lg font-semibold text-gray-700">What do you do? *</Label>
+                  <Select name="bootcampStatus" required>
+                    <SelectTrigger className="h-12 text-lg border-2 focus:border-purple-500">
+                      <SelectValue placeholder="Select your current status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="studying-school">Studying in school</SelectItem>
+                      <SelectItem value="working">Working</SelectItem>
+                      <SelectItem value="not-working-learning">Not working but learning beyond schools</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="bootcampGrade" className="text-lg font-semibold text-gray-700">Your grade of education *</Label>
+                  <Select name="bootcampGrade" required>
+                    <SelectTrigger className="h-12 text-lg border-2 focus:border-purple-500">
+                      <SelectValue placeholder="Select your grade" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="6">6th Grade</SelectItem>
+                      <SelectItem value="7">7th Grade</SelectItem>
+                      <SelectItem value="8">8th Grade</SelectItem>
+                      <SelectItem value="9">9th Grade</SelectItem>
+                      <SelectItem value="10">10th Grade</SelectItem>
+                      <SelectItem value="11">11th Grade</SelectItem>
+                      <SelectItem value="12">12th Grade</SelectItem>
+                      <SelectItem value="graduate">Graduate</SelectItem>
+                      <SelectItem value="postgraduate">Post Graduate</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="bootcampChoice" className="text-lg font-semibold text-gray-700">Which bootcamp are you interested in? *</Label>
+                  <Select name="bootcampChoice" required>
+                    <SelectTrigger className="h-12 text-lg border-2 focus:border-purple-500">
+                      <SelectValue placeholder="Select a bootcamp" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="coding-fundamentals">Coding Fundamentals (6 weeks)</SelectItem>
+                      <SelectItem value="ai-ml">AI & Machine Learning (6 weeks)</SelectItem>
+                      <SelectItem value="python-mastery">Python Mastery (8 weeks)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="bootcampEmail" className="text-lg font-semibold text-gray-700">Email address *</Label>
+                    <Input 
+                      id="bootcampEmail" 
+                      name="bootcampEmail"
+                      type="email"
+                      placeholder="your@email.com" 
+                      required 
+                      className="h-12 text-lg border-2 focus:border-purple-500"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="bootcampPhone" className="text-lg font-semibold text-gray-700">Contact number *</Label>
+                    <Input 
+                      id="bootcampPhone" 
+                      name="bootcampPhone"
+                      type="tel"
+                      placeholder="+91 94546 84161" 
+                      required 
+                      className="h-12 text-lg border-2 focus:border-purple-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="bootcampWhatsapp" className="text-lg font-semibold text-gray-700">WhatsApp number *</Label>
+                    <Input 
+                      id="bootcampWhatsapp" 
+                      name="bootcampWhatsapp"
+                      type="tel"
+                      placeholder="+91 94546 84161" 
+                      required 
+                      className="h-12 text-lg border-2 focus:border-purple-500"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="bootcampStartDate" className="text-lg font-semibold text-gray-700">Preferred start date *</Label>
+                    <Input 
+                      id="bootcampStartDate" 
+                      name="bootcampStartDate"
+                      type="date"
+                      required 
+                      className="h-12 text-lg border-2 focus:border-purple-500"
+                    />
+                  </div>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  Book a Free Demo
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

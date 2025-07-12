@@ -56,7 +56,7 @@ const Navbar = () => {
             🎓 <span className="font-bold text-blue-600">New Batch Starting {CONSTANTS.BATCH_START_DATE}</span> • 
             <span className="text-orange-600 font-semibold"> Limited Seats Available</span> • 
             <Link to="/contact" className="text-blue-600 hover:text-blue-800 underline font-semibold ml-2">
-              Enroll Now →
+              Book a free demo →
             </Link>
           </p>
         </div>
@@ -118,7 +118,7 @@ const Navbar = () => {
                 onClick={handleEnrollClick}
                 className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
               >
-                Enroll Now
+                Book a free demo
               </button>
             </div>
 
@@ -168,7 +168,7 @@ const Navbar = () => {
                   }}
                   className="block w-full text-center bg-gradient-to-r from-blue-600 to-green-500 text-white px-3 py-2 rounded-md font-medium mt-4"
                 >
-                  Enroll Now
+                  Book a free demo
                 </button>
               </div>
             </div>
