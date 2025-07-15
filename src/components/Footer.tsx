@@ -31,40 +31,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      {/* Quick Enrollment Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-green-500 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join our community of successful learners. Enter your email and we'll contact you within 24 hours.
-          </p>
-          
-          <form onSubmit={handleQuickEnroll} className="max-w-md mx-auto flex gap-4">
-            <Input
-              type="email"
-              placeholder="Enter your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1 h-12 text-gray-900 border-0"
-            />
-            <Button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="bg-white text-blue-600 hover:bg-gray-100 px-6 h-12 font-semibold"
-            >
-              {isSubmitting ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-              ) : (
-                <>
-                  <Send className="mr-2 h-5 w-5" />
-                  Enroll
-                </>
-              )}
-            </Button>
-          </form>
-        </div>
-      </div>
+     
+      
+        
 
       {/* Main Footer Content */}
       <div className="py-16">

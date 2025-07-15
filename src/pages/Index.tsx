@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle, ChevronLeft, ChevronRight, UserCheck, TrendingUp, Coffee, Presentation, Medal, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -29,21 +29,73 @@ const Index = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      role: "Parent",
-      content: "My daughter's grades improved dramatically after joining BrightStem. The personalized attention is outstanding!",
+      name: "Aanya Sharma",
+      role: "Class 10 Student",
+      school: "Jain Bharati Mrigavati Vidyalaya, New Delhi",
+      content: "The small batch size really helped me overcome my hesitation in asking questions. My grades in Mathematics improved significantly, and I feel more confident in problem-solving.",
       rating: 5
     },
     {
-      name: "Raj Patel",
-      role: "Student",
-      content: "The QuizGrid feature helped me understand my weak areas and improve systematically.",
+      name: "Arjun Malhotra",
+      role: "Class 12 Student",
+      school: "The Srijan School, Model Town",
+      content: "The IIT-NIT alumni sessions were eye-opening. Getting direct guidance from Google and Amazon engineers helped me understand what it takes to succeed in tech. The coding bootcamp was exceptional!",
       rating: 5
     },
     {
-      name: "Meera Singh",
-      role: "Parent",
-      content: "ParentSync keeps me updated on my child's progress. Highly recommended!",
+      name: "Ishita Patel",
+      role: "Class 11 Student",
+      school: "CRPF Public School, Rohini",
+      content: "The weekly testing system helped me identify and work on my weak areas. The personalized attention in Olympiad preparation gave me the confidence to win Gold in SOF Mathematics Olympiad.",
+      rating: 5
+    },
+    {
+      name: "Advait Kapoor",
+      role: "Class 9 Student",
+      school: "DAV Public School, Ashok Vihar",
+      content: "Public speaking sessions transformed me from a shy student to someone who now actively participates in school debates. The teaching methodology is unique and highly effective.",
+      rating: 5
+    },
+    {
+      name: "Ananya Gupta",
+      role: "Class 12 Student",
+      school: "Prabhu Dayal Public School, Shalimar Bagh",
+      content: "The AI & Computer Science package opened new horizons for me. Learning Python and machine learning concepts alongside regular studies has been incredibly valuable.",
+      rating: 5
+    },
+    {
+      name: "Reyansh Singh",
+      role: "Class 10 Student",
+      school: "Amity International School, Pushp Vihar",
+      content: "Monthly student seminars helped me develop presentation skills and confidence. The peer learning environment is fantastic, and teachers ensure everyone understands core concepts thoroughly.",
+      rating: 5
+    },
+    {
+      name: "Zara Verma",
+      role: "Class 11 Student",
+      school: "Amity International School, Saket",
+      content: "The NTSE preparation strategy was excellent. Regular mock tests and detailed analysis of my performance helped me qualify for NTSE with a good margin.",
+      rating: 5
+    },
+    {
+      name: "Vihaan Mehra",
+      role: "Class 9 Student",
+      school: "Cambridge School, Shrinivaspuri",
+      content: "The complementary curriculum approach ensures I'm always ahead in my school topics. The teaching style makes complex concepts easy to understand and remember.",
+      rating: 5
+    },
+    {
+      name: "Avni Saxena",
+      role: "Class 12 Student",
+      school: "The Indian School, New Delhi",
+      content: "BrightStem's approach to competitive exam preparation is unique. They focus on conceptual understanding rather than just solving problems. This helped me excel in JEE preparation.",
+      rating: 5
+    },
+    {
+      name: "Dhruv Chadha",
+      role: "Class 10 Student",
+      school: "Fr Agnel School, Gautam Nagar",
+      content: "The bi-weekly parent meetings keep my parents well-informed about my progress. The personal attention and regular feedback have helped me improve consistently.",
       rating: 5
     }
   ];
@@ -100,24 +152,52 @@ const Index = () => {
 
   const whyChooseUsCards = [
     {
-      icon: Trophy,
-      color: "blue",
-      ...CONSTANTS.WHY_CHOOSE_US.EXPERT_TEACHING
-    },
-    {
       icon: Users,
-      color: "green",
-      ...CONSTANTS.WHY_CHOOSE_US.OPTIMAL_BATCH
+      title: "Optimal Small Batches (4-5 Students)",
+      content: "Research shows 1:1 coaching lacks peer learning opportunities, while large classrooms (30+ students) inhibit questioning. Our scientifically-backed 4-5 student batches create the perfect balance of collaborative learning and personal attention.",
+      color: "from-blue-500 to-purple-600"
     },
     {
-      icon: CheckCircle,
-      color: "purple",
-      ...CONSTANTS.WHY_CHOOSE_US.PARENT_CONNECT
+      icon: UserCheck,
+      title: "Smart Student Placement",
+      content: "We don't place students based on grades like traditional coaching centers. Through comprehensive assessments, we evaluate learning ability and style to ensure optimal batch placement for maximum growth.",
+      color: "from-green-500 to-blue-600"
     },
     {
-      icon: BookOpen,
-      color: "orange",
-      ...CONSTANTS.WHY_CHOOSE_US.COMPLEMENTARY_CURRICULUM
+      icon: TrendingUp,
+      title: "Weekly Testing & Progress Tracking",
+      content: "Regular assessments monitor progress with detailed reports shared with parents. Special one-on-one sessions for students who need extra support ensure everyone stays on track.",
+      color: "from-purple-500 to-pink-600"
+    },
+    {
+      icon: Coffee,
+      title: "Bi-weekly Parent Meetings",
+      content: "Deep 30-minute sessions every two weeks to understand your child completely - their nature, lifestyle, interests, and dreams. Education goes beyond textbooks; it's about shaping their way of living.",
+      color: "from-orange-500 to-red-600"
+    },
+    {
+      icon: Presentation,
+      title: "Monthly Student Seminars",
+      content: "All-student gatherings foster collaboration, networking, and peer learning. Students share experiences, learn from each other, and build lasting connections that extend beyond academics.",
+      color: "from-teal-500 to-green-600"
+    },
+    {
+      icon: Trophy,
+      title: "Weekly IIT-NIT Alumni Sessions",
+      content: "Direct access to successful IIT and NIT graduates every week. Get career guidance, learn from their journeys, and ensure your efforts align with your dream goals.",
+      color: "from-indigo-500 to-purple-600"
+    },
+    {
+      icon: Medal,
+      title: "Olympiad Excellence Program",
+      content: "Specialized training for SOF Olympiads, NTSE, and other competitive exams. Our structured approach combines conceptual understanding with strategic problem-solving techniques for maximum success.",
+      color: "from-yellow-500 to-orange-600"
+    },
+    {
+      icon: Mic,
+      title: "Public Speaking & Co-curricular",
+      content: "Comprehensive development through public speaking, debates, and creative activities. Build confidence, improve communication skills, and develop leadership qualities alongside academic excellence.",
+      color: "from-pink-500 to-rose-600"
     }
   ];
 
@@ -244,79 +324,54 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section id="why-choose-us" className="py-20 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">BrightStem Academy?</span>
+              Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">BrightStem Academy?</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience proven teaching methodologies with personalized attention in an optimal learning environment
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto px-4 mb-12">
+              Every aspect of our teaching methodology is grounded in educational research and psychological studies to create the most effective learning environment for your child.
             </p>
           </div>
 
-          {/* Desktop View - Grid Layout */}
-          <div className="hidden md:grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUsCards.map((card, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 bg-${card.color}-100 rounded-full flex items-center justify-center mb-6`}>
-                    <card.icon className={`h-8 w-8 text-${card.color}-600`} />
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-5 sm:p-6">
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${card.color} rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto`}>
+                    <card.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{card.title}</h3>
-                  <p className="text-gray-600">{card.content}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">{card.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">{card.content}</p>
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Mobile View - Carousel Layout */}
-          <div className="md:hidden">
-            <Carousel className="w-full max-w-sm mx-auto">
-              <CarouselContent>
-                {whyChooseUsCards.map((card, index) => (
-                  <CarouselItem key={index}>
-                    <Card className="border-0 shadow-lg">
-                      <CardContent className="p-6 text-center">
-                        <div className={`w-16 h-16 bg-${card.color}-100 rounded-full flex items-center justify-center mb-4 mx-auto`}>
-                          <card.icon className={`h-8 w-8 text-${card.color}-600`} />
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3">{card.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{card.content}</p>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center gap-4 mt-6">
-                <CarouselPrevious className="relative translate-y-0 left-0" />
-                <CarouselNext className="relative translate-y-0 right-0" />
-              </div>
-            </Carousel>
-            <div className="text-center mt-4">
-              <p className="text-sm text-gray-500">← Swipe to explore more →</p>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Learning Packages</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Comprehensive education solutions with personalized attention and proven results.
-            </p>
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium">
-              <Calendar className="h-4 w-4" />
-              Fresh batches starting {CONSTANTS.BATCH_START_DATE}, 2025
+            <div className="space-y-4">
+              <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto">
+                Choose the perfect learning package that aligns with your educational goals. All sessions are conducted online and require a laptop/desktop with stable internet connection.
+              </p>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 max-w-3xl mx-auto">
+                <p className="text-base text-gray-700">
+                  <span className="font-semibold text-blue-600">Offline Sessions Available:</span> Students can opt for in-person classes at our center in 
+                  <span className="font-medium"> Shakti Khand 3</span> for an additional fee of ₹500 per month.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <PricingCard key={index} {...plan} />
             ))}
@@ -329,27 +384,106 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Students Say</span>
+              What Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Students Say</span>
             </h2>
-            <p className="text-xl text-gray-600">Real stories from real students and parents</p>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              Hear from our students about their transformative learning journey at BrightStem Academy
+            </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <TestimonialCard testimonial={testimonials[currentTestimonial]} />
-            
-            <div className="flex justify-center mt-8 space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial
-                      ? 'bg-blue-600 scale-125'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
+          {/* Desktop View - 3 Cards */}
+          <div className="hidden lg:block">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-4">
+                {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, slideIndex) => (
+                  <CarouselItem key={slideIndex} className="pl-4 basis-full">
+                    <div className="grid grid-cols-3 gap-8">
+                      {testimonials.slice(slideIndex * 3, (slideIndex * 3) + 3).map((testimonial, index) => (
+                        <div key={index} className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                          <div className="flex items-center gap-2 mb-4">
+                            {Array.from({ length: testimonial.rating }).map((_, i) => (
+                              <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                            ))}
+                          </div>
+                          <p className="text-gray-700 mb-6 line-clamp-4">{testimonial.content}</p>
+                          <div className="border-t pt-4">
+                            <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                            <p className="text-sm text-blue-600">{testimonial.role}</p>
+                            <p className="text-sm text-gray-500 mt-1">{testimonial.school}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-8">
+                <CarouselPrevious className="relative translate-y-0 left-0" />
+                <CarouselNext className="relative translate-y-0 right-0" />
+              </div>
+            </Carousel>
+          </div>
+
+          {/* Tablet View - 2 Cards */}
+          <div className="hidden md:block lg:hidden">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-4">
+                {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, slideIndex) => (
+                  <CarouselItem key={slideIndex} className="pl-4 basis-full">
+                    <div className="grid grid-cols-2 gap-6">
+                      {testimonials.slice(slideIndex * 2, (slideIndex * 2) + 2).map((testimonial, index) => (
+                        <div key={index} className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                          <div className="flex items-center gap-2 mb-4">
+                            {Array.from({ length: testimonial.rating }).map((_, i) => (
+                              <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                            ))}
+                          </div>
+                          <p className="text-gray-700 mb-6 line-clamp-4">{testimonial.content}</p>
+                          <div className="border-t pt-4">
+                            <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                            <p className="text-sm text-blue-600">{testimonial.role}</p>
+                            <p className="text-sm text-gray-500 mt-1">{testimonial.school}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-8">
+                <CarouselPrevious className="relative translate-y-0 left-0" />
+                <CarouselNext className="relative translate-y-0 right-0" />
+              </div>
+            </Carousel>
+          </div>
+
+          {/* Mobile View - Single Card */}
+          <div className="md:hidden">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-4">
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="pl-4">
+                    <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl p-6 shadow-lg">
+                      <div className="flex items-center gap-2 mb-4">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 mb-6">{testimonial.content}</p>
+                      <div className="border-t pt-4">
+                        <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                        <p className="text-sm text-blue-600">{testimonial.role}</p>
+                        <p className="text-sm text-gray-500 mt-1">{testimonial.school}</p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-8">
+                <CarouselPrevious className="relative translate-y-0 left-0" />
+                <CarouselNext className="relative translate-y-0 right-0" />
+              </div>
+            </Carousel>
           </div>
         </div>
       </section>

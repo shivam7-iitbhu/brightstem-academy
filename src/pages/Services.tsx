@@ -1,5 +1,5 @@
 
-import { Check, Users, Brain, Trophy, BookOpen, MessageSquare, Calendar, UserCheck, TrendingUp, Coffee, Presentation, GraduationCap } from 'lucide-react';
+import { Check, Users, Brain, Trophy, BookOpen, MessageSquare, Calendar, UserCheck, TrendingUp, Coffee, Presentation, GraduationCap, Medal, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -87,47 +87,91 @@ const Services = () => {
               Our Research-Backed <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Teaching Philosophy</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Every aspect of our methodology is grounded in educational research and psychological studies 
+              Every aspect of our teaching methodology is grounded in educational research and psychological studies 
               to create the most effective learning environment.
             </p>
-            
-            {/* Illustrative Image */}
-            <div className="mb-12">
-              <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
-                alt="Small group learning environment"
-                className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
-              />
-              <p className="text-sm text-gray-500 mt-4 italic">Optimal batch sizes - the perfect balance of collaboration and personal attention</p>
-            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg mr-4 group-hover:scale-110 transition-transform">
-                      <feature.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl font-bold text-gray-900">{feature.title}</CardTitle>
-                  </div>
-                  <CardDescription className="text-lg text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {feature.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-center">
-                        <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Users className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Optimal Small Batches (4-5 Students)</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Research shows 1:1 coaching lacks peer learning opportunities, while large classrooms (30+ students) inhibit questioning. Our scientifically-backed 4-5 student batches create the perfect balance of collaborative learning and personal attention.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <UserCheck className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Smart Student Placement</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">We don't place students based on grades like traditional coaching centers. Through comprehensive assessments, we evaluate learning ability and style to ensure optimal batch placement for maximum growth.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Weekly Testing & Progress Tracking</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Regular assessments monitor progress with detailed reports shared with parents. Special one-on-one sessions for students who need extra support ensure everyone stays on track.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Coffee className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Bi-weekly Parent Meetings</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Deep 30-minute sessions every two weeks to understand your child completely - their nature, lifestyle, interests, and dreams. Education goes beyond textbooks; it's about shaping their way of living.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-500 to-green-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Presentation className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Monthly Student Seminars</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">All-student gatherings foster collaboration, networking, and peer learning. Students share experiences, learn from each other, and build lasting connections that extend beyond academics.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Weekly IIT-NIT Alumni Sessions</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Direct access to successful IIT and NIT graduates every week. Get career guidance, learn from their journeys, and ensure your efforts align with your dream goals.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Medal className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Olympiad Excellence Program</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Specialized training for SOF Olympiads, NTSE, and other competitive exams. Our structured approach combines conceptual understanding with strategic problem-solving techniques for maximum success.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform mx-auto">
+                  <Mic className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">Public Speaking & Co-curricular</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">Comprehensive development through public speaking, debates, and creative activities. Build confidence, improve communication skills, and develop leadership qualities alongside academic excellence.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

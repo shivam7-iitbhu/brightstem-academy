@@ -1,7 +1,8 @@
 
-import { Award, BookOpen, Users, Heart, Target, Star, Code, Briefcase, GraduationCap, CheckCircle, Calendar, UserCheck, TrendingUp, Coffee, Presentation, Trophy } from 'lucide-react';
+import { Award, BookOpen, Users, Heart, Target, Star, Code, Briefcase, GraduationCap, CheckCircle, Calendar, UserCheck, TrendingUp, Coffee, Presentation, Trophy, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const achievements = [
@@ -257,6 +258,17 @@ const About = () => {
               to create the most effective learning environment for your child.
             </p>
             
+            {/* Clean Modern Button */}
+            <div className="flex justify-center mb-12">
+              <Link 
+                to="/#why-choose-us"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"
+              >
+                Explore Our Teaching Methods
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
             {/* Illustrative Image */}
             <div className="mb-12">
               <img 
@@ -266,20 +278,6 @@ const About = () => {
               />
               <p className="text-sm text-gray-500 mt-4 italic">Small batch learning - the perfect balance of collaboration and personal attention</p>
             </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {teachingPhilosophy.map((philosophy, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
-                <CardContent className="p-6 sm:p-8">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${philosophy.color} rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform mx-auto`}>
-                    <philosophy.icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">{philosophy.title}</h3>
-                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed text-center">{philosophy.description}</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
@@ -312,18 +310,47 @@ const About = () => {
         </div>
       </section>
 
-      {/* Personal Message Section */}
-      <section className="py-12 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      {/* Our Pledge Section */}
+      <section className="py-8 sm:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-2xl p-6 sm:p-12 shadow-2xl">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Our Commitment</h2>
-            <blockquote className="text-base sm:text-xl text-gray-700 italic leading-relaxed mb-4 sm:mb-6">
-              "We believe in combining the best of traditional teaching methods with cutting-edge technology and industry insights. 
-              Our unique blend of educational expertise from B.Ed qualified teachers and real-world experience from top-tier 
-              tech companies ensures that our students receive education that is both academically sound and practically relevant. 
-              Every student has unlimited potential, and our mission is to unlock it through innovative, personalized learning experiences."
-            </blockquote>
-            <div className="text-base sm:text-lg font-semibold text-gray-900">- BrightStem Academy Team</div>
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+              <Heart className="h-8 w-8 text-white" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Our Pledge to Excellence</h2>
+            <div className="space-y-4 text-base sm:text-lg text-gray-700">
+              <p className="font-semibold text-blue-600">As educators and mentors, we solemnly pledge to:</p>
+              <div className="grid gap-3 text-left max-w-2xl mx-auto">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p>Nurture each student's unique potential through personalized attention and guidance</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p>Maintain the highest standards of educational excellence by combining traditional wisdom with modern innovation</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p>Foster a supportive learning environment where questions are encouraged and curiosity is celebrated</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p>Bridge academic knowledge with real-world applications through our IIT-NIT alumni network</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p>Ensure transparent communication with parents and regular updates on student progress</p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-gray-200">
+                <p className="italic text-sm sm:text-base">
+                  "We don't just teach; we inspire, guide, and empower. Our commitment is to transform education into a journey of discovery and growth."
+                </p>
+                <div className="mt-2 font-semibold text-gray-900">
+                  - Team BrightStem Academy
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

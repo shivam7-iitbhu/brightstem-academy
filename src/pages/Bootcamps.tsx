@@ -99,7 +99,7 @@ const Bootcamps = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {bootcamps.map((bootcamp, index) => (
-              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden">
+              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden relative group">
                 <CardHeader className={`text-center pb-6 bg-gradient-to-br ${
                   bootcamp.color === 'blue' ? 'from-blue-500 to-blue-600' :
                   bootcamp.color === 'purple' ? 'from-purple-500 to-purple-600' :
@@ -114,25 +114,20 @@ const Bootcamps = () => {
                   </CardDescription>
                 </CardHeader>
                 
-                <CardContent className="p-8">
+                <CardContent className="p-8 pb-16">
                   <p className="text-gray-600 mb-6">{bootcamp.description}</p>
                   
                   {/* Pricing Section */}
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg mb-6 border border-green-200">
-                    <div className="text-center mb-4">
-                      <div className="flex items-center justify-center gap-2 mb-2">
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg mb-6 border border-green-200">
+                    <div className="text-center">
+                      <div className="flex items-center justify-center gap-2 mb-1">
                         <span className="text-2xl font-bold text-green-600">{CONSTANTS.BOOTCAMP_PRICING.DISCOUNTED_PRICE}</span>
-                        <span className="text-lg text-gray-600">{CONSTANTS.BOOTCAMP_PRICING.PERIOD}</span>
+                        <span className="text-base text-gray-600">{CONSTANTS.BOOTCAMP_PRICING.PERIOD}</span>
                       </div>
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-lg text-gray-500 line-through">{CONSTANTS.BOOTCAMP_PRICING.REGULAR_PRICE}</span>
-                        <span className="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-medium">40% OFF</span>
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <span className="text-gray-500 line-through">{CONSTANTS.BOOTCAMP_PRICING.REGULAR_PRICE}</span>
+                        <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded-full text-xs font-medium">40% OFF</span>
                       </div>
-                    </div>
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                      <p className="text-sm text-blue-700 text-center font-medium">
-                        🎓 Special Price: <span className="font-bold">{CONSTANTS.BOOTCAMP_PRICING.ENROLLED_STUDENT_PRICE}{CONSTANTS.BOOTCAMP_PRICING.PERIOD}</span> for BrightStem students
-                      </p>
                     </div>
                   </div>
                   
@@ -143,7 +138,7 @@ const Bootcamps = () => {
                     </div>
                   </div>
 
-                  <div className="mb-6">
+                  <div>
                     <h4 className="font-semibold text-gray-900 mb-3">What you'll learn:</h4>
                     <ul className="space-y-2">
                       {bootcamp.topics.map((topic, idx) => (
@@ -155,13 +150,15 @@ const Bootcamps = () => {
                     </ul>
                   </div>
 
-                  <div className={`w-full py-3 px-6 rounded-full font-semibold text-center transition-all duration-300 ${
+                  {/* Hover Button */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-white transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 shadow-lg">
+                    <Link to="/contact" className={`block w-full py-3 px-6 rounded-full font-semibold text-center ${
                       bootcamp.color === 'blue' ? 'bg-gradient-to-r from-blue-600 to-blue-700' :
                       bootcamp.color === 'purple' ? 'bg-gradient-to-r from-purple-600 to-purple-700' :
                       'bg-gradient-to-r from-green-600 to-green-700'
-                    } text-white shadow-lg`}
-                  >
-                    I'm in! Let's get started 🚀
+                    } text-white shadow-lg hover:scale-105 transition-transform duration-300`}>
+                      I'm in! Let's get started 🚀
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

@@ -102,6 +102,10 @@
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
+
+  .animate-gradient-rotate {
+    animation: gradient-rotate 3s linear infinite;
+  }
 }
 
 @keyframes fade-in {
@@ -143,6 +147,15 @@
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
