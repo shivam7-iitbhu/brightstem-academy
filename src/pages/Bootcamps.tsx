@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Link } from 'react-router-dom';
 import { CONSTANTS } from '@/lib/constants';
+import { BootcampCarousel } from '@/components/BootcampCarousel';
 import { useState } from 'react';
 
 const Bootcamps = () => {
@@ -22,7 +23,7 @@ const Bootcamps = () => {
       description: "Learn programming basics with Python and build your first applications",
       topics: ["Python Basics", "Logic Building", "Problem Solving", "Mini Projects"],
       icon: Code,
-      color: "blue"
+      color: "blue" as const
     },
     {
       title: "AI & Machine Learning",
@@ -32,7 +33,7 @@ const Bootcamps = () => {
       description: "Discover the world of AI and build your own machine learning models",
       topics: ["AI Concepts", "Data Analysis", "ML Models", "Real-world Applications"],
       icon: Brain,
-      color: "purple"
+      color: "purple" as const
     },
     {
       title: "Python Mastery",
@@ -42,7 +43,7 @@ const Bootcamps = () => {
       description: "Master Python programming from basics to advanced concepts",
       topics: ["Advanced Python", "Data Structures", "Web Development", "API Integration"],
       icon: Zap,
-      color: "green"
+      color: "green" as const
     }
   ];
 
@@ -116,48 +117,7 @@ const Bootcamps = () => {
       {/* Bootcamp Cards */}
       <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {bootcamps.map((bootcamp, index) => (
-              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden">
-                <CardHeader className={`text-center pb-6 bg-gradient-to-br ${
-                  bootcamp.color === 'blue' ? 'from-blue-500 to-blue-600' :
-                  bootcamp.color === 'purple' ? 'from-purple-500 to-purple-600' :
-                  'from-green-500 to-green-600'
-                } text-white`}>
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <bootcamp.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl sm:text-2xl font-bold mb-2">{bootcamp.title}</CardTitle>
-                  <CardDescription className="text-blue-100">
-                    {bootcamp.ageGroup} • {bootcamp.duration}
-                  </CardDescription>
-                </CardHeader>
-                
-                <CardContent className="p-6 sm:p-8">
-                  <p className="text-gray-600 mb-6 text-sm sm:text-base">{bootcamp.description}</p>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center gap-3">
-                      <Clock className="h-5 w-5 text-gray-400" />
-                      <span className="text-gray-700 text-sm sm:text-base">{bootcamp.sessions}</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">What you'll learn:</h4>
-                    <ul className="space-y-2">
-                      {bootcamp.topics.map((topic, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <BootcampCarousel bootcamps={bootcamps} />
 
           {/* Animated CTA Button */}
           <div className="text-center mt-12 sm:mt-16">
