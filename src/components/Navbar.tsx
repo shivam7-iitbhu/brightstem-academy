@@ -37,7 +37,8 @@ const Navbar = () => {
       name: 'Bootcamps', 
       path: '/bootcamps', 
       isSpecial: true,
-      badge: 'NEW'
+      badge: 'NEW',
+      icon: Code
     },
     { name: 'Contact', path: '/contact' },
   ];
@@ -97,6 +98,10 @@ const Navbar = () => {
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
               >
+                {/* Add icon for Bootcamps */}
+                {item.icon && (
+                  <item.icon className="inline-block mr-1 h-4 w-4 align-text-bottom text-blue-500" />
+                )}
                 {item.name}
                 {item.badge && (
                   <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full">
@@ -208,6 +213,10 @@ const Navbar = () => {
                 }`}
                 onClick={() => setIsOpen(false)}
               >
+                {/* Add icon for Bootcamps */}
+                {item.icon && (
+                  <item.icon className="inline-block mr-1 h-4 w-4 align-text-bottom text-blue-500" />
+                )}
                 {item.name}
                 {item.badge && (
                   <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-orange-500 text-white">

@@ -78,6 +78,12 @@ const Footer = () => {
                 <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Services</Link></li>
                 <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
               </ul>
+              <div className="mt-6 text-gray-400 text-sm">
+                Already a member?{' '}
+                <Link to="/auth/login" className="text-blue-400 hover:text-white underline">Login</Link>
+                {' '}|{' '}
+                <Link to="/auth/signup" className="text-blue-400 hover:text-white underline">Register</Link> here
+              </div>
             </div>
 
             {/* Services */}
@@ -99,8 +105,8 @@ const Footer = () => {
                 <div className="flex items-start">
                   <Phone className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-white font-medium">+91 94546 84161</p>
-                    <p className="text-gray-400 text-sm">Mon-Sat 9AM-7PM</p>
+                    <p className="text-white font-medium">+91 94546 84161 <span className="ml-2 bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs align-middle">WhatsApp</span></p>
+                    <p className="text-gray-400 text-sm">Available on WhatsApp • Queries responded within 15 mins • Mon-Sat 9AM-7PM</p>
                   </div>
                 </div>
                 

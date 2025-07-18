@@ -204,18 +204,41 @@ const About = () => {
           </div>
 
           {/* Mobile and Tablet View - Carousel */}
-          <div className="lg:hidden">
-            <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto">
-              <CarouselContent className="-ml-2 md:-ml-4">
+          <div className="relative lg:hidden">
+            {/* Fade overlays for scroll affordance */}
+            <div className="pointer-events-none absolute top-0 left-0 h-full w-8 z-10 bg-gradient-to-r from-white via-white/80 to-transparent" />
+            <div className="pointer-events-none absolute top-0 right-0 h-full w-8 z-10 bg-gradient-to-l from-white via-white/80 to-transparent" />
+            <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto overflow-visible">
+              <CarouselContent className="-ml-8 md:-ml-4 pr-8 md:pr-4">
                 {teamMembers.map((member, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
-                    <TeamMemberCard member={member} index={index} />
+                  <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 transition-transform duration-500" style={{
+                    marginLeft: index === 0 ? '8px' : undefined,
+                    marginRight: index === teamMembers.length - 1 ? '8px' : undefined,
+                  }}>
+                    <div className={index === 0 ? "animate-shake-x" : ""}>
+                      <TeamMemberCard member={member} index={index} />
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              {/* Hide arrows on mobile, show on tablet */}
               <CarouselPrevious className="hidden sm:flex" />
               <CarouselNext className="hidden sm:flex" />
             </Carousel>
+            {/* Swipe label for mobile */}
+            <div className="block sm:hidden text-center text-xs text-gray-400 mt-2 animate-fade-in">⬅️ Swipe to see more ➡️</div>
+            <style>{`
+              @keyframes shake-x {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-8px); }
+                40% { transform: translateX(8px); }
+                60% { transform: translateX(-6px); }
+                80% { transform: translateX(6px); }
+              }
+              .animate-shake-x {
+                animation: shake-x 1.2s cubic-bezier(.36,.07,.19,.97) both 1;
+              }
+            `}</style>
           </div>
         </div>
       </section>
@@ -263,7 +286,7 @@ const About = () => {
             {/* Clean Modern Button */}
             <div className="flex justify-center mb-12">
               <Link 
-                to="/#why-choose-us"
+                to="/services#teaching-philosophy"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"
               >
                 Explore Our Teaching Methods

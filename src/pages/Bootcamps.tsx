@@ -82,7 +82,8 @@ const Bootcamps = () => {
               Weekly <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Tech Bootcamps</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Empower your child with future-ready skills in coding, AI, Python, and machine learning through our intensive weekly bootcamps
+              Empower your child with future-ready skills in coding, AI, Python, and machine learning through our intensive weekly bootcamps.<br />
+              <span className="font-semibold text-blue-700">Unlock the future of AI and tech in just ₹599/- per session.</span> <span className="text-green-700 font-semibold">Only ₹299/- per session for already registered BrightStem students!</span>
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
               <div className="flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full">

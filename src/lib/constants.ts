@@ -1,6 +1,6 @@
 
 export const CONSTANTS = {
-  BATCH_START_DATE: "July 15th",
+  BATCH_START_DATE: "Aug 4th",
   COMPANY_NAME: "BrightStem Academy",
   CONTACT_INFO: {
     email: "contact@brightstem.academy",
