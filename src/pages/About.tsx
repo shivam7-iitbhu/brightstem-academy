@@ -3,6 +3,8 @@ import { Award, BookOpen, Users, Heart, Target, Star, Code, Briefcase, Graduatio
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
   const achievements = [
@@ -270,14 +272,15 @@ const About = () => {
             </div>
 
             {/* Illustrative Image */}
-            <div className="mb-12">
+            {/* REMOVED: The following block containing the image and caption has been deleted as per request. */}
+            {/* <div className="mb-12">
               <img 
                 src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
                 alt="Small group learning environment"
                 className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
               />
               <p className="text-sm text-gray-500 mt-4 italic">Small batch learning - the perfect balance of collaboration and personal attention</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

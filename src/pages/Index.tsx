@@ -9,15 +9,27 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import { CONSTANTS } from '@/lib/constants';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
+import { useRef } from 'react';
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const isMobile = useIsMobile();
+  const [showDemoPopup, setShowDemoPopup] = useState(false);
+  const packagesRef = useRef<HTMLDivElement | null>(null);
+  const popupShownRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      if (packagesRef.current && !popupShownRef.current) {
+        const rect = packagesRef.current.getBoundingClientRect();
+        if (rect.bottom < window.innerHeight - 100) {
+          setShowDemoPopup(true);
+          popupShownRef.current = true;
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -352,7 +364,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section ref={packagesRef} className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -378,6 +390,32 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Book Demo Popup */}
+      <Dialog open={showDemoPopup} onOpenChange={setShowDemoPopup}>
+        <DialogContent className="max-w-xl rounded-2xl shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-green-50">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold text-blue-700 text-center mb-2">Gift Yourself a Transformational Journey!</DialogTitle>
+            <DialogDescription className="text-lg text-gray-700 text-center mb-4">
+              Choose a learning path and gift yourself a transformational journey, where education is personalized and success is guaranteed.<br/>
+              <span className="font-semibold text-blue-600">Book a free demo to meet the founders and make your mind then!</span>
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center gap-4">
+            <img src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" alt="Book Demo" className="w-32 h-32 rounded-full shadow-lg animate-bounce" />
+            <button
+              className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              onClick={() => { window.location.href = '/contact#enrollment-form'; }}
+            >
+              Book My Free Demo
+            </button>
+            <p className="text-sm text-gray-500 italic text-center">No commitment required. Just meet us, experience our teaching, and decide for yourself!</p>
+          </div>
+          <DialogClose asChild>
+            <button className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+          </DialogClose>
+        </DialogContent>
+      </Dialog>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">

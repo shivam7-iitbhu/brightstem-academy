@@ -21,6 +21,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import AdminDashboard from "./pages/admin/Dashboard";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <AppContent />
         </BrowserRouter>
       </AuthProvider>
