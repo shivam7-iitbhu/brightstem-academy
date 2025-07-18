@@ -1,13 +1,34 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { AuthContextType, Tables, User } from '@/integrations/supabase/types';
+import { User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+
+interface Profile {
+  id: string;
+  role: 'admin' | 'student';
+  full_name?: string;
+  phone?: string;
+  email: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+interface AuthContextType {
+  user: User | null;
+  profile: Profile | null;
+  signUp: (email: string, password: string, fullName: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  loading: boolean;
+  isAdmin: boolean;
+}
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Tables<'profiles'> | null>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -15,12 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Check active sessions and sets the user
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
-        setUser({
-          id: session.user.id,
-          email: session.user.email,
-          created_at: session.user.created_at,
-          user_metadata: session.user.user_metadata
-        });
+        setUser(session.user);
         fetchProfile(session.user.id);
       }
       setLoading(false);
@@ -29,12 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Listen for changes on auth state
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
-        setUser({
-          id: session.user.id,
-          email: session.user.email,
-          created_at: session.user.created_at,
-          user_metadata: session.user.user_metadata
-        });
+        setUser(session.user);
         fetchProfile(session.user.id);
       } else {
         setUser(null);
@@ -48,14 +59,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single();
-
-      if (error) throw error;
-      setProfile(data);
+      // Since profiles table doesn't exist in the current database schema,
+      // we'll create a basic profile from the user metadata
+      setProfile({
+        id: userId,
+        role: 'student', // Default role
+        full_name: user?.user_metadata?.full_name || '',
+        email: user?.email || '',
+        created_at: user?.created_at,
+      });
     } catch (error) {
       console.error('Error fetching profile:', error);
       toast({
