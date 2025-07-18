@@ -163,11 +163,26 @@ const Bootcamps = () => {
           <div className="text-center mt-12 sm:mt-16">
             <Button 
               onClick={() => setIsFormOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-full shadow-2xl transform transition-all duration-300 hover:scale-110 animate-pulse hover:animate-none group"
+              className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 group border-2 border-transparent star-trail-button"
             >
               <span className="relative z-10">🚀 I'm Ready! Let's Get Started</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute inset-0 bg-white opacity-20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              
+              {/* Star element */}
+              <div className="absolute star-element">
+                <div className="star">
+                  <div className="star-part star-part-1"></div>
+                  <div className="star-part star-part-2"></div>
+                  <div className="star-part star-part-3"></div>
+                  <div className="star-part star-part-4"></div>
+                </div>
+              </div>
+              
+              {/* Trail elements */}
+              <div className="absolute trail-1"></div>
+              <div className="absolute trail-2"></div>
+              <div className="absolute trail-3"></div>
+              <div className="absolute trail-4"></div>
+              <div className="absolute trail-5"></div>
             </Button>
             <p className="text-gray-600 mt-4 text-sm sm:text-base">Join thousands of students already learning with us!</p>
           </div>
