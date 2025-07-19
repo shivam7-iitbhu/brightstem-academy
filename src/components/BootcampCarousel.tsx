@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight, Clock, CheckCircle } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import useEmblaCarousel from 'embla-carousel-react';
 
 interface Bootcamp {
   title: string;
@@ -22,6 +24,7 @@ export const BootcampCarousel: React.FC<BootcampCarouselProps> = ({ bootcamps })
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
@@ -67,57 +70,63 @@ export const BootcampCarousel: React.FC<BootcampCarouselProps> = ({ bootcamps })
 
   const { prevIndex, nextIndex } = getVisibleCards();
 
+  // Update Embla carousel when currentIndex changes
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.scrollTo(currentIndex);
+    }
+  }, [currentIndex, emblaApi]);
+
   return (
     <div className="relative w-full">
       {/* Desktop Grid (hidden on mobile) */}
       <div className="hidden md:grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         {bootcamps.map((bootcamp, index) => (
-          <BootcampCard key={index} bootcamp={bootcamp} />
+          <BootcampCard key={index} bootcamp={bootcamp} isActive={false} />
         ))}
       </div>
 
-      {/* Mobile Carousel (visible only on mobile) */}
-      <div className="md:hidden relative overflow-hidden">
-        {/* Navigation arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition-all duration-200"
-          aria-label="Previous bootcamp"
-        >
-          <ChevronLeft className="h-5 w-5 text-gray-700" />
-        </button>
-        
-        <button
-          onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition-all duration-200"
-          aria-label="Next bootcamp"
-        >
-          <ChevronRight className="h-5 w-5 text-gray-700" />
-        </button>
-
-        {/* Carousel container */}
-        <div
-          ref={carouselRef}
-          className="flex items-center justify-center gap-4 px-8 py-4"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
-          {/* Previous card (small, left) */}
-          <div className="transform scale-75 opacity-60 transition-all duration-500 ease-out w-64 flex-shrink-0">
-            <BootcampCard bootcamp={bootcamps[prevIndex]} />
-          </div>
-
-          {/* Current card (normal size, center) */}
-          <div className="transform scale-100 opacity-100 transition-all duration-500 ease-out w-80 flex-shrink-0 z-10">
-            <BootcampCard bootcamp={bootcamps[currentIndex]} />
-          </div>
-
-          {/* Next card (small, right) */}
-          <div className="transform scale-75 opacity-60 transition-all duration-500 ease-out w-64 flex-shrink-0">
-            <BootcampCard bootcamp={bootcamps[nextIndex]} />
-          </div>
+      {/* Mobile and Tablet View - Carousel */}
+      <div className="relative md:hidden">
+        {/* Fade overlays for scroll affordance */}
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-8 z-10 bg-gradient-to-r from-white via-white/80 to-transparent" />
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-8 z-10 bg-gradient-to-l from-white via-white/80 to-transparent" />
+        <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto overflow-visible" ref={emblaRef}>
+          <CarouselContent className="-ml-8 md:-ml-4 pr-8 md:pr-4">
+            {bootcamps.map((bootcamp, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 transition-transform duration-500" style={{
+                marginLeft: index === 0 ? '8px' : undefined,
+                marginRight: index === bootcamps.length - 1 ? '8px' : undefined,
+              }}>
+                <div className={index === 0 ? "animate-shake-x" : ""}>
+                  <BootcampCard bootcamp={bootcamp} isActive={index === currentIndex} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        {/* Only one swipe or tap arrows to explore label, with working arrows */}
+        <div className="text-center mt-4 flex items-center justify-center gap-2">
+          <button onClick={() => emblaApi && emblaApi.scrollPrev()} aria-label="Previous bootcamp" className="p-1 rounded-full hover:bg-gray-100 transition">
+            <ChevronLeft className="h-4 w-4 text-gray-500" />
+          </button>
+          <span className="text-sm text-gray-500">Swipe or tap arrows to explore</span>
+          <button onClick={() => emblaApi && emblaApi.scrollNext()} aria-label="Next bootcamp" className="p-1 rounded-full hover:bg-gray-100 transition">
+            <ChevronRight className="h-4 w-4 text-gray-500" />
+          </button>
         </div>
+        <style>{`
+          @keyframes shake-x {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(6px); }
+          }
+          .animate-shake-x {
+            animation: shake-x 1.2s cubic-bezier(.36,.07,.19,.97) both 1;
+          }
+        `}</style>
 
         {/* Dots indicator */}
         <div className="flex justify-center mt-6 gap-2">
@@ -134,22 +143,13 @@ export const BootcampCarousel: React.FC<BootcampCarouselProps> = ({ bootcamps })
             />
           ))}
         </div>
-
-        {/* Swipe indicator */}
-        <div className="text-center mt-4">
-          <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
-            <ChevronLeft className="h-4 w-4" />
-            Swipe or tap arrows to explore
-            <ChevronRight className="h-4 w-4" />
-          </p>
-        </div>
       </div>
     </div>
   );
 };
 
 // Separate component for individual bootcamp cards
-const BootcampCard: React.FC<{ bootcamp: Bootcamp }> = ({ bootcamp }) => {
+const BootcampCard: React.FC<{ bootcamp: Bootcamp; isActive: boolean }> = ({ bootcamp, isActive }) => {
   return (
     <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full">
       <CardHeader className={`text-center pb-6 bg-gradient-to-br ${
