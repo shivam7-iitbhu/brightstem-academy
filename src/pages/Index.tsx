@@ -1,5 +1,4 @@
 
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, BookOpen, Award, Calendar, Clock, MapPin, Trophy, Lightbulb, Target, CheckCircle, ChevronLeft, ChevronRight, UserCheck, TrendingUp, Coffee, Presentation, Medal, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ import PricingCard from '@/components/PricingCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import { CONSTANTS } from '@/lib/constants';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
-import { useRef } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 
 const Index = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -19,6 +18,12 @@ const Index = () => {
   const [showDemoPopup, setShowDemoPopup] = useState(false);
   const packagesRef = useRef<HTMLDivElement | null>(null);
   const popupShownRef = useRef(false);
+
+  // Carousel state for mobile slider
+  const emblaApiRef = useRef(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -165,7 +170,7 @@ const Index = () => {
   const whyChooseUsCards = [
     {
       icon: Users,
-      title: "Optimal Small Batches (4-5 Students)",
+      title: (<span>Optimal Small Batches<br /><span className="text-base font-normal">(4-5 Students)</span></span>),
       content: "Research shows 1:1 coaching lacks peer learning opportunities, while large classrooms (30+ students) inhibit questioning. Our scientifically-backed 4-5 student batches create the perfect balance of collaborative learning and personal attention.",
       color: "from-blue-500 to-purple-600"
     },
@@ -219,6 +224,19 @@ const Index = () => {
     }, 4000);
     return () => clearInterval(timer);
   }, []);
+
+  // Custom arrow button for carousel (must be outside the IIFE to be in scope)
+  const ArrowButton = ({ left, onClick, disabled }) => (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`text-2xl font-extrabold bg-white/90 rounded-full shadow-lg border border-blue-200 px-2 py-1 transition-all duration-200 hover:bg-blue-100 active:scale-95 ${disabled ? "opacity-40 cursor-not-allowed" : "hover:scale-110"}`}
+      aria-label={left ? "Previous" : "Next"}
+      type="button"
+    >
+      {/* Removed left/right arrow emoji as requested */}
+    </button>
+  );
 
   return (
     <div className="min-h-screen">
@@ -347,7 +365,8 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Desktop View - Grid Layout */}
+          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
             {whyChooseUsCards.map((card, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg overflow-hidden">
                 <CardContent className="p-5 sm:p-6">
@@ -359,6 +378,114 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Mobile and Tablet View - Carousel */}
+          <div className="relative lg:hidden">
+            {/* Fade overlays for scroll affordance */}
+            <div className="pointer-events-none absolute top-0 left-0 h-full w-8 z-10 bg-gradient-to-r from-white via-white/80 to-transparent" />
+            <div className="pointer-events-none absolute top-0 right-0 h-full w-8 z-10 bg-gradient-to-l from-white via-white/80 to-transparent" />
+            {/* Embla carousel API for custom indicator and arrows */}
+            {(() => {
+              const totalSlides = whyChooseUsCards.length;
+              const visibleSlides = 2;
+
+              function handleApi(api) {
+                emblaApiRef.current = api;
+                if (api) {
+                  setCanScrollPrev(api.canScrollPrev());
+                  setCanScrollNext(api.canScrollNext());
+                  setCarouselIndex(api.selectedScrollSnap());
+                  api.on("select", () => {
+                    setCarouselIndex(api.selectedScrollSnap());
+                    setCanScrollPrev(api.canScrollPrev());
+                    setCanScrollNext(api.canScrollNext());
+                  });
+                  api.on("reInit", () => {
+                    setCarouselIndex(api.selectedScrollSnap());
+                    setCanScrollPrev(api.canScrollPrev());
+                    setCanScrollNext(api.canScrollNext());
+                  });
+                }
+              }
+
+              return (
+                <div className="relative min-h-[28rem]">
+                  <Carousel
+                    className="w-full max-w-md mx-auto overflow-visible"
+                    opts={{ align: "start", loop: false }}
+                    setApi={handleApi}
+                  >
+                    <CarouselContent className="-ml-4 pr-4">
+                      {whyChooseUsCards.map((card, index) => (
+                        <CarouselItem
+                          key={index}
+                          className="pl-2 basis-[80%] max-w-[80%] transition-transform duration-500 flex justify-center"
+                          style={{
+                            marginRight: index !== whyChooseUsCards.length - 1 ? "-32px" : undefined,
+                          }}
+                        >
+                          <div className={index === carouselIndex ? "animate-shake-x" : ""}>
+                            <Card className={`group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 shadow-lg overflow-hidden w-full min-h-[26rem] flex flex-col justify-center mx-auto border-[${card.color.split(' ')[0].replace('from-', 'border-')}]`}>
+                              <CardContent className="p-8 h-full flex flex-col justify-center">
+                                <div className={`w-14 h-14 bg-gradient-to-r ${card.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform mx-auto`}>
+                                  <card.icon className="h-7 w-7 text-white" />
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-3 text-center line-clamp-2">{card.title}</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed text-center line-clamp-9">{card.content}</p>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                  </Carousel>
+                  {/* Custom arrows */}
+                  <ArrowButton left={true} onClick={() => emblaApiRef.current && emblaApiRef.current.scrollPrev()} disabled={!canScrollPrev} />
+                  <ArrowButton left={false} onClick={() => emblaApiRef.current && emblaApiRef.current.scrollNext()} disabled={!canScrollNext} />
+                  {/* Custom slider indicator */}
+                  <div className="flex justify-center items-center mt-4 gap-2">
+                    {Array.from({ length: totalSlides - 1 }).map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`h-2 rounded-full transition-all duration-300 ${carouselIndex === idx ? "w-8 bg-blue-600" : "w-4 bg-gray-300"}`}
+                        style={{
+                          transition: 'width 0.3s cubic-bezier(.4,2,.6,1)',
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <style>{`
+                    @keyframes shake-x {
+                      0%, 100% { transform: translateX(0); }
+                      20% { transform: translateX(-8px); }
+                      40% { transform: translateX(8px); }
+                      60% { transform: translateX(-6px); }
+                      80% { transform: translateX(6px); }
+                    }
+                    .animate-shake-x {
+                      animation: shake-x 1.2s cubic-bezier(.36,.07,.19,.97) both 1;
+                    }
+                    .line-clamp-2 {
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    }
+                    .line-clamp-9 {
+                      display: -webkit-box;
+                      -webkit-line-clamp: 9;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    }
+                  `}</style>
+                </div>
+              );
+            })()}
+            {/* Swipe label for mobile */}
+            <div className="block sm:hidden text-center text-xs text-gray-400 mt-2 animate-fade-in">
+              Swipe to see more
+            </div>
           </div>
         </div>
       </section>
@@ -393,7 +520,7 @@ const Index = () => {
 
       {/* Book Demo Popup */}
       <Dialog open={showDemoPopup} onOpenChange={setShowDemoPopup}>
-        <DialogContent className="max-w-xl rounded-2xl shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-green-50">
+        <DialogContent className="max-w-xl rounded-2xl shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-green-50 animate-popup-in">
           <DialogHeader>
             <DialogTitle className="text-3xl font-bold text-blue-700 text-center mb-2">Gift Yourself a Transformational Journey!</DialogTitle>
             <DialogDescription className="text-lg text-gray-700 text-center mb-4">
@@ -402,9 +529,9 @@ const Index = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col items-center gap-4">
-            <img src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" alt="Book Demo" className="w-32 h-32 rounded-full shadow-lg animate-bounce" />
+            <img src="/lovable-uploads/d8899f5c-745b-4049-aaf0-37773ca2e953.png" alt="Book Demo" className="w-32 h-32" style={{borderRadius: 0, background: 'none', boxShadow: 'none'}} />
             <button
-              className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg animate-demo-btn transition-all duration-300 hover:scale-105"
               onClick={() => { window.location.href = '/contact#enrollment-form'; }}
             >
               Book My Free Demo
@@ -416,6 +543,25 @@ const Index = () => {
           </DialogClose>
         </DialogContent>
       </Dialog>
+      <style>{`
+        @keyframes popup-in {
+          0% { opacity: 0; transform: scale(0.95); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-popup-in {
+          animation: popup-in 0.5s cubic-bezier(.4,2,.6,1) both;
+        }
+        @keyframes demo-btn-color {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-demo-btn {
+          background: linear-gradient(270deg, #2563eb, #22d3ee, #22c55e, #2563eb);
+          background-size: 600% 600%;
+          animation: demo-btn-color 4s ease-in-out infinite;
+        }
+      `}</style>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
