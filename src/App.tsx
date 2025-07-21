@@ -34,7 +34,7 @@ function AppContent() {
     <div className="min-h-screen flex flex-col">
       {!isAuthPage && !isAdminPage && <BatchBanner />}
       {!isAuthPage && !isAdminPage && <Navbar />}
-      <main className={`flex-1 ${!isAuthPage && !isAdminPage ? 'pt-12' : ''}`}>
+      <main className="flex-1">
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<Index />} />

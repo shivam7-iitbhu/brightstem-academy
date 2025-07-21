@@ -40,7 +40,6 @@ const Navbar = () => {
       badge: 'NEW',
       icon: Code
     },
-    { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -74,70 +73,55 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Brand Section - Left */}
           <div className="flex-shrink-0 flex items-center">
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 group">
               <img 
                 src="/lovable-uploads/a509da7d-f612-42d2-aca6-0d96eeece976.png" 
                 alt={`${CONSTANTS.COMPANY_NAME} Logo`} 
-                className="h-10 w-auto"
+                className="h-10 w-auto group-hover:opacity-80 transition"
               />
               <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
                 {CONSTANTS.COMPANY_NAME}
               </span>
-            </div>
+            </Link>
           </div>
 
           {/* Navigation Items - Center */}
-          <div className="hidden md:flex flex-1 justify-center items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
-                  isActive(item.path)
-                    ? 'text-blue-600'
-                    : 'text-gray-700 hover:text-blue-600'
-                }`}
+          <div className="hidden md:flex flex-1 justify-center items-center">
+            <div className="flex w-full justify-center space-x-8">
+              {navItems.map((item, idx) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
+                    isActive(item.path)
+                      ? 'text-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
+                  } ${idx === 0 ? 'ml-12 lg:ml-20' : ''}`}
+                >
+                  {/* Add icon for Bootcamps */}
+                  {item.icon && (
+                    <item.icon className="inline-block mr-1 h-4 w-4 align-text-bottom text-blue-500" />
+                  )}
+                  {item.name}
+                  {item.badge && (
+                    <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              ))}
+              <Button
+                onClick={handleEnrollClick}
+                className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300"
               >
-                {/* Add icon for Bootcamps */}
-                {item.icon && (
-                  <item.icon className="inline-block mr-1 h-4 w-4 align-text-bottom text-blue-500" />
-                )}
-                {item.name}
-                {item.badge && (
-                  <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full">
-                    {item.badge}
-                  </span>
-                )}
-              </Link>
-            ))}
-            
-            <Button
-              onClick={handleEnrollClick}
-              className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              Book a Free Demo
-            </Button>
+                Book a Free Demo
+              </Button>
+            </div>
           </div>
 
           {/* Auth Section - Right */}
           <div className="hidden md:flex items-center space-x-4">
-            {!user ? (
-              <div className="flex items-center space-x-2">
-                <Button
-                  variant="ghost"
-                  onClick={() => navigate('/auth/login')}
-                  className="text-gray-700 hover:text-blue-600"
-                >
-                  Login
-                </Button>
-                <Button
-                  onClick={() => navigate('/auth/signup')}
-                  className="bg-blue-50 text-blue-600 hover:bg-blue-100"
-                >
-                  Sign Up
-                </Button>
-              </div>
-            ) : (
+            {user && (
               <div className="flex items-center space-x-3">
                 <span className="text-sm text-gray-600">
                   Welcome, <span className="font-semibold text-blue-600">{profile?.full_name}</span>
@@ -202,7 +186,7 @@ const Navbar = () => {
                 Welcome, <span className="font-semibold text-blue-600">{profile?.full_name}</span>
               </div>
             )}
-            {navItems.map((item) => (
+            {navItems.map((item, idx) => (
               <Link
                 key={item.path}
                 to={item.path}
@@ -210,7 +194,7 @@ const Navbar = () => {
                   isActive(item.path)
                     ? 'text-blue-600 bg-blue-50'
                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                }`}
+                } ${idx === 0 ? 'ml-8' : ''}`}
                 onClick={() => setIsOpen(false)}
               >
                 {/* Add icon for Bootcamps */}
@@ -225,59 +209,35 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
-            <div className="mt-4 space-y-2">
-              {!user ? (
-                <>
+            {/* Only show admin/logout for signed-in users */}
+            {user && (
+              <div className="mt-4 space-y-2">
+                {profile?.role === 'admin' && (
                   <Button
                     onClick={() => {
-                      navigate('/auth/login');
+                      navigate('/admin');
                       setIsOpen(false);
                     }}
                     variant="ghost"
-                    className="w-full justify-start text-gray-700 hover:text-blue-600"
+                    className="w-full justify-start"
                   >
-                    Login
+                    <Code className="mr-2 h-4 w-4" />
+                    Admin Panel
                   </Button>
-                  <Button
-                    onClick={() => {
-                      navigate('/auth/signup');
-                      setIsOpen(false);
-                    }}
-                    className="w-full justify-start bg-blue-50 text-blue-600 hover:bg-blue-100"
-                  >
-                    Sign Up
-                  </Button>
-                </>
-              ) : (
-                <>
-                  {profile?.role === 'admin' && (
-                    <Button
-                      onClick={() => {
-                        navigate('/admin');
-                        setIsOpen(false);
-                      }}
-                      variant="ghost"
-                      className="w-full justify-start"
-                    >
-                      <Code className="mr-2 h-4 w-4" />
-                      Admin Panel
-                    </Button>
-                  )}
-                  <Button
-                    onClick={() => {
-                      handleSignOut();
-                      setIsOpen(false);
-                    }}
-                    variant="ghost"
-                    className="w-full justify-start text-red-600"
-                  >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Sign out
-                  </Button>
-                </>
-              )}
-            </div>
+                )}
+                <Button
+                  onClick={() => {
+                    handleSignOut();
+                    setIsOpen(false);
+                  }}
+                  variant="ghost"
+                  className="w-full justify-start text-red-600"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       )}

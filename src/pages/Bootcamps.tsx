@@ -70,7 +70,7 @@ const Bootcamps = () => {
       {/* Banner */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 sm:py-3">
         <p className="text-xs sm:text-sm font-medium px-4">
-          🎉 New Batch Starting {CONSTANTS.BATCH_START_DATE} - Limited Seats Available!
+          🎉 New batches starting first Monday of every month - Limited Seats Available!
         </p>
       </div>
 
@@ -123,7 +123,7 @@ const Bootcamps = () => {
           <div className="text-center mt-12 sm:mt-16">
             <Button 
               onClick={() => setIsFormOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 group border-2 border-transparent star-trail-button"
+              className="relative overflow-hidden animated-gradient-btn text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 group border-2 border-transparent star-trail-button"
             >
               <span className="relative z-10">🚀 I'm Ready! Let's Get Started</span>
               
@@ -321,6 +321,19 @@ const Bootcamps = () => {
           </Button>
         </div>
       </section>
+      {/* Animated gradient for Book a Free Demo button */}
+      <style>{`
+        .animated-gradient-btn {
+          background: linear-gradient(270deg, #7c3aed, #2563eb, #22d3ee, #22c55e, #7c3aed);
+          background-size: 1200% 1200%;
+          animation: gradient-move 8s ease-in-out infinite;
+        }
+        @keyframes gradient-move {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </div>
   );
 };
