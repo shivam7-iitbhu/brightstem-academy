@@ -176,8 +176,313 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Monthly Schedule Section */}
       <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Monthly <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Class Schedule</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Choose from two flexible schedule options designed to fit your lifestyle while ensuring comprehensive learning
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[800px]">
+                <thead>
+                  <tr className="bg-gradient-to-r from-blue-600 to-purple-600">
+                    <th className="px-4 py-4 text-left text-white font-semibold">Week/Option</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Monday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Tuesday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Wednesday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Thursday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Friday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Saturday</th>
+                    <th className="px-4 py-4 text-center text-white font-semibold">Sunday</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Week 1 */}
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-blue-50 font-medium text-blue-800 border-r border-gray-200">Week 1 - Option A</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-medium">
+                          Public Speaking<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-sm font-medium">
+                          Co-curricular<br/><span className="text-xs">(2 hours PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-green-50 font-medium text-green-800 border-r border-gray-200">Week 1 - Option B</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-medium">
+                          Public Speaking<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-sm font-medium">
+                          Co-curricular<br/><span className="text-xs">(2 hours PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Week 2 */}
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-blue-50 font-medium text-blue-800 border-r border-gray-200">Week 2 - Option A</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-medium">
+                          Coding & AI<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-medium">
+                          Career Guidance<br/><span className="text-xs">(1 hour PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-green-50 font-medium text-green-800 border-r border-gray-200">Week 2 - Option B</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-medium">
+                          Coding & AI<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-medium">
+                          Career Guidance<br/><span className="text-xs">(1 hour PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Week 3 */}
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-blue-50 font-medium text-blue-800 border-r border-gray-200">Week 3 - Option A</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-medium">
+                          Public Speaking<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-sm font-medium">
+                          Co-curricular<br/><span className="text-xs">(2 hours PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-green-50 font-medium text-green-800 border-r border-gray-200">Week 3 - Option B</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-medium">
+                          Public Speaking<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-sm font-medium">
+                          Co-curricular<br/><span className="text-xs">(2 hours PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Week 4 */}
+                  <tr className="border-b border-gray-200">
+                    <td className="px-4 py-3 bg-blue-50 font-medium text-blue-800 border-r border-gray-200">Week 4 - Option A</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-medium">
+                          Coding & AI<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-medium">
+                          Career Guidance<br/><span className="text-xs">(1 hour PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 bg-green-50 font-medium text-green-800 border-r border-gray-200">Week 4 - Option B</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium">
+                        Maths<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        Science<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">-</td>
+                    <td className="px-4 py-3 text-center border-r border-gray-200">
+                      <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-medium">
+                        Doubts & Tests<br/><span className="text-xs">(1 hour)</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="space-y-1">
+                        <div className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-medium">
+                          Coding & AI<br/><span className="text-xs">(1.5 hours AM)</span>
+                        </div>
+                        <div className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm font-medium">
+                          Career Guidance<br/><span className="text-xs">(1 hour PM)</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+            <div className="flex items-start space-x-3">
+              <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Calendar className="w-3 h-3 text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">📍 Important Note</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  We run <strong>2 batches of each option</strong> - one in the <strong>morning (9:00 AM - 12:00 PM)</strong> and one in the <strong>evening (4:00 PM - 7:00 PM)</strong>. 
+                  Students can choose their preferred time slot based on their school schedule and convenience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
